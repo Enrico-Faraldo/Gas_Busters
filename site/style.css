@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    background-color: #660101F2;
+    padding: 0 20px; /* opcional, pra dar um respiro nas bordas */
+}
+
+.login_cadastro a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+    background-color: #5E0202;
+}
+.logo_titulo {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.logo_titulo img{
+    height: 70px;
+}
+
+#titulo{
+    font-size: 30px;
+    color: #ffffffff;
+    margin-left: 10px;
+}
+
+.banner1{
+    height: 700px;
+    background-image: url(imagens/industria.jpg);
+    background-size: cover;
+}
+
+.banner1 .container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.bemvindo{
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 70px;
+    border-radius: 20px;
+    font-size: 20px;
+    width: 40%;
+    justify-content: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: justify;
+}
+
+#titulo_bemvindo{
+    margin-bottom: 10px;
+}
+
+.rodape{
+    background-color: #880101AD;
+    color: white;
+    height: 100px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.informacoes{
+    margin-left: 90px;
+}
