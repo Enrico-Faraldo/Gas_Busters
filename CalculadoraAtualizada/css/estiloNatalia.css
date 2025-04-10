@@ -1,0 +1,68 @@
+.top-bar {
+    position: fixed; /* Fixa no topo */
+    top: 0px;
+    left: 50%;
+    width: 100%;
+    background-color: #b41010; /* Cor de fundo */
+    color: rgb(252, 252, 252); /* Cor do texto */
+    padding: 15px 70px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    transform: translateX(-50%);
+}
+
+
+
+.bottom-bar {
+            position: fixed; /* Fixa no fundo */
+            bottom: 0; /* Coloca no fundo da página */
+            left: 50%; /* Começa no meio da tela */
+            width: 100%; /* Largura da barra */
+            background-color:#b41010; /* Cor de fundo */
+            color: #ffffff; /* Cor do texto */
+            padding: 15px 20px; /* Espaçamento interno */
+            text-align: center; /* Centraliza o texto */
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+            transform: translateX(-50%); /* Move a barra para a esquerda, centralizando */
+            z-index: 1000; /* Garante que a barra fique sempre acima dos outros elementos */
+        }
+
+
+    /* alihando o texto */
+    h3 {
+        text-align: center;
+    }
+     /* Estilo para o label e input */
+     label, input, button {
+            display: block; /* Faz o input, label e button se comportarem como elementos de bloco */
+            margin: 10px auto; /* Centraliza na horizontal */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        /* Estilo do input */
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 250px; /* Define um tamanho fixo para o input */
+        }
+
+        /* Estilo do botão */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer; /* Muda o cursor para indicar que é clicável */
+        }
+
+        /* Centralização do corpo da página */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza na vertical */
+            align-items: center; /* Centraliza na horizontal */
+            height: 100vh; /* Ocupa 100% da altura da tela */
+            margin: 0;
+        }
