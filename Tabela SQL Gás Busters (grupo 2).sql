@@ -139,7 +139,7 @@ update sensor set porcentagem = 100.10 where idSensor = 1;
 -- Error Code: 3819. Check constraint 'chk_limite_porcentagem' is violated.
 
 
-
+--este é um comentario de teste
 -- Apresentar os dados da tabela funcionario onde o email está em ordem crescente
 select * from funcionario order by emailProfissionalFuncionario asc;
 
