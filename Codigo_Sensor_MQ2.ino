@@ -27,20 +27,22 @@ void loop() {
   }
 
   // declarar labels no plotter serial
-  Serial.print("Maxima:");
-  Serial.print(100);
-  Serial.print(" ");
-  Serial.print("Gás:");
-  Serial.print(porcentagem);
-  Serial.print(" ");
-  Serial.print("Vazamento:");
-  Serial.print(60);
-  Serial.print(" ");
-  Serial.print("Alerta:");
-  Serial.print(30);
-  Serial.print(" ");
-  Serial.print("Minima:");
-  Serial.println(0);
+//  Serial.print("Maxima:");
+//  Serial.print(100);
+//  Serial.print(" ");
+//  Serial.print("Gás:");
+   Serial.print(porcentagem);
+   Serial.println(";");
+
+//  Serial.print(" ");
+//  Serial.print("Vazamento:");
+//  Serial.print(60);
+//  Serial.print(" ");
+//  Serial.print("Alerta:");
+//  Serial.print(30);
+//  Serial.print(" ");
+//  Serial.print("Minima:");
+//  Serial.println(0);
 
   // delay para o código informar a cada 1s.
   delay(2000);
