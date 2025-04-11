@@ -42,6 +42,6 @@ void loop() {
   Serial.print("Minima:");
   Serial.println(0);
 
-  // delay para o código informar a cada 1s
+  // delay para o código informar a cada 1s.
   delay(2000);
 }
