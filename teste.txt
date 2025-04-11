@@ -1,6 +1,7 @@
 vchjkckjhc
 
 EU ODEIO O GIT
+<<<<<<< HEAD
 iufenhuiwiyfwewe
 mjinefmnifnje
 eojnfjiejifn
@@ -10,3 +11,6 @@ UUUUUUUUUUUUUUUUUUUUUUUUUUUU
 UUUUUUUUUUUUUUUUUUUUUUUUUUUUUU
 uefuefnenhf
 inhaejfnejnifjni
+=======
+SALAMALENKOMALENKOSALAAA
+>>>>>>> 63ab0d526a9941da2cc97a6a69e5e613dd19ea5b
