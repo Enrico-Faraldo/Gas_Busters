@@ -14,7 +14,7 @@ body {
 :root {
 
     --tamanho-header : 80px;
-    --tamanho-footer: 90px;
+    --tamanho-footer: 100px;
     --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
 
 }
@@ -114,7 +114,7 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
     height: var(--tamanho-banner);
     color: white;
-    background-image: url('../assets/imgs/petroquimica4.jpg');
+    background-image: url('../img/petroquimica4.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -126,7 +126,7 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
     height: var(--tamanho-banner);
 
-    background-image: url('../assets/imgs/socorro.png');
+    background-image: url('../img/socorro.png');
     background-size: cover;
     width: 100%;
 
@@ -173,7 +173,7 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
     height: var(--tamanho-banner);
     color: white;
-    background-image: url('../assets/imgs/NossosServiços.png');
+    background-image: url('../img/NossosServiços.png');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -527,10 +527,10 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
 
 
-/* logo */
+/* logo 
 .container .logo {
 
-    background-image: url(/OnePage_HCMS/Aquatech_SomenteHTML_Henry_1CCOB/assets/imgs/logo_com_nome.png);
+    background-image: url(../img/logo_com_nome.png);
     height: 70px;
     width: 160px;
     display: flex;
@@ -543,7 +543,7 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
 
 
-}
+} */
 
 
 
@@ -567,12 +567,11 @@ border-bottom: 2px solid rgb(105, 13, 10);
 /* do rodapé em diante*/
 
 .footer {
-
-    background-color: rgb(177, 94, 91);
+    background-color: #880101AD;
     height: var(--tamanho-footer);
     color: #fff;
     display: flex;
-    font-size: 15px;
+    font-size: 20px;
 
 }
 
