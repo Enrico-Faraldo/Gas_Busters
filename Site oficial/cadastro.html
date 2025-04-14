@@ -59,8 +59,8 @@
                         <br>
                     </div>
                     <div class="campo">
-                        <span>CPF::</span>
-                        <input id="ipt_cpf" type="text" placeholder="234.567.890-12" />
+                        <span>CPF:</span>
+                        <input id="ipt_cpf" type="text" placeholder="23456789012" />
                         <br>
                     </div>
                     <div class="campo">
@@ -105,11 +105,27 @@ function cadastrar(){
     var email = ipt_email.value;
     var senha = ipt_senha.value;
     var confirmarSenha = ipt_confirma_senha.value;
+    var tentativas = 3
+
+    while(codigo != "123" && tentativas > 1){
+        tentativas --
+        alert(`Codigo errado! Você tem mais ${tentativas} tentativa(s).`);
+        codigo = prompt("Confirme seu codigo novamente:"); 
+    }
+
+    if (cpf.length != 11) {
+    alert("O CPF deve ter exatamente 11 dígitos.");
+}
 
     if(!email.includes("@")){
         alert(`Email não possue @`)
-    }else if(senha != confirmarSenha){
+    }
+    if(senha != confirmarSenha){
         alert("Senhas diferentes")
+    }
+
+    if(codigo == "123" && email.includes("@") && senha == confirmarSenha && cpf.length == 11){
+        window.location.href = "login.html";
     }
 }
 </script>
