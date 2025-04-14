@@ -104,11 +104,18 @@ body{
     padding: 10px 250px;
 }
 
-.botao{
+#botao{
     background-color: #660101 ;
     color: #e5e5e5;
+    border: none;
     border-radius: 10px;
     padding: 10px 30px;
+}
+
+#botao:hover{
+    background-color: #967c7c;
+    color: #660101;
+    cursor: pointer;
 }
 
 
