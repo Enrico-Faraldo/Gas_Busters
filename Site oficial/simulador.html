@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/logo.png">
-    <link rel="stylesheet" href="css/estilo_gasbusters.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Calculadora financeira!</title>
 </head>
 
 <body>
+
     <div class="header">
         <div class="container">
             <img src="img/logo_com_nome.png" width="200px">
@@ -31,22 +32,35 @@
         </div>
     </div>
 
-    <div class="borda">
+    <div class="login">
 
-        <h3 class="pergunta">Há quantos meses o projeto gás busters já está em execução na sua empresa?</h3>
-        <input type="number" id="ipt_meses" class="caixa_numero">
-        <button onclick="calcular()" class="botao_de_calculo">Calcular</button>
-        <div id="resultado" class="texto_resultado"></div>
-        <div id="erro" class="erro"></div>
+        <div class="container">
+            <div class="card-simulador">
+                <h2>Simulador Financeiro</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <h3>Há quantos meses o projeto gás busters já está em execução na sua empresa?</h3>
+                        <input type="number" id="ipt_meses">
+                        <br>
+                    </div>
+                    <button onclick="calcular()" class="botao">Calcular</button>
+                    <div id="erro" class="erro"></div>
+                </div>
 
+            </div>
+        </div>
     </div>
 
 
-    <div class="rodape">
-        <p class="contato">Informações de contato <br> Telefone: (11)94465-5562 <br> E-mail: bustersgas@gmail.com</p>
-        <p class="quem_somos">Quem somos?</p>
+
+    <div class="footer">
+        <div class="container">
+            <h4>Informações de contato: <br>
+                Telefone: (11) 94465-5562<br>
+                E-mail: bustersgas@gmail.com</h4>
+
+        </div>
     </div>
-    <u></u>
 </body>
 
 <script>

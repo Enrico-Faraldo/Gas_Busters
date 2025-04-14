@@ -125,3 +125,16 @@ body{
     padding: 10px 40px;
     border: 2px solid #660101;
 }
+
+/* SIMULADOR*/
+.card-simulador{
+    width: 600px;
+    margin: 203px ;
+    background-color: #d1c6c6;
+    height: fit-content;
+    border-radius: 10px;
+    text-align: center;
+    color: #660101;
+    padding: 10px 40px;
+    border: 2px solid #660101;
+}
