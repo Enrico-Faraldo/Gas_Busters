@@ -1,147 +1,591 @@
-@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-body{
+body {
+
     margin: 0;
     padding: 0;
     font-family: 'Barlow', sans-serif;
-    background-color: rgb(255, 255, 255);
+
+
+}
+
+
+:root {
+
+    --tamanho-header : 80px;
+    --tamanho-footer: 90px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+
 }
 
 
 
-/* HEADER */
+/*cabeçalho*/
 
-.header{
-    
-    background-color: rgba(101, 1, 1, 0.949) ;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    padding: 10px;
-    
+/*.header {
+
+height: var(--tamanho-header);
+background-color: rgb(105, 13, 10);
+border-bottom: 2px solid rgb(105, 13, 10);
+
+
+
+}*/
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* fica na frente de outros elementos */
+    transition: 0.5s;
 }
 
-.container{
+.header.rolar {
+
+    height: var(--tamanho-header);
+    background-color: rgb(105, 13, 10);
+    padding: 10px 0;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: 0.5s;
+
+}
+
+.titulo{
+    color:#32b9cd;
+    width: fit-content;
+    font-weight: 500;
+
+}
+
+.container {
+
     display: flex;
     width: 80%;
     margin: auto;
 }
 
-.header .container{
+.header .container {
+
     justify-content: space-between;
     align-items: center;
     height: 100%;
+
 }
 
-.navbar{
-    width: 300px;
+
+.navbar {
+
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
-    color: #ffffff;
-}
-
-.header a{
-    text-decoration: none;
-    color: #ffffff;
-}
-
-.agora{
-    font-weight: 700;
-}
-
-/* FOOTER */
-
-.footer{
-    background-color: rgba(136, 1, 1, 0.678);
-    color: #fff;
-    display: flex;
-    height: 150px;
-    font-size: 18px;
-}
-
-.footer .container{
-    justify-content: center;
-    text-align: center;
-}
-
-
-/* CADASTRO */
-.login .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-}
-
-.card-cadastro{
-    width: 600px;
-    margin: 88px;
-    background-color: #d1c6c6;
-    height: fit-content;
-    border-radius: 10px;
-    color: #660101;
-    padding: 10px 40px;
-    text-align: center;
-    border: 2px solid #660101;
     
 }
 
-.campo{
+
+.navbar .a{
+    color: #ffffff;
+   
+}
+
+
+
+.header a{
+
+    text-decoration: none;
+    color: #e3b062;
+
+
+}
+
+
+
+.agora{
+    font-weight: 800;
+}
+
+
+/*banner*/
+
+.banner {
+
+    height: var(--tamanho-banner);
+    color: white;
+    background-image: url('../assets/imgs/petroquimica4.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+
+}
+
+
+.banneri {
+
+    height: var(--tamanho-banner);
+
+    background-image: url('../assets/imgs/socorro.png');
+    background-size: cover;
+    width: 100%;
+
+}
+
+.containeri {
+
+    display: flex;
+    width: 80%;
+    margin: auto;
+    filter: blur(100%);
+}
+
+.banneri .containeri h3 {
+
+    
+    flex-direction: row;
+    width: 100%;
+    margin-top: 280px;
+    padding: 0;
+    font-size: 30px;
+    margin-left: -290px;
+    margin-right: 600px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    
+    
+}
+
+
+
+.containere {
+
+    display: flex;
+    width: 80%;
+    margin: auto;
+    filter: blur(100%);
+}
+
+
+
+/*Aqui, a imagem fica parada, mesmo dando um scroll*/
+.bannere {
+
+    height: var(--tamanho-banner);
+    color: white;
+    background-image: url('../assets/imgs/NossosServiços.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    filter: brightness(90%);
+    backdrop-filter: 0px;
+
+}
+
+.containere p {
+
+    flex-direction: row;
+    width: 50%;
+    margin-top: 150px;
+    padding: 0;
+    font-size: 70px;
+    margin-left: 490px;
+    margin-right: 500px;
+    color: black;
+    background-color: #ffffff;
+    background-size: 150px;
+    font-weight: bolder;
+}
+
+
+
+.corpo{
+
+    height: var(--tamanho-banner);
+    color: white;
+    background-size: cover;
+
+
+}
+
+
+
+
+ .container .card  {
+
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    background-color: #cacaca;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 550px;
+    margin-top: 250px; 
+    margin-left: 450px;
+ 
+}
+
+
+
+.container .cardCad  {
+
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    background-color: #cacaca;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 550px;
+    margin-top: 150px; 
+    margin-left: 450px;
+ 
+}
+
+
+
+.banner .container p {
+
+    width: 50%;
+    margin-top: 150px;
+    padding: 0;
+    font-size: 70px;
+    font-weight: bolder;
+    
+}
+
+.banner .container .coach {
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    
+   
+}
+
+.corCoach {
+
+    color: #c54d3d;
+    font-size: 50px;
+
+}
+
+
+.socorro
+
+
+
+
+
+
+
+.banner .container span{
+
+    font-weight: 800;
+    width: 100px;
+    font-weight: bolder;
+    
+}
+
+.social .corpo .quem h1 {
+
+    flex-direction: row;
+    color: black;
+    font-size: 50px;
+    margin-top: 150px;
+    margin-left: 100px;
+
+
+}
+
+.social .corpo .servicos h1 {
+
+    flex-direction: row;
+    color: black;
+    font-size: 50px;
+    margin-top: 150px;
+    margin-left: 590px;
+
+}
+
+
+.social .corpo .sublinhado2 {
+
+    flex-direction: row;
+    margin-left: 580px;
+    margin-top: -150px;
+
+
+}
+
+
+
+/*Aqui está a imagem*/
+.social .container .worker {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: 100px;
+    width: 500px;
+    height: 300px;
+    padding: 40px;
+    margin-left: 490px;
+    background-attachment: fixed;
+    background-position: center;
+    
+    
+}
+
+.social .container .sensor {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: 100px;
+    width: 600px;
+    height: 500px;
+    padding: 40px;
+    margin-left: 430px;
+    background-attachment: fixed;
+    background-position: center;
+    
+    
+}
+
+
+ .sorrindo2 {
+
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-start;
+ width: 1000px;
+ height: 700px;
+ padding: 40px;
+ margin-left: -235px;
+
+ }
+
+
+/*Aqui está o texto*/
+.social .container .corpo h3 {
+
+    flex-direction: row;
+    justify-content: center;
+    color: black;
+    padding: auto;
+    margin-left: 130px;
+    
+}
+
+.social .container .corpo h2 {
+
+    flex-direction: row;
+    justify-content: center;
+    color: black;
+    padding: auto;
+   
+    
+}
+
+
+.social .container .sublinhado {
+
+    
+    flex-direction: row;
+    margin-top: -150px;
+    margin-left: 80px;
+        
+        
+}
+
+
+
+
+
+
+.social {
+
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.social .container .boxes {
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 0;
+
+}
+
+.box {
+
     display: flex;
     flex-direction: column;
+    align-items: center;
+
+
+}
+
+.box img {
+
+    width: 170px;
+
+}
+
+.h2 {
+
+    color: palevioletred;
+    padding: 0;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    font-size: 26px;
+
+}
+
+.email {
+
+    border: solid 2px rgb(0, 204, 255);
+    border-radius: 10px;
+    height: 30px;
+    width: 450px;
+    margin-bottom: 10px;
+    text-align: center;
+
+}
+
+.senha {
+
+    border: solid 2px rgb(0, 204, 255);
+    border-radius: 10px;
+    height: 30px;
+    width: 450px;
+    text-align: center;
+
+}
+
+.campo .acima_input_email {
+
+    display: flex;
+    color: palevioletred;
+    margin-left: 45px;
+    
+}
+
+.campo .acima_input_senha {
+
+    display: flex;
+    color: palevioletred;
+    margin-left: 45px;
+
+}
+
+
+.botao {
+
+    
+    background-color: rgb(212, 24, 87);
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 30px;
+    justify-content: center;
+    width: 110px;
+    height: 30px;
+    border: solid 1px rgb(212, 24, 87);
+
+}
+
+
+/* Segmento do cadastro */
+
+.nomeInput {
+
+    display: flex;
+    color: palevioletred;
+    margin-left: 45px;
+
+}
+
+
+
+.bordaCadastro{
+
+    border: solid 2px rgb(0, 204, 255);
+    border-radius: 10px;
+    height: 30px;
+    width: 450px;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+
+
+
+
+/* logo */
+.container .logo {
+
+    background-image: url(/OnePage_HCMS/Aquatech_SomenteHTML_Henry_1CCOB/assets/imgs/logo_com_nome.png);
+    height: 70px;
+    width: 160px;
+    display: flex;
     justify-content: flex-start;
-    text-align: left;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    margin-left: -70px;
+
+
+
+
 }
 
-.campo input{
-    border: solid #660101;
-    width: 100px;
-    border-radius: 10px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* do rodapé em diante*/
+
+.footer {
+
+    background-color: rgb(177, 94, 91);
+    height: var(--tamanho-footer);
+    color: #fff;
+    display: flex;
+    font-size: 15px;
+
+}
+
+.footer .container{
+
+    justify-content: center;
     text-align: center;
-    padding: 10px 250px;
+
+
 }
 
-#botao{
-    background-color: #660101 ;
-    color: #e5e5e5;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 30px;
-}
+.version {
 
-#botao:hover{
-    background-color: #967c7c;
-    color: #660101;
-    cursor: pointer;
-}
+    font-size: 12px;
 
-
-/* LOGIN */
-
-.card-login{
-    width: 600px;
-    margin: 203px ;
-    background-color: #d1c6c6;
-    height: fit-content;
-    border-radius: 10px;
-    text-align: center;
-    color: #660101;
-    padding: 10px 40px;
-    border: 2px solid #660101;
-}
-
-/* SIMULADOR*/
-.card-simulador{
-    width: 600px;
-    margin: 203px ;
-    background-color: #d1c6c6;
-    height: fit-content;
-    border-radius: 10px;
-    text-align: center;
-    color: #660101;
-    padding: 10px 40px;
-    border: 2px solid #660101;
 }
