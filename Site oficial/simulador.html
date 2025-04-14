@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Calculadora financeira!</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <img src="img/logo_com_nome.png" width="200px">
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Menu</a>
+                </li>
+                <li class="agora">
+                    <a href="#">Simulador</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="login">
+
+        <div class="container">
+            <div class="card-simulador">
+                <h2>Simulador Financeiro</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <h3>Há quantos meses o projeto gás busters já está em execução na sua empresa?</h3>
+                        <input type="number" id="ipt_meses">
+                        <br>
+                    </div>
+                    <button onclick="calcular()" class="botao">Calcular</button>
+                    <div id="erro" class="erro"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer">
+        <div class="container">
+            <h4>Informações de contato: <br>
+                Telefone: (11) 94465-5562<br>
+                E-mail: bustersgas@gmail.com</h4>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    function calcular() {
+        var meses = Number(ipt_meses.value)
+        var valorEconomizado = Number(meses * 9243618 * 0.7).toFixed(2)
+
+        if (meses > 0) {
+            resultado.innerHTML = `Você já economizou em média <span class="valorGasto"><u>
+                                    R$${valorEconomizado}</u></span>!<br> Graças ao nosso projeto, sua empresa pôde economizar essa quantia em petróleo despejado.`
+            erro.innerHTML = ``
+        }
+        else if (meses == 0) {
+            resultado.innerHTML = `Sua empresa ainda não implementou nosso projeto. Com o nosso projeto a sua empresa consegue economizar cerca de <span class="valorGasto"><u>70%</u></span><br> Então seria uma boa ideia começar a usá-lo!`
+            erro.innerHTML = ``
+        }
+        else {
+            alert('Número inválido! Insira um número maior ou igual a 0.')
+            erro.innerHTML = `Lembre-se de colocar um número de acidentes válido!`
+            resultado.innerHTML = ``
+        }
+    }
+</script>
+
+</html>
