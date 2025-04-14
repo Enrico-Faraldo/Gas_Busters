@@ -2,91 +2,115 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+    <title>Gás-Busters | Cadastro</title>
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="assets/icon/favicon2.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap"
-    rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="assets/icon/favicon2.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-  <!--header inicio-->
-  <div class="header">
-    <div class="container">
-      <img src="img/logo_com_nome.png" width="200px">
-      <ul class="navbar">
-        <li>
-          <a href="index.html">Menu</a>
-        </li>
-        <li>
-          <a href="simulador.html">Simulador</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html">Login</a>
-        </li>
-        <li class="agora">
-          <a href="#">Cadastro</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!--header fim-->
 
-  <div class="login">
-
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <div class="campo">
-            <span>Código da Empresa:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-            <br>
-          </div>
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-            <br>
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-            <br>
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-            <br>
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-            <br>
-          </div>
-          <button class="botao">Cadastrar</button>
+    <div class="header">
+        <div class="container">
+            <img src="img/logo_com_nome.png" width="200px">
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Menu</a>
+                </li>
+                <li>
+                    <a href="simulador.html">Simulador</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+                <li class="agora">
+                    <a href="#">Cadastro</a>
+                </li>
+            </ul>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Informações de contato: <br>
-        Telefone: (11) 94465-5562<br>
-        E-mail: bustersgas@gmail.com</h4>
 
+    <div class="login">
+
+        <div class="container">
+            <div class="card card-cadastro">
+                <h2>Bem-vindo!</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <span>Código da Empresa:</span>
+                        <input id="ipt_codigo" type="number" placeholder="Insira aqui seu código" />
+                        <br>
+                    </div>
+                    <div class="campo">
+                        <span>Nome:</span>
+                        <input id="ipt_nome" type="text" placeholder="Seu nome" />
+                        <br>
+                    </div>
+                    <div class="campo">
+                        <span>CPF::</span>
+                        <input id="ipt_cpf" type="text" placeholder="234.567.890-12" />
+                        <br>
+                    </div>
+                    <div class="campo">
+                        <span>E-mail:</span>
+                        <input id="ipt_email" type="text" placeholder="meuemail@provedor.com" />
+                        <br>
+                    </div>
+                    <div class="campo">
+                        <span>Senha:</span>
+                        <input id="ipt_senha" type="password" placeholder="******" />
+                        <br>
+                    </div>
+                    <div class="campo">
+                        <span>Confirmação da Senha:</span>
+                        <input id="ipt_confirma_senha" type="password" placeholder="******" />
+                        <br>
+                    </div>
+                    <button class="botao" onclick="cadastrar()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <!--footer fim-->
+    
+
+
+    <div class="footer">
+        <div class="container">
+            <h4>Informações de contato: <br>
+                Telefone: (11) 94465-5562<br>
+                E-mail: bustersgas@gmail.com</h4>
+
+        </div>
+    </div>
+
 </body>
+
+<script>
+function cadastrar(){
+    var codigo = Number(ipt_codigo.value);
+    var nome = ipt_nome.value;
+    var cpf = ipt_cpf.value
+    var email = ipt_email.value;
+    var senha = ipt_senha.value;
+    var confirmarSenha = ipt_confirma_senha.value;
+
+    if(!email.includes("@")){
+        alert(`Email não possue @`)
+    }else if(senha != confirmarSenha){
+        alert("Senhas diferentes")
+    }
+}
+</script>
 
 </html>
