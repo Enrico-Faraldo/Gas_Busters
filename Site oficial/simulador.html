@@ -15,74 +15,91 @@
         <div class="container">
             <img src="img/logo_com_nome.png" width="200px">
             <ul class="navbar">
-                <li>
-                    <a href="index.html">Menu</a>
-                </li>
-                <li class="agora">
-                    <a href="#">Simulador</a>
-                </li>
+                <li><a href="index.html">Menu</a></li>
+                <li class="agora"><a href="#">Simulador</a></li>
                 <li>|</li>
-                <li>
-                    <a href="login.html">Login</a>
-                </li>
-                <li>
-                    <a href="cadastro.html">Cadastro</a>
-                </li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
             </ul>
         </div>
     </div>
 
     <div class="login">
+        <div class="container" style="display: flex; gap: 30px;">
 
-        <div class="container">
-            <div class="card-simulador">
+            <div class="card-simulador borda" style="width: 60%;">
                 <h2>Simulador Financeiro</h2>
                 <div class="formulario">
                     <div class="campo">
-                        <h3>Há quantos meses o projeto gás busters já está em execução na sua empresa?</h3>
-                        <input type="number" id="ipt_meses">
-                        <br>
+                        <h3>Quantas plataformas sua empresa possui?</h3>
+                        <input type="number" id="ipt_plataformas">
                     </div>
-                    <button onclick="calcular()" class="botao">Calcular</button>
+                    <div class="campo">
+                        <h3>Qual o valor médio de uma plataforma (em R$)?</h3>
+                        <input type="number" id="ipt_valor">
+                    </div>
+                    <div class="campo">
+                        <h3>Por quantos meses o sistema será utilizado?</h3>
+                        <input type="number" id="ipt_meses">
+                    </div>
+                    <button onclick="calcular()" id="botao">Calcular</button>
                     <div id="erro" class="erro"></div>
+                    <div id="resultado"></div>
                 </div>
-
             </div>
+
         </div>
     </div>
-
-
 
     <div class="footer">
         <div class="container">
             <h4>Informações de contato: <br>
                 Telefone: (11) 94465-5562<br>
                 E-mail: bustersgas@gmail.com</h4>
-
         </div>
     </div>
+
+    <script>
+        function formatarReal(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function calcular() {
+            var plataformas = Number(ipt_plataformas.value);
+            var valorPlataforma = Number(ipt_valor.value);
+            var meses = Number(ipt_meses.value);
+
+            if (plataformas > 0 && valorPlataforma > 0 && meses >= 0) {
+                var prejuizoMensal = plataformas * valorPlataforma * 0.02;
+                var economiaMensal = prejuizoMensal * 0.7;
+                var valorEconomizado = (meses * economiaMensal);
+
+                let prejuizo1Mes = (prejuizoMensal * 0.7);
+                let prejuizo6Meses = (prejuizoMensal * 6 * 0.7);
+                let prejuizo1Ano = (prejuizoMensal * 12 * 0.7);
+                let prejuizo10Anos = (prejuizoMensal * 120 * 0.7);
+
+                resultado.innerHTML = `
+                    <div>
+                        <p>Com ${plataformas} plataformas no valor médio de ${formatarReal(valorPlataforma)} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${formatarReal(valorEconomizado)}</u></span> em prejuízos ao longo de ${meses} meses.</p>
+                        <h3>Economia Potencial</h3>
+                        <ul>
+                            <li>Em 1 mês: <strong>${formatarReal(prejuizo1Mes)}</strong></li>
+                            <li>Em 6 meses: <strong>${formatarReal(prejuizo6Meses)}</strong></li>
+                            <li>Em 1 ano: <strong>${formatarReal(prejuizo1Ano)}</strong></li>
+                            <li>Em 10 anos: <strong>${formatarReal(prejuizo10Anos)}</strong></li>
+                        </ul>
+                    </div>
+                `;
+                erro.innerHTML = "";
+            } else {
+                alert('Preencha todos os campos com valores válidos!');
+                erro.innerHTML = "Verifique se todos os campos estão preenchidos corretamente.";
+                resultado.innerHTML = "";
+            }
+        }
+    </script>
+
 </body>
-
-<script>
-    function calcular() {
-        var meses = Number(ipt_meses.value)
-        var valorEconomizado = Number(meses * 9243618 * 0.7).toFixed(2)
-
-        if (meses > 0) {
-            resultado.innerHTML = `Você já economizou em média <span class="valorGasto"><u>
-                                    R$${valorEconomizado}</u></span>!<br> Graças ao nosso projeto, sua empresa pôde economizar essa quantia em petróleo despejado.`
-            erro.innerHTML = ``
-        }
-        else if (meses == 0) {
-            resultado.innerHTML = `Sua empresa ainda não implementou nosso projeto. Com o nosso projeto a sua empresa consegue economizar cerca de <span class="valorGasto"><u>70%</u></span><br> Então seria uma boa ideia começar a usá-lo!`
-            erro.innerHTML = ``
-        }
-        else {
-            alert('Número inválido! Insira um número maior ou igual a 0.')
-            erro.innerHTML = `Lembre-se de colocar um número de acidentes válido!`
-            resultado.innerHTML = ``
-        }
-    }
-</script>
 
 </html>
