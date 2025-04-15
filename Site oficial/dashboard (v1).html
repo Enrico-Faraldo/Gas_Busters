@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gás-Busters | Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styledash.css">
+
+    <link rel="icon" href="assets/icon/favicon2.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+            <img src="img/logo_com_nome.png" width="200px">
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Menu</a>
+                </li>
+                <li>
+                    <a href="simulador.html">Simulador</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+                <li class="agora">
+                    <a href="#">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="grafico-linha">
+            <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+        </div>
+        <div class="grafico-barra">
+            <canvas id="myChart2" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+        </div>
+    </div>
+        
+    <div class="footer">
+        <div class="container">
+            <h4>Informações de contato: <br>
+                Telefone: (11) 94465-5562<br>
+                E-mail: bustersgas@gmail.com</h4>
+
+        </div>
+    </div>
+</body>
+<script>
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [
+                {
+                    label: 'Densidade do gás (%)',
+                    data: [4.5, 5, 9.3, 11, 13.8, 8],
+                    backgroundColor: 'rgba(255, 0, 255, 0.5)',
+                    borderColor: 'rgba(255, 0, 255, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+            title: {
+                display: true,
+                text: 'Quantidade de gás detectado hoje'
+            }
+        }
+            
+        }
+    });
+
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [
+                {
+                    label: 'Quantidade de vazamentos',
+                    data: [22, 20, 16, 15, 10, 10],
+                    backgroundColor: 'rgba(0, 99, 255, 0.5)',
+                    borderColor: 'rgba(0, 99, 255, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+            title: {
+                display: true,
+                text: 'Vazamentos de gás nos últimos meses'
+            }
+        }
+        }
+    });
+
+    
+</script>
+
+</html>
