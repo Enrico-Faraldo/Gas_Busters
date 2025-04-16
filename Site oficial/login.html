@@ -50,7 +50,7 @@
                 <div class="formulario">
                     <div class="campo">
                         <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
+                        <input id="usuario_input" type="text" placeholder="Login">
                         <br>
                     </div>
                     <div class="campo">
@@ -76,24 +76,33 @@
     <!--footer fim-->
 
 </body>
-    <script>
-        let listaUsuarios = ['John', 'Maria', 'Carlos', 'Fulano', 'Michele'];
-        function fazerLogin(){
-            let usuario = email_input.value;
-            let senha = senha_input.value;
+<script>
+    let listaUsuarios = ['John', 'Maria', 'Carlos', 'Fulano', 'Michele'];
+    
+    function fazerLogin() {
+        let usuario = usuario_input.value;
+        let senha = senha_input.value;
 
-            if(usuario == "" || senha == ""){
-                alert("Preencha todos os campos!");
-                return;
-            }
+        if (usuario === "" || senha === "") {
+            alert("Preencha todos os campos!");
+            return;
+        }
 
-            for(let i = 0; i <= listaUsuarios.length; i++){
-                if(listaUsuarios[i] == usuario && senha == 1234){
-                    window.location.href = "index.html";
-                    break;
-                }
+        let loginValido = false;
+
+        for (let i = 0; i < listaUsuarios.length; i++) {
+            if (listaUsuarios[i] === usuario && senha === "1234") {
+                loginValido = true;
+                break;
             }
+        }
+
+        if (loginValido) {
+            window.location.href = "dashboard (v1).html";
+        } else {
             alert("Usuário ou senha inválidos!");
         }
-    </script>
+    }
+</script>
+
 </html>

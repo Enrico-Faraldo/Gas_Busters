@@ -143,3 +143,22 @@ body{
     padding: 10px 40px;
     border: 2px solid #660101;
 }
+
+.dashboard {
+    background-color: #d1c6c6;
+    padding: 40px 20px;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.grafico {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1 1 45%;
+    max-width: 45%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}

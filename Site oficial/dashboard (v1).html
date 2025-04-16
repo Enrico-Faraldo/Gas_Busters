@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gás-Busters | Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="styledash.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/logo.png">
 
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="css/style2.css" />
     <link rel="icon" href="assets/icon/favicon2.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
     <div class="header">
@@ -24,41 +28,47 @@
                 <li>
                     <a href="index.html">Menu</a>
                 </li>
-                <li>
-                    <a href="simulador.html">Simulador</a>
-                </li>
                 <li>|</li>
                 <li>
-                    <a href="login.html">Login</a>
-                </li>
-                <li class="agora">
-                    <a href="#">Cadastro</a>
+                    <a href="simulador.html">Simulador</a>
                 </li>
             </ul>
         </div>
     </div>
 
+
     <div class="dashboard">
-        <div class="grafico-linha">
-            <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+        <div class="grafico">
+            <canvas id="myChart"></canvas>
         </div>
-        <div class="grafico-barra">
-            <canvas id="myChart2" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+        <div class="grafico">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="grafico">
+            <canvas id="myChart3"></canvas>
+        </div>
+        <div class="grafico">
+            <canvas id="myChart4"></canvas>
         </div>
     </div>
-        
+    
+
+
     <div class="footer">
         <div class="container">
             <h4>Informações de contato: <br>
                 Telefone: (11) 94465-5562<br>
                 E-mail: bustersgas@gmail.com</h4>
-
         </div>
     </div>
+
 </body>
+
 <script>
     const ctx = document.getElementById('myChart');
     const ctx2 = document.getElementById('myChart2');
+    const ctx3 = document.getElementById('myChart3');
+    const ctx4 = document.getElementById('myChart4');
 
     new Chart(ctx, {
         type: 'line',
@@ -66,13 +76,20 @@
             labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
             datasets: [
                 {
-                    label: 'Densidade do gás (%)',
-                    data: [4.5, 5, 9.3, 11, 13.8, 8],
+                    label: 'Porcentagem de gás',
+                    data: [0.8, 1.2, 0.9, 1.5, 0.7, 1.0],
                     backgroundColor: 'rgba(255, 0, 255, 0.5)',
                     borderColor: 'rgba(255, 0, 255, 1)',
                     borderWidth: 1
-                }
-            ]
+                },
+                {
+            type: 'line',
+            label: 'Limite',
+            data: [5, 5, 5, 5, 5, 5],
+            backgroundColor: '#E5270E',
+                borderColor: '#E5270E',
+                borderWidth: 1
+        }],
         },
         options: {
             scales: {
@@ -83,7 +100,7 @@
             plugins: {
             title: {
                 display: true,
-                text: 'Quantidade de gás detectado hoje'
+                text: 'Detecção de gás em tempo real na plataforma 1 - SALA DE COMPRESSORES'
             }
         }
             
@@ -91,18 +108,25 @@
     });
 
     new Chart(ctx2, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
             datasets: [
                 {
-                    label: 'Quantidade de vazamentos',
-                    data: [22, 20, 16, 15, 10, 10],
-                    backgroundColor: 'rgba(0, 99, 255, 0.5)',
-                    borderColor: 'rgba(0, 99, 255, 1)',
+                    label: 'Porcentagem de gás',
+                    data: [2.1, 2.5, 2.3, 2.8, 3.3, 2.4],
+                    backgroundColor: '#0E0EE6',
+                    borderColor: '#0E0EE6',
                     borderWidth: 1
-                }
-            ]
+                },
+                {
+            type: 'line',
+            label: 'Limite',
+            data: [5, 5, 5, 5, 5, 5],
+            backgroundColor: '#E5270E',
+                borderColor: '#E5270E',
+                borderWidth: 1
+        }],
         },
         options: {
             scales: {
@@ -113,13 +137,86 @@
             plugins: {
             title: {
                 display: true,
-                text: 'Vazamentos de gás nos últimos meses'
+                text: 'Detecção de gás em tempo real na plataforma 1 - TANQUES DE ARMAZENAMENTO'
             }
         }
+            
         }
     });
 
+    new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [
+                {
+                    label: 'Porcentagem de gás',
+                    data: [0.7, 1.0, 4.1, 6.3, 2.6, 0.9],
+                    backgroundColor: '#E6960E',
+                    borderColor: '#E6960E',
+                    borderWidth: 1
+                },
+                {
+            type: 'line',
+            label: 'Limite',
+            data: [5, 5, 5, 5, 5, 5],
+            backgroundColor: '#E5270E',
+                borderColor: '#E5270E',
+                borderWidth: 1
+        }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+            title: {
+                display: true,
+                text: 'Detecção de gás em tempo real na plataforma 2 - CORREDOR DE ACESSO'
+            }
+        }
+            
+        }
+    });
     
+    new Chart(ctx4, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [
+                {
+                    label: 'Porcentagem de gás',
+                    data: [0.8, 1.2, 0.9, 1.5, 0.7, 1.0],
+                    backgroundColor: '#EB6F00',
+                    borderColor: '#EB6F00',
+                    borderWidth: 1
+                },
+                {
+            type: 'line',
+            label: 'Limite',
+            data: [5, 5, 5, 5, 5, 5],
+            backgroundColor: '#E5270E',
+                borderColor: '#E5270E',
+                borderWidth: 1
+        }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+            title: {
+                display: true,
+                text: 'Detecção de gás em tempo real na plataforma 2 - DUTO 1'
+            }
+        }
+            
+        }
+    });
 </script>
 
 </html>
