@@ -60,10 +60,6 @@
     </div>
 
     <script>
-        function formatarReal(valor) {
-            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-
         function calcular() {
             var plataformas = Number(ipt_plataformas.value);
             var valorPlataforma = Number(ipt_valor.value);
@@ -80,14 +76,14 @@
                 let prejuizo10Anos = (prejuizoMensal * 120 * 0.7);
 
                 resultado.innerHTML = `
-                    <div>
-                        <p>Com ${plataformas} plataformas no valor médio de ${formatarReal(valorPlataforma)} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${formatarReal(valorEconomizado)}</u></span> em prejuízos ao longo de ${meses} meses.</p>
-                        <h3>Economia Potencial</h3>
-                        <ul>
-                            <li>Em 1 mês: <strong>${formatarReal(prejuizo1Mes)}</strong></li>
-                            <li>Em 6 meses: <strong>${formatarReal(prejuizo6Meses)}</strong></li>
-                            <li>Em 1 ano: <strong>${formatarReal(prejuizo1Ano)}</strong></li>
-                            <li>Em 10 anos: <strong>${formatarReal(prejuizo10Anos)}</strong></li>
+                    <div style="text-align: center; padding: 10px; background-color: #f0f0f0; border-radius: 10px;">
+                        <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${valorEconomizado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses.</p>
+                        <h2>Economia Potencial</h2>
+                        <ul style="font-size: 25px">
+                            <li>Em 1 mês: <strong>${prejuizo1Mes.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</strong></li>
+                            <li>Em 6 meses: <strong>${prejuizo6Meses.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</strong></li>
+                            <li>Em 1 ano: <strong>${prejuizo1Ano.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</strong></li>
+                            <li>Em 10 anos: <strong>${prejuizo10Anos.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</strong></li>
                         </ul>
                     </div>
                 `;
