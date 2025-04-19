@@ -77,13 +77,19 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
 .navbar {
 
-    width: 350px;
+    width: 500px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
     
 }
+
+html{
+
+    scroll-behavior: smooth;
+    
+  }
 
 
 .navbar .a{
@@ -266,15 +272,10 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
 .corCoach {
 
-    color: #c54d3d;
+    color: #e26655;
     font-size: 50px;
 
 }
-
-
-.socorro
-
-
 
 
 
@@ -287,6 +288,40 @@ border-bottom: 2px solid rgb(105, 13, 10);
     font-weight: bolder;
     
 }
+
+
+
+
+.social .quem2 {
+
+    flex-direction: row;
+    margin-left: -100px;
+
+
+}
+
+.social .corpo .sublinhado2 {
+
+    flex-direction: row;
+    margin-left: 93px;
+    margin-top: -140px;
+
+
+}
+
+
+
+.social .corpo .quem2 h1 {
+
+    flex-direction: row;
+    color: black;
+    font-size: 50px;
+    margin-top: 150px;
+    margin-left: 100px;
+
+
+}
+
 
 .social .quem {
 
@@ -318,14 +353,70 @@ border-bottom: 2px solid rgb(105, 13, 10);
 }
 
 
-.social .corpo .sublinhado2 {
 
+
+
+/* Códigos relacionados a tabela de fale-conosco*/
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    margin-bottom: 5px;
+    color: #555;
+  }
+
+  input,
+  textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: vertical;
+  }
+
+  button {
+    padding: 12px;
+    background-color: rgb(177, 94, 91);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: rgb(105, 13, 10);
+  }
+
+
+  .containero {
+
+    width: 90%;
+    max-width: 800px;
     flex-direction: row;
-    margin-left: 580px;
     margin-top: -150px;
-
-
+    margin-bottom: 150px;
 }
+
+
+/*Encerramento dos códigos do formulário*/
+
+
+
+
+
+
 
 
 
@@ -411,7 +502,7 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
 
 
-
+/*Boxes (caixas) dos membros - Quem Somos?*/
 
 .social {
 
@@ -470,6 +561,73 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
 
 }
+
+
+
+
+
+
+/*Boxes (caixas) dos Nossos Valores e Serviços*/
+
+.social .containeri .boxes3 {
+
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 30px 0;
+    margin-top: -400px;
+    margin-left: 50px;
+}
+
+
+.box3 {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+
+}
+
+.boxTexto3 {
+
+    max-width: 50%;
+    margin-left: -20px;
+    
+    
+
+
+}
+
+
+.box3 img {
+   
+    
+
+    margin-left: -25px;
+    background-color: #ffffff;
+    background-size: 100px;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+ .valor{
+
+    height: 300px;   
+    width: 300px;
+
+}
+
+/*Fim desses códigos*/
+
+
+
+
+
+
+
 
 .h2 {
 
@@ -618,8 +776,34 @@ border-bottom: 2px solid rgb(105, 13, 10);
 
 }
 
-.version {
 
-    font-size: 12px;
-
-}
+.rodape .conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .marca-registrada {
+    font-size: 0.8em;
+    vertical-align: super;
+    margin-left: 2px;
+  }
+  
+  .redes-sociais {
+    margin-top: 15px;
+  }
+  
+  .redes-sociais a {
+    margin: 0 10px;
+    display: inline-block;
+  }
+  
+  .redes-sociais img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1); /* deixa branco se o ícone for escuro */
+    transition: transform 0.3s ease;
+  }
+  
+  .redes-sociais a:hover img {
+    transform: scale(1.2);
+  }
