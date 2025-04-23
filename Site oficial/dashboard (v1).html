@@ -36,6 +36,35 @@
         </div>
     </div>
 
+    <div class="plataforma">
+        <select id="plataformas" >
+        <option value="#">Selecione a plataforma</option>
+        <option value="op2">Plataforma 1</option>
+        <option value="op3">Plataforma 2</option>
+        <option value="op3">Plataforma 3</option>
+        <option value="op3">Plataforma 4</option>
+      </select>
+    </div>
+    
+    <div class="kpi">
+        <div class="alerta">
+            <h2>Alerta de Vazamento</h2>
+            <h3 style="color: red;">Corredor de Acesso: 6.1%</h3>
+            <p style="color: red;">↑ 1.1% Acima do limite</p>
+        </div>
+
+        <div class="alerta">
+            <h2>Vazemento Medio da Plataforma</h2>
+            <h3 style="color: green;">2.6%</h3>
+            <p style="color: green;">↓ 2.4% Abaixo do limite</p>
+        </div>
+
+        <div class="alerta">
+            <h2>Quantidade de Alertas no Mês</h2>
+            <h3 style="color: red;">Abril: 3</h3>
+        </div>
+    </div>
+
 
     <div class="dashboard">
         <div class="grafico">
@@ -100,7 +129,7 @@
             plugins: {
             title: {
                 display: true,
-                text: 'Detecção de gás em tempo real na plataforma 1 - SALA DE COMPRESSORES'
+                text: 'Detecção de gás em tempo real na SALA DE COMPRESSORES'
             }
         }
             
@@ -137,7 +166,7 @@
             plugins: {
             title: {
                 display: true,
-                text: 'Detecção de gás em tempo real na plataforma 1 - TANQUES DE ARMAZENAMENTO'
+                text: 'Detecção de gás em tempo real nos TANQUES DE ARMAZENAMENTO'
             }
         }
             
@@ -151,7 +180,7 @@
             datasets: [
                 {
                     label: 'Porcentagem de gás',
-                    data: [0.7, 1.0, 4.1, 6.3, 2.6, 0.9],
+                    data: [0.7, 1.0, 2.7, 4.5, 3.4, 6.1],
                     backgroundColor: '#E6960E',
                     borderColor: '#E6960E',
                     borderWidth: 1
@@ -174,7 +203,7 @@
             plugins: {
             title: {
                 display: true,
-                text: 'Detecção de gás em tempo real na plataforma 2 - CORREDOR DE ACESSO'
+                text: 'Detecção de gás em tempo real no CORREDOR DE ACESSO'
             }
         }
             
@@ -211,7 +240,7 @@
             plugins: {
             title: {
                 display: true,
-                text: 'Detecção de gás em tempo real na plataforma 2 - DUTO 1'
+                text: 'Detecção de gás em tempo real no DUTO 1'
             }
         }
             
