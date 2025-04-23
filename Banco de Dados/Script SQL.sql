@@ -17,34 +17,36 @@ cep varchar(9)
 create table Empresa(
 idEmpresa int primary key auto_increment,
 nome varchar(50),
-cnpj varchar(18),
-telefone varchar(20),
+cnpj char(14),
+telefone char(10),
 qtdPlataformas int,
 fkEndereco int,
 foreign key(fkEndereco) references Endereco(idEndereco),
-unique ix_cnpj (cnpj)
+unique ix_cnpj (cnpj),
+unique ix_empresa_endereco (idEmpresa, fkEndereco)
 );
 
 -- criando a tabela Token, que irá fazer a conexão dos usuários com as respectivas empresas através do código;
 create table Token(
-idToken int primary key auto_increment,
+fkEmpresa int not null primary key,
 codigo varchar(20),
-fkEmpresa int not null,
 foreign key(fkEmpresa) references Empresa(idEmpresa),
 unique ix_codigo (codigo),
 key ix_codigo_empresa (codigo, fkEmpresa)
-)auto_increment = 500;
+);
 
 -- criando a tabela Usuario, que registrará os dados dos usuários cadastrados;
 create table Usuario(
 idUsuario int primary key auto_increment,
 nome varchar(50),
 email varchar(150),
+cpf char(11),
 senha varchar(255),
-fkToken int not null,
-foreign key(fkToken) references Token(idToken),
+fkEmpresa int not null,
+foreign key(fkEmpresa) references Token(fkEmpresa),
 unique ix_email (email),
-key ix_usuario_token (nome, fkToken),
+unique ix_cpf (cpf),
+key ix_usuario_empresa (nome, fkEmpresa),
 key ix_usuario_email (nome, email)
 );
 
@@ -87,24 +89,25 @@ insert into Endereco (estado, cidade, bairro, logradouro, numero, cep)
                      
 -- inserindo dados na tabela Empresa
 insert into Empresa (nome, cnpj, telefone, qtdPlataformas, fkEndereco)
-            values  ('Petrobras', '11.111.111/0001-11', '(21) 98765-4321', 3, 1),
-                    ('Shell Brasil', '22.222.222/0001-22', '(11) 91234-5678', 2, 2),
-                    ('BR Distribuidora', '33.333.333/0001-33', '(71) 99887-6655', 1, 3),
-                    ('Raízen', '44.444.444/0001-44', '(41) 91122-3344', 2, 4);
+            values  ('Petrobras', '11111111000111', '2126354321', 3, 1),
+                    ('Shell Brasil', '22222222000122', '1122345678', 2, 2),
+                    ('BR Distribuidora', '33333333000133', '7129876655', 1, 3),
+                    ('Raízen', '44444444000144', '4121223344', 2, 4);
+                    
                     
 -- inserindo dados na tabela Token
-insert into Token (codigo, fkEmpresa)
-		   values ('PETRO2025', 1),
-                  ('SHELL2025', 2),
-                  ('BRDIST2025', 3),
-                  ('RAIZEN2025', 4);
+insert into Token (fkEmpresa, codigo)
+		   values (1, 'PETRO2025'),
+                  (2, 'SHELL2025'),
+                  (3, 'BRDIST2025'),
+                  (4, 'RAIZEN2025');
                   
 -- inserindo dados na tabela Usuario
-insert into Usuario (nome, email, senha, fkToken)
-            values  ('João Lima', 'joao.lima@petro.com', 'senha123', 500),
-                    ('Ana Souza', 'ana.souza@shell.com', 'senha456', 501),
-                    ('Carlos Oliveira', 'carlos.oliveira@br.com', 'senha789', 502),
-                    ('Fernanda Reis', 'fernanda.reis@raizen.com', 'senha321', 503);
+insert into Usuario (nome, email, cpf, senha, fkEmpresa)
+            values  ('João Lima', 'joao.lima@petro.com', 'xxxxxxxxxxx', 'senha123', 1),
+                    ('Ana Souza', 'ana.souza@shell.com', 'xxxxxxxxxxy', 'senha456', 2),
+                    ('Carlos Oliveira', 'carlos.oliveira@br.com', 'xxxxxxxxxyy', 'senha789', 3),
+                    ('Fernanda Reis', 'fernanda.reis@raizen.com', 'xxxxxxxxyyy', 'senha321', 4);
                     
 -- inserindo dados na tabela Plataforma
 insert into Plataforma (status, localizacao, fkEmpresa)
