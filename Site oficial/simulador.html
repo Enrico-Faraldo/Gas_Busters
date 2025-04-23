@@ -44,7 +44,7 @@
                     </div>
                     <button onclick="calcular()" id="botao">Calcular</button>
                     <div id="erro" class="erro"></div>
-                    <div id="resultado"></div>
+                    <div id="resultado" style="text-align: center; padding: 10px; background-color: #f0f0f0; border-radius: 10px;"></div>
                 </div>
             </div>
 
@@ -60,33 +60,54 @@
     </div>
 
     <script>
+        
+        var gasVazadoPorMes = 100000; // considerando 100 mil m³ de gás
+        var tarifaGas = 1.308925; // conforme faixa 50.000 a 300.000
+
         function calcular() {
             var plataformas = Number(ipt_plataformas.value);
             var valorPlataforma = Number(ipt_valor.value);
             var meses = Number(ipt_meses.value);
 
             if (plataformas > 0 && valorPlataforma > 0 && meses >= 0) {
-                var prejuizoMensal = plataformas * valorPlataforma * 0.02;
-                var economiaMensal = prejuizoMensal * 0.5;
-                var valorEconomizado = (meses * economiaMensal);
 
-                let prejuizo1Mes = (prejuizoMensal * 0.5);
-                let prejuizo6Meses = (prejuizoMensal * 6 * 0.5);
-                let prejuizo1Ano = (prejuizoMensal * 12 * 0.5);
-                let prejuizo10Anos = (prejuizoMensal * 120 * 0.5);
+                // economia por explosões evitadas
+                var economiaExplosoes = plataformas * valorPlataforma * 0.5;
+
+                // prejuízo mensal por vazamento de gás, considerando 100.000 m³ de gás e tarifa de R$ 1,308925/m³
+                var prejuizoGasMensal = 100000 * 1.308925;
+
+                var economiaGasMensal = prejuizoGasMensal * 0.5 * plataformas;
+                var economiaGasTotal = economiaGasMensal * meses;
+
+                var economiaTotal = economiaExplosoes + economiaGasTotal;
+
+                // projeção de economia com explosões evitadas
+                var economiaExplosoes6Meses = economiaExplosoes;
+                var economiaExplosoes1Ano = economiaExplosoes * 2;
+                var economiaExplosoes10Anos = economiaExplosoes * 10;
+
+                // Projeção de economia com vazamento de gás evitados
+                var economiaGas6Meses = economiaGasMensal * 6;
+                var economiaGas1Ano = economiaGasMensal * 12;
+                var economiaGas10Anos = economiaGasMensal * 120;
 
                 resultado.innerHTML = `
-                    <div style="text-align: center; padding: 10px; background-color: #f0f0f0; border-radius: 10px;">
-                        <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${valorEconomizado.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses.</p>
-                        <h2>Economia Potencial</h2>
-                        <ul style="font-size: 25px">
-                            <li>Em 1 mês: <strong>${prejuizo1Mes.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</strong></li>
-                            <li>Em 6 meses: <strong>${prejuizo6Meses.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</strong></li>
-                            <li>Em 1 ano: <strong>${prejuizo1Ano.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</strong></li>
-                            <li>Em 10 anos: <strong>${prejuizo10Anos.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' })}</strong></li>
-                        </ul>
-                    </div>
-                `;
+            <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${economiaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses.</p>
+            <h2>Economia Potencial</h2>
+            <ul style="font-size: 25px">
+                <li>Em 1 mês (explosões evitadas): <strong>${economiaExplosoes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 6 meses (explosões evitadas): <strong>${economiaExplosoes6Meses.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 1 ano (explosões evitadas): <strong>${economiaExplosoes1Ano.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 10 anos (explosões evitadas): <strong>${economiaExplosoes10Anos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <br>
+                <li>Em 1 mês (gás não vazado): <strong>${economiaGasMensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 6 meses (gás não vazado): <strong>${economiaGas6Meses.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 1 ano (gás não vazado): <strong>${economiaGas1Ano.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 10 anos (gás não vazado): <strong>${economiaGas10Anos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+            </ul>
+        </div>
+    `;
                 erro.innerHTML = "";
             } else {
                 alert('Preencha todos os campos com valores válidos!');
