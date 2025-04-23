@@ -60,7 +60,7 @@ const serial = async (
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
-            // este insert irá inserir os dados na tabela "medida"
+            // este insert irá inserir os dados na tabela "Leitura"
             await poolBancoDados.execute(
                 'INSERT INTO Leitura (quantidade, dataLeitura) VALUES (?, current_timestamp())',
                 [sensorAnalogico]
