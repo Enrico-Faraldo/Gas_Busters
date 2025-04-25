@@ -143,25 +143,18 @@
     });
 
     new Chart(ctx2, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            labels: ['Novembro', 'Dezembro', 'Janeiro', 'Fevereiro', 'Março', 'Abril'],
             datasets: [
                 {
                     label: 'Porcentagem de gás',
                     data: [2.1, 2.5, 2.3, 2.8, 3.3, 2.4],
-                    backgroundColor: '#0E0EE6',
-                    borderColor: '#0E0EE6',
+                    backgroundColor: 'rgba(255, 0, 255, 0.5)',
+                    borderColor: 'rgba(255, 0, 255, 0.5)',
                     borderWidth: 1
-                },
-                {
-            type: 'line',
-            label: 'Limite',
-            data: [5, 5, 5, 5, 5, 5],
-            backgroundColor: '#E5270E',
-                borderColor: '#E5270E',
-                borderWidth: 1
-        }],
+                }
+       ],
         },
         options: {
             scales: {
@@ -172,7 +165,7 @@
             plugins: {
             title: {
                 display: true,
-                text: 'Detecção de gás em tempo real nos TANQUES DE ARMAZENAMENTO'
+                text: 'Detecção de gás mensal na SALA DE COMPRESSORES'
             }
         }
             
@@ -217,25 +210,19 @@
     });
     
     new Chart(ctx4, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            labels: ['Novembro', 'Dezembro', 'Janeiro', 'Fevereiro', 'Março', 'Abril'],
             datasets: [
                 {
                     label: 'Porcentagem de gás',
                     data: [0.8, 1.2, 0.9, 1.5, 0.7, 1.0],
-                    backgroundColor: '#EB6F00',
-                    borderColor: '#EB6F00',
+                    backgroundColor: '#E6960E',
+                    borderColor: '#E6960E',
                     borderWidth: 1
-                },
-                {
-            type: 'line',
-            label: 'Limite',
-            data: [5, 5, 5, 5, 5, 5],
-            backgroundColor: '#E5270E',
-                borderColor: '#E5270E',
-                borderWidth: 1
-        }],
+                }
+          
+        ],
         },
         options: {
             scales: {

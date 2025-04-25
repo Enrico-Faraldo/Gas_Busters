@@ -195,8 +195,9 @@ body{
 .select {
     background-color: #ffffff; 
     margin: 0;
-    padding: 10px 40px;
-    border: none;
+    padding: 10px;
+    font-weight: 800;
+    border: 2px solid #660101;
     border-radius: 10px;
     color: #660101;
 }
@@ -213,6 +214,7 @@ body{
 
 .alerta {
     background-color: white;
+    border: 2px solid #660101;
     padding: 20px;
     color: #660101; 
     border-radius: 10px;
