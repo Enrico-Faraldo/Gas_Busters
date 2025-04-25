@@ -272,7 +272,7 @@ html{
 
 .corCoach {
 
-    color: #e26655;
+    color: #f89b8f;
     font-size: 50px;
 
 }
@@ -374,8 +374,7 @@ h1 {
     color: #555;
   }
 
-  input,
-  textarea {
+  input, textarea {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
