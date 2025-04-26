@@ -11,24 +11,30 @@
 
 }
 
-
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
 
 
 .corpo {
 
-    height: var(--tamanho-corpo);
-    color: rgb(223, 109, 109);
-    background-size: cover;
-
+    flex: 1
 
 }
 
-.corpo .login{
+.social{
 
-    height: var(--tamanho-corpo);
-    background-size: cover;
-    
+    flex: 1;
+    display: flex;
+    flex-direction: column
+
 }
+
+
 
 
 body{
