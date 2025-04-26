@@ -70,42 +70,56 @@
 
     <script>
         
-        var gasVazadoPorMes = 100000; // considerando 100 mil m³ de gás
-        var tarifaGas = 1.308925; // conforme faixa 50.000 a 300.000
+        /* essas duas variáveis constantes servem para usar para cálculos futuros de prejuízos e economia com gases vazados 
+           seguindo a tabela de tarifas industriais da Comgás. Disponível em https://www.arsesp.sp.gov.br/ArquivosRegulamentacao/Tarifas/Gas/tabela%20de%20tarifas-comgas_dez.pdf na página 4.
+        */
+        const gasVazadoPorMes = 100000; // considerando 100 mil m³ de gás
+        const tarifaGas = 1.308925; // conforme faixa 50.000 a 300.000
 
         function calcular() {
-            var plataformas = Number(ipt_plataformas.value);
-            var valorPlataforma = Number(ipt_valor.value);
-            var meses = Number(ipt_meses.value);
+            // lê as entradas do usuário
+            let plataformas = Number(ipt_plataformas.value);
+            let valorPlataforma = Number(ipt_valor.value);
+            let meses = Number(ipt_meses.value);
 
-            if (plataformas > 0 && valorPlataforma > 0 && meses >= 0) {
+            // caso as entradas seja, válidas, execute os cálculos
+            if (plataformas > 0 && valorPlataforma > 0 && meses > 0) {
 
-                // economia por explosões evitadas
-                var economiaExplosoes = plataformas * valorPlataforma * 0.5;
+                // os valores econômicos abaixo segue com nosso objetivo de reduzir os prejuízos em 50%
 
-                // prejuízo mensal por vazamento de gás, considerando 100.000 m³ de gás e tarifa de R$ 1,308925/m³
-                var prejuizoGasMensal = 100000 * 1.308925;
+                // calcula a economia de explosões de acordo com a quantidade de meses que o usuário digitou
+                let economiaExplosesMeses = valorPlataforma * plataformas * meses * 0.5;
 
-                var economiaGasMensal = prejuizoGasMensal * 0.5 * plataformas;
-                var economiaGasTotal = economiaGasMensal * meses;
+                // calcula a economia de explosões por mês (essencial para o cálculo das projeções de economia de explosões)
+                let economiaExplosoesMensal = valorPlataforma * plataformas * 0.5;
 
-                var economiaTotal = economiaExplosoes + economiaGasTotal;
+                // calcula as economias em projeções das explosões
+                let economiaExplosoes6Meses = economiaExplosoesMensal * 6;
+                let economiaExplosoes1Ano = economiaExplosoesMensal * 12;
+                let economiaExplosoes10Anos = economiaExplosoesMensal * 120;
 
-                // projeção de economia com explosões evitadas
-                var economiaExplosoes6Meses = economiaExplosoes;
-                var economiaExplosoes1Ano = economiaExplosoes * 2;
-                var economiaExplosoes10Anos = economiaExplosoes * 10;
 
-                // Projeção de economia com vazamento de gás evitados
-                var economiaGas6Meses = economiaGasMensal * 6;
-                var economiaGas1Ano = economiaGasMensal * 12;
-                var economiaGas10Anos = economiaGasMensal * 120;
+                // calcula a economia de gases vazados de acordo com a quantidade de meses que o usuário digitou
+                let economiaGasMeses = gasVazadoPorMes * tarifaGas * plataformas * meses * 0.5;
 
+                // calcula o prejuízo mensal dos gases vazados em 1 mês
+                let prejuizoGasMensal = gasVazadoPorMes * tarifaGas * plataformas;
+
+                // calcula a economia mensal de gases por mês (essencial para o cálculo das projeções de economia de gases)
+                let economiaGasMensal = prejuizoGasMensal * 0.5;
+
+                // calcula as economias em projeções dos gases 
+                let economiaGas6Meses = prejuizoGasMensal * 6 * 0.5;
+                let economiaGas1Ano = prejuizoGasMensal * 12 * 0.5;
+                let economiaGas10Anos = prejuizoGasMensal * 120 * 0.5;
+
+                // exibe o resultado na tela, com css aplicado dentro da própria tag
+                // além disso, foi usado uma função para converter os números para real brasileiro para facilitar a leitura
                 resultado.innerHTML = `
-            <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${economiaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses.</p>
-            <h2>Economia Potencial</h2>
+            <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${economiaExplosesMeses.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses.</p>
+            <h2>Projeção de economia</h2>
             <ul style="font-size: 25px">
-                <li>Em 1 mês (explosões evitadas): <strong>${economiaExplosoes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 1 mês (explosões evitadas): <strong>${economiaExplosoesMensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
                 <li>Em 6 meses (explosões evitadas): <strong>${economiaExplosoes6Meses.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
                 <li>Em 1 ano (explosões evitadas): <strong>${economiaExplosoes1Ano.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
                 <li>Em 10 anos (explosões evitadas): <strong>${economiaExplosoes10Anos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
@@ -118,6 +132,8 @@
         </div>
     `;
                 erro.innerHTML = "";
+
+                // exibe um alerta de erro caso o usuário não digite corretamente os valores em seus respectivos campos
             } else {
                 alert('Preencha todos os campos com valores válidos!');
                 erro.innerHTML = "Verifique se todos os campos estão preenchidos corretamente.";
