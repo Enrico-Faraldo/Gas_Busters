@@ -132,7 +132,7 @@ html{
 
     height: var(--tamanho-banner);
     
-    background-image: url('../img/socorro.png');
+    background-image: url('../img/QuemSomosV5.png');
     background-size: cover;
     width: 100%;
     width: 197.4vh;
@@ -147,6 +147,9 @@ html{
     filter: blur(100%);
 }
 
+
+
+
 .social .container .corpo .banneri .containeri h3 {
 
     
@@ -160,7 +163,6 @@ html{
     
     
 }
-
 
 
 
@@ -180,7 +182,7 @@ html{
 
     height: var(--tamanho-banner);
     color: white;
-    background-image: url('../img/NossosServiços.png');
+    background-image: url('../img/plat_offshore.png');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -264,7 +266,7 @@ html{
 
 .banner .container .coach {
 
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     
    
@@ -285,7 +287,7 @@ html{
 
     font-weight: 800;
     width: 100px;
-    font-weight: bolder;
+    
     
 }
 
