@@ -26,6 +26,16 @@ html, body {
 
 }
 
+.loginHTML{
+
+    height: var(--tamanho-corpo);
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    margin-left: 25vh;
+
+}
+
 .social{
 
     flex: 1;
