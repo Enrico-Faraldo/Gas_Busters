@@ -1,64 +1,76 @@
+/* fontes importadas para a página */
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+
+/*define características básicas do corpo da página*/
 body {
 
     margin: 0;
     padding: 0;
     font-family: 'Barlow', sans-serif;
-
-
 }
 
 
+
+/*define o tamanho do cabeçalho, rodapé e banner, para que um não sobreponha o outro*/
 :root {
 
     --tamanho-header : 80px;
     --tamanho-footer: 90px;
     --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-
 }
 
 
 
-/*cabeçalho*/
 
-/*.header {
+/*logo*/
+.container .logo {
 
-height: var(--tamanho-header);
-background-color: rgb(105, 13, 10);
-border-bottom: 2px solid rgb(105, 13, 10);
+    background-image: url(/assets/img/logo_com_nome.png);
+    height: 70px;
+    width: 180px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    margin-left: -70px;
+}
 
 
 
-}*/
 
+/*cabeçalho com uma largura de 100%, tendo sua animação de sumiço ao subir ao topo da página */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000; /* fica na frente de outros elementos */
-    transition: 0.5s;
+    transition: 0.5s; /* efeito ao voltar para o topo */
 }
 
+
+
+
+
+
+/*animação do header para aparecer ao descer a página*/
 .header.rolar {
 
     height: var(--tamanho-header);
     background-color: rgb(105, 13, 10);
     padding: 10px 0;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transition: 0.5s;
-
+    transition: 0.5s; /* efeito ao sair do topo */
 }
 
-.titulo{
-    color:#32b9cd;
-    width: fit-content;
-    font-weight: 500;
 
-}
 
+
+
+/*compartimento para os itens*/
 .container {
 
     display: flex;
@@ -66,15 +78,24 @@ border-bottom: 2px solid rgb(105, 13, 10);
     margin: auto;
 }
 
+
+
+
+
+
+/*compartimento do cabeçalho*/
 .header .container {
 
     justify-content: space-between;
     align-items: center;
     height: 100%;
-
 }
 
 
+
+
+
+/*itens do cabeçaalho para navegação*/
 .navbar {
 
     width: 500px;
@@ -82,16 +103,20 @@ border-bottom: 2px solid rgb(105, 13, 10);
     align-items: center;
     justify-content: space-between;
     list-style: none;
-    
 }
 
+
+
+/*efeito para fazer a página subir ao ser clicado no navbar "Início"*/
 html{
 
     scroll-behavior: smooth;
     
-  }
+}
 
 
+
+/*cor dos itens da navbar*/
 .navbar .a{
     color: #ffffff;
    
@@ -99,39 +124,46 @@ html{
 
 
 
+
+
+
+/*remover o sublinhado*/
 .header a{
 
     text-decoration: none;
-    color: #e3b062;
-
-
 }
 
 
 
+
+/*negrito no presente navbar*/
 .agora{
     font-weight: 800;
 }
 
 
-/*banner*/
 
+
+
+
+/*banner, com tamanho estabelecido entre o header e o footer*/
 .banner {
 
     height: var(--tamanho-banner);
     color: white;
     background-image: url('../img/petroquimica4.jpg');
     background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-
+    background-attachment: fixed; /* efeito de deixar a imagem estática, mesmo com scroll */
+    background-position: center; /* deixando a imagem estática */
 }
 
 
+
+
+/*banner, só que com as especificações específicas do "Quem Somos"*/
 .banneri .containeri{
 
     height: var(--tamanho-banner);
-    
     background-image: url('../img/QuemSomosV5.png');
     background-size: cover;
     width: 100%;
@@ -139,6 +171,10 @@ html{
     margin-left: -190px;
 }
 
+
+
+
+/*container, só que do "Quem Somos"*/
 .containeri {
 
     display: flex;
@@ -149,7 +185,7 @@ html{
 
 
 
-
+/*texto que está dentro da imagem de "Quem Somos"*/
 .social .container .corpo .banneri .containeri h3 {
 
     
@@ -160,13 +196,11 @@ html{
     margin-left: 100px;
     color: rgb(255, 255, 255);
     font-weight: bolder;
-    
-    
 }
 
 
 
-
+/*compartimento relacionado à imagem da plataforma*/
 .containere {
 
     display: flex;
@@ -177,7 +211,7 @@ html{
 
 
 
-/*Aqui, a imagem fica parada, mesmo dando um scroll*/
+/*Aqui, a imagem da plataforma fica parada, mesmo dando um scroll com o mouse*/
 .bannere {
 
     height: var(--tamanho-banner);
@@ -187,73 +221,24 @@ html{
     background-attachment: fixed;
     background-position: center;
     filter: brightness(90%);
-
-
-}
-
-.containere p {
-
-    flex-direction: row;
-    width: 50%;
-    margin-top: 150px;
-    padding: 0;
-    font-size: 70px;
-    margin-left: 490px;
-    margin-right: 500px;
-    color: black;
-    background-color: #ffffff;
-    background-size: 150px;
-    font-weight: bolder;
 }
 
 
 
+
+
+/*o corpo dos itens, dentro do compartimento "container" e "social"*/
 .corpo{
 
     height: var(--tamanho-banner);
     color: white;
     background-size: cover;
-
-
 }
 
 
 
 
- .container .card  {
-
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    background-color: #cacaca;
-    padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    width: 550px;
-    margin-top: 250px; 
-    margin-left: 450px;
- 
-}
-
-
-
-.container .cardCad  {
-
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    background-color: #cacaca;
-    padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    width: 550px;
-    margin-top: 150px; 
-    margin-left: 450px;
- 
-}
-
-
-
+/* parte relacionada ao texto do início */
 .banner .container p {
 
     width: 50%;
@@ -261,58 +246,65 @@ html{
     padding: 0;
     font-size: 70px;
     font-weight: bolder;
-    
 }
 
+
+
+
+
+/* fonte e tamanho relacionados ao texto do início */
 .banner .container .coach {
 
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
-    
-   
 }
 
+
+
+
+
+/* cor de específicas palavras no início */
 .corCoach {
 
     color: #f89b8f;
     font-size: 50px;
-    
-
 }
 
 
 
-
+/* largura e grossura das palavras */
 .banner .container span{
 
     font-weight: 800;
     width: 100px;
-    
-    
 }
 
 
 
 
+/* compartimento relacionado a nossos valores e serviços */
 .social .quem2 {
 
     flex-direction: row;
     margin-left: -100px;
-
-
 }
 
+
+
+
+
+/* sublinhado vermelho que fica abaixo do texto */
 .social .corpo .sublinhado2 {
 
     flex-direction: row;
     margin-left: 93px;
     margin-top: -140px;
-
-
 }
 
 
 
+
+/* texto com o nome descritivo, abaixco da imagem */
 .social .corpo .quem2 h1 {
 
     flex-direction: row;
@@ -320,19 +312,20 @@ html{
     font-size: 50px;
     margin-top: 150px;
     margin-left: 100px;
-
-
 }
 
 
+
+/* compartimento relacionado a quem somos*/
 .social .quem {
 
     flex-direction: row;
     margin-left: -240px;
-
-
 }
 
+
+
+/* texto do compartimento relacionado a quem somos */
 .social .corpo .quem h1 {
 
     flex-direction: row;
@@ -340,10 +333,13 @@ html{
     font-size: 50px;
     margin-top: 150px;
     margin-left: 100px;
-
-
 }
 
+
+
+
+
+/* texto do compartimento relacionado aos serviços */
 .social .corpo .servicos h1 {
 
     flex-direction: row;
@@ -351,7 +347,6 @@ html{
     font-size: 50px;
     margin-top: 150px;
     margin-left: 590px;
-
 }
 
 
@@ -359,33 +354,41 @@ html{
 
 
 /* Códigos relacionados a tabela de fale-conosco*/
-
+/* seu texto */
 h1 {
     text-align: center;
     margin-bottom: 30px;
     color: #333;
-  }
+}
 
-  form {
+
+/* formulário */
+form {
     display: flex;
     flex-direction: column;
-  }
+}
 
-  label {
+
+/* texto informativo de campo do formulário  */
+label {
     margin-bottom: 5px;
     color: #555;
-  }
+}
 
-  input, textarea {
+
+/* relacionado as caixas de input do formulário */
+input, textarea {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
     resize: vertical;
-  }
+}
 
-  button {
+
+/* botão do formulário */
+button {
     padding: 12px;
     background-color: rgb(177, 94, 91);
     color: white;
@@ -394,14 +397,17 @@ h1 {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+}
 
-  button:hover {
+
+/* degradê de cor ao maouse passar por cima do botão */
+button:hover {
     background-color: rgb(105, 13, 10);
-  }
+}
 
 
-  .containero {
+/* compartimento da tabela*/
+.containero {
 
     width: 90%;
     max-width: 800px;
@@ -409,66 +415,12 @@ h1 {
     margin-top: -150px;
     margin-bottom: 150px;
 }
-
-
 /*Encerramento dos códigos do formulário*/
 
 
 
 
-
-
-
-
-
-/*Aqui está a imagem*/
-.social .container .worker {
-
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    border-radius: 100px;
-    width: 500px;
-    height: 300px;
-    padding: 40px;
-    margin-left: 490px;
-    background-attachment: fixed;
-    background-position: center;
-    
-    
-}
-
-.social .container .sensor {
-
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    border-radius: 100px;
-    width: 600px;
-    height: 500px;
-    padding: 40px;
-    margin-left: 430px;
-    background-attachment: fixed;
-    background-position: center;
-    
-    
-}
-
-
- .sorrindo2 {
-
- display: flex;
- flex-direction: row;
- justify-content: flex-start;
- width: 1000px;
- height: 700px;
- padding: 40px;
- margin-left: -235px;
-
- }
-
-
-/*Aqui está o texto*/
+/* relacionados a todos os textos h3 dentro do compartimento corpo */
 .social .container .corpo h3 {
 
     flex-direction: row;
@@ -476,91 +428,94 @@ h1 {
     color: black;
     padding: auto;
     margin-left: 130px;
-    
 }
 
+
+
+/* relacionados a todos os textos h2 dentro do compartimento corpo */
 .social .container .corpo h2 {
 
     flex-direction: row;
     justify-content: center;
     color: black;
     padding: auto;
-   
-    
 }
 
 
-.social .container .sublinhado {
 
-    
+/* relacionbado ao sublinhado dentro do compartimento container */
+.social .container .sublinhado {
+ 
     flex-direction: row;
     margin-top: -150px;
-    margin-left: 80px;
-        
-        
+    margin-left: 80px;     
 }
 
 
 
 
-/*Boxes (caixas) dos membros - Quem Somos?*/
-
+/* compartimento primário para todos os compartimentos do site */
 .social {
 
     background-color: #e5e5e5;
     display: flex;
     justify-content: center;
     text-align: center;
-
 }
 
+
+/* compartimento das boxes (caixas) dos membros - Quem Somos? e nossos serviços */
 .social .container .boxes {
 
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 30px 0;
-
 }
 
+
+/* caixa de 3 representantes - Davi, Meki e Renan */
 .box {
 
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
 }
 
+
+
+/* caixa de 2 representantes - Henry e Enrico */
 .box2 {
 
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
 }
 
+
+
+/* imagem dessas caixas */
 .box img {
    
     width: 740px;
     margin-left: -190px;
 }
 
+
+
+/* imagem dessas caixas */
 .box2 img {
 
- 
     width: 750px;
-
 }
 
+
+
+/* texto dessas caixas */
 .boxTexto {
 
     max-width: 80%;
     margin-left: -170px;
-    
-
-
 }
 
 
@@ -568,8 +523,7 @@ h1 {
 
 
 
-/*Boxes (caixas) dos Nossos Valores e Serviços*/
-
+/* Boxes (caixas) dos Nossos Valores e Serviços */
 .social .containeri .boxes3 {
 
     display: flex;
@@ -581,174 +535,44 @@ h1 {
 }
 
 
+/* caixa dos valores e serviços */
 .box3 {
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    
-
 }
 
+
+
+/* texto dessas caixas */
 .boxTexto3 {
 
     max-width: 50%;
     margin-left: -20px;
-    
-    
-
-
 }
 
 
+
+/* imagem dessas caixas */
 .box3 img {
    
-    
-
     margin-left: -25px;
     background-size: 100px;
     flex-direction: row;
     justify-content: space-between;
-    
 }
 
+
+
+/* classe das imagens relacionadas aos nossos valores e serviços */
  .valor{
 
     height: 300px;   
     width: 300px;
-
 }
-
-/*Fim desses códigos*/
-
-
-
-
-
-
-
-
-.h2 {
-
-    color: palevioletred;
-    padding: 0;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    font-size: 26px;
-
-}
-
-.email {
-
-    border: solid 2px rgb(0, 204, 255);
-    border-radius: 10px;
-    height: 30px;
-    width: 450px;
-    margin-bottom: 10px;
-    text-align: center;
-
-}
-
-.senha {
-
-    border: solid 2px rgb(0, 204, 255);
-    border-radius: 10px;
-    height: 30px;
-    width: 450px;
-    text-align: center;
-
-}
-
-.campo .acima_input_email {
-
-    display: flex;
-    color: palevioletred;
-    margin-left: 45px;
-    
-}
-
-.campo .acima_input_senha {
-
-    display: flex;
-    color: palevioletred;
-    margin-left: 45px;
-
-}
-
-
-.botao {
-
-    
-    background-color: rgb(212, 24, 87);
-    color: #fff;
-    border-radius: 5px;
-    margin-top: 30px;
-    justify-content: center;
-    width: 110px;
-    height: 30px;
-    border: solid 1px rgb(212, 24, 87);
-
-}
-
-
-/* Segmento do cadastro */
-
-.nomeInput {
-
-    display: flex;
-    color: palevioletred;
-    margin-left: 45px;
-
-}
-
-
-
-.bordaCadastro{
-
-    border: solid 2px rgb(0, 204, 255);
-    border-radius: 10px;
-    height: 30px;
-    width: 450px;
-    text-align: center;
-    margin-bottom: 10px;
-
-}
-
-
-
-
-
-/* logo */
-.container .logo {
-
-    background-image: url(/OnePage_HCMS/Aquatech_SomenteHTML_Henry_1CCOB/assets/imgs/logo_com_nome.png);
-    height: 70px;
-    width: 160px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom: 12px;
-    margin-left: -70px;
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Fim desses códigos - das boxes */
 
 
 
@@ -757,7 +581,7 @@ h1 {
 
 
 /* do rodapé em diante*/
-
+/* rodapé */
 .footer {
 
     background-color: rgb(177, 94, 91);
@@ -765,38 +589,47 @@ h1 {
     color: #fff;
     display: flex;
     font-size: 15px;
-
 }
 
+
+
+/* compartimento do rodapé */
 .footer .container{
 
     justify-content: center;
     text-align: center;
-
-
 }
 
 
+/* itens inseridos no rodapé */
 .rodape .conteudo {
     max-width: 800px;
     margin: 0 auto;
-  }
+}
   
+
+/* símbolo de marca registrada ® */
   .marca-registrada {
-    font-size: 0.8em;
+    font-size: 1em;
     vertical-align: super;
     margin-left: 2px;
-  }
+}
   
+
+/* classe referente as redes sociais */
   .redes-sociais {
     margin-top: 15px;
-  }
+}
   
+
+/* link das redes sociais */
   .redes-sociais a {
     margin: 0 10px;
-    display: inline-block;
-  }
+    display: inline-block; /* ou seja, oculta o link de direcionamento */
+}
   
+
+/* ícone (imagem) que representa a específica rede social*/
   .redes-sociais img {
     width: 24px;
     height: 24px;
@@ -804,6 +637,8 @@ h1 {
     transition: transform 0.3s ease;
   }
   
+
+  /* define o tamanho em que a imagem crescerá quando o mouse passar por cima */
   .redes-sociais a:hover img {
     transform: scale(1.2);
   }
