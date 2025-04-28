@@ -115,12 +115,6 @@
         var confirmarSenha = ipt_confirma_senha.value;
         var tentativas = 3
 
-        while (codigo != "123" && tentativas > 1) {
-            tentativas--
-            alert(`Codigo errado! Você tem mais ${tentativas} tentativa(s).`);
-            codigo = prompt("Confirme seu codigo novamente:");
-        }
-
         if (cpf.length != 11) {
             alert("O CPF deve ter exatamente 11 dígitos.");
         }
@@ -130,6 +124,13 @@
         }
         if (senha != confirmarSenha) {
             alert("Senhas diferentes")
+        }
+
+        while (codigo != "123" && tentativas > 1) {
+            tentativas--
+            alert(`Esse codigo não existe! Você tem mais ${tentativas} tentativa(s).`);
+            codigo = prompt("Confirme seu codigo novamente:");
+            ipt_codigo.value = codigo
         }
 
         if (codigo == "123" && email.includes("@") && senha == confirmarSenha && cpf.length == 11) {
