@@ -70,11 +70,12 @@ body{
 
 .container{
     display: flex;
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
 .header .container{
+    margin: 0;
     justify-content: space-between;
     align-items: center;
     height: 100%;
@@ -267,6 +268,7 @@ body{
 }
 .grafico {
     background-color: white;
+    border: 2px solid #660101;
     border-radius: 10px;
     padding: 20px;
     flex: 1 1 45%;

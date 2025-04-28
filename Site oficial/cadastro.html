@@ -120,16 +120,16 @@
         }
 
         if (!email.includes("@")) {
-            alert(`Email não possue @`)
+            alert(`Email não possui @`)
         }
         if (senha != confirmarSenha) {
-            alert("Senhas diferentes")
+            alert("Senhas diferentes, confirme novamente.")
         }
 
         while (codigo != "123" && tentativas > 1) {
             tentativas--
             alert(`Esse codigo não existe! Você tem mais ${tentativas} tentativa(s).`);
-            codigo = prompt("Confirme seu codigo novamente:");
+            codigo = prompt("Confirme seu código novamente:");
             ipt_codigo.value = codigo
         }
 
