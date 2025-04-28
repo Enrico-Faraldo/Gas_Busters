@@ -105,26 +105,25 @@
                 let economiaExplosoes1Ano = economiaExplosoesMensal * 12;
                 let economiaExplosoes10Anos = economiaExplosoesMensal * 120;
 
-                // calcula o prejuízo mensal dos gases vazados em 1 mês
-                let prejuizoGasMensal = gasVazadoPorMes * tarifaGas * plataformas;
+
 
                 // calcula a economia de gases vazados de acordo com a quantidade de meses que o usuário digitou
-                let economiaGasMeses = prejuizoGasMensal * meses * 0.5;
+                let economiaGasMeses = gasVazadoPorMes * tarifaGas * meses * plataformas * 0.5;
 
                 // calcula a economia mensal de gases por mês (essencial para o cálculo das projeções de economia de gases)
-                let economiaGasMensal = prejuizoGasMensal * 0.5;
+                let economiaGasMensal = gasVazadoPorMes * tarifaGas * plataformas * 0.5;
 
                 // calcula as economias em projeções dos gases 
-                let economiaGas6Meses = prejuizoGasMensal * 6;
-                let economiaGas1Ano = prejuizoGasMensal * 12;
-                let economiaGas10Anos = prejuizoGasMensal * 120;
+                let economiaGas6Meses = economiaGasMensal * 6;
+                let economiaGas1Ano = economiaGasMensal * 12;
+                let economiaGas10Anos = economiaGasMensal * 120;
 
                 let economiaTotal = economiaExplosesMeses + economiaGasMeses;
 
                 // exibe o resultado na tela, com css aplicado dentro da própria tag
                 // além disso, foi usado uma função para converter os números para real brasileiro para facilitar a leitura
                 resultado.innerHTML = `
-            <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${economiaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses.</p>
+            <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${economiaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses somando a economia de explosões + gás.</p>
             <h2>Projeção de economia</h2>
             <ul style="font-size: 25px">
                 <li>Em 1 mês (explosões evitadas): <strong>${economiaExplosoesMensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
