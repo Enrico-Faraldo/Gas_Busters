@@ -70,12 +70,13 @@ body{
 
 .container{
     display: flex;
-    width: 90%;
+    width: 80%;
     margin: auto;
 }
 
 .header .container{
     margin: 0;
+    width: 90%;
     justify-content: space-between;
     align-items: center;
     height: 100%;
