@@ -53,6 +53,7 @@ key ix_usuario_email (nome, email)
 -- criando a tabela Plataforma, que registrará as plataformas petroquímicas de cada empresa;
 create table Plataforma(
 idPlataforma int primary key auto_increment,
+nome varchar(50),
 status varchar(10),
 localizacao varchar(255),
 fkEmpresa int not null,
@@ -110,15 +111,15 @@ insert into Usuario (nome, email, cpf, senha, fkEmpresa)
                     ('Fernanda Reis', 'fernanda.reis@raizen.com', 'xxxxxxxxyyy', 'senha321', 4);
                     
 -- inserindo dados na tabela Plataforma
-insert into Plataforma (status, localizacao, fkEmpresa)
-              values   ('Ativa', 'Bacia de Campos - RJ', 1),
-                       ('Ativa', 'Bacia de Santos - SP', 1),
-                       ('Inativa', 'Plataforma Norte - AM', 1),
-                       ('Ativa', 'Campo de Lula - RJ', 2),
-                       ('Inativa', 'Campo de Marlim - RJ', 2),
-                       ('Ativa', 'Terminal de Candeias - BA', 3),
-                       ('Ativa', 'Unidade de Paulínia - SP', 4),
-                       ('Inativa', 'Unidade de Araucária - PR', 4);
+insert into Plataforma (nome, status, localizacao, fkEmpresa)
+              values    ('P-51', 'Ativa', 'Bacia de Campos - RJ', 1),
+                        ('P-66', 'Ativa', 'Bacia de Santos - SP', 1),
+						('P-34', 'Inativa', 'Plataforma Norte - AM', 1),
+                        ('FPSO Cidade de Saquarema', 'Ativa', 'Campo de Lula - RJ', 2),
+                        ('FPSO Cidade de Angra dos Reis', 'Inativa', 'Campo de Marlim - RJ', 2),
+                        ('P-20', 'Ativa', 'Terminal de Candeias - BA', 3),
+                        ('FPSO Cidade de Paulínia', 'Ativa', 'Unidade de Paulínia - SP', 4),
+                        ('FPSO Araucária', 'Inativa', 'Unidade de Araucária - PR', 4);
                        
 -- inserindo dados na tabela Sensor
 insert into Sensor (status, posicionamento, fkPlataforma)
@@ -151,4 +152,17 @@ select * from Usuario;
 select * from Plataforma;                    
 select * from Sensor;
 select * from Leitura;
-                 
+
+/* INNER JOINs para a consulta de dados:  */
+ 
+-- selecionando os usuários e suas respectivas empresas: 
+select us.nome as nome_usuario, em.nome as nome_empresa from Usuario us
+inner join Empresa em on us.fkEmpresa = idEmpresa; 
+
+-- selecionando os sensores e suas plataformas:
+select p.nome as Plataforma, p.status as status_Plataforma, s.status as status_Sensor, s.posicionamento as posicionamento_Sensor from Sensor s
+inner join Plataforma p on s.fkPlataforma = p.idPlataforma;
+
+-- selecionando os endereços de cada empresa:
+select en.estado as Estado, en.cidade as Cidade, en.bairro as Bairro, e.nome as Empresa from Empresa e
+inner join Endereco en on e.fkEndereco = en.idEndereco;
