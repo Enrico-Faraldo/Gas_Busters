@@ -27,7 +27,7 @@ body {
 /*logo*/
 .container .logo {
 
-    background-image: url(/assets/img/logo_com_nome.png);
+    background-image: url(../assets/img/logo_com_nome.png);
     height: 70px;
     width: 180px;
     display: flex;
@@ -151,7 +151,7 @@ html{
 
     height: var(--tamanho-banner);
     color: white;
-    background-image: url('../img/petroquimica4.jpg');
+    background-image: url('../assets/img/petroquimica4.jpg');
     background-size: cover;
     background-attachment: fixed; /* efeito de deixar a imagem estática, mesmo com scroll */
     background-position: center; /* deixando a imagem estática */
@@ -164,7 +164,7 @@ html{
 .banneri .containeri{
 
     height: var(--tamanho-banner);
-    background-image: url('../img/QuemSomosV5.png');
+    background-image: url('../assets/img/QuemSomosV5.png');
     background-size: cover;
     width: 100%;
     width: 197.4vh;
@@ -216,7 +216,7 @@ html{
 
     height: var(--tamanho-banner);
     color: white;
-    background-image: url('../img/plat_offshore.png');
+    background-image: url('../assets/img/plat_offshore.png');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
