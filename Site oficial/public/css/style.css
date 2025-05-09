@@ -27,7 +27,6 @@ body {
 /*logo*/
 .container .logo {
 
-    background-image: url(../assets/img/logo_com_nome.png);
     height: 70px;
     width: 180px;
     display: flex;

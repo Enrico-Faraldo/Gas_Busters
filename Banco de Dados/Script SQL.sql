@@ -19,7 +19,6 @@ idEmpresa int primary key auto_increment,
 nome varchar(50),
 cnpj char(14),
 telefone char(10),
-qtdPlataformas int,
 fkEndereco int,
 foreign key(fkEndereco) references Endereco(idEndereco),
 unique ix_cnpj (cnpj),
@@ -89,11 +88,11 @@ insert into Endereco (estado, cidade, bairro, logradouro, numero, cep)
                      ('Paraná', 'Curitiba', 'Batel', 'Rua Buenos Aires', 400, '80240-120');
                      
 -- inserindo dados na tabela Empresa
-insert into Empresa (nome, cnpj, telefone, qtdPlataformas, fkEndereco)
-            values  ('Petrobras', '11111111000111', '2126354321', 3, 1),
-                    ('Shell Brasil', '22222222000122', '1122345678', 2, 2),
-                    ('BR Distribuidora', '33333333000133', '7129876655', 1, 3),
-                    ('Raízen', '44444444000144', '4121223344', 2, 4);
+insert into Empresa (nome, cnpj, telefone, fkEndereco)
+            values  ('Petrobras', '11111111000111', '2126354321', 1),
+                    ('Shell Brasil', '22222222000122', '1122345678', 2),
+                    ('BR Distribuidora', '33333333000133', '7129876655', 3),
+                    ('Raízen', '44444444000144', '4121223344', 4);
                     
                     
 -- inserindo dados na tabela Token
