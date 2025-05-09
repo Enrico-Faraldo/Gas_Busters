@@ -9,7 +9,7 @@ estado varchar(50),
 cidade varchar(50),
 bairro varchar(45),
 logradouro varchar(100),
-numero int,
+numero varchar(10),
 cep varchar(9)
 );
 
@@ -28,7 +28,7 @@ unique ix_empresa_endereco (idEmpresa, fkEndereco)
 -- criando a tabela Token, que irá fazer a conexão dos usuários com as respectivas empresas através do código;
 create table Token(
 fkEmpresa int not null primary key,
-codigo varchar(20),
+codigo varchar(100),
 foreign key(fkEmpresa) references Empresa(idEmpresa),
 unique ix_codigo (codigo),
 key ix_codigo_empresa (codigo, fkEmpresa)
@@ -82,10 +82,10 @@ foreign key(fkSensor) references Sensor(idSensor)
 
 -- inserindo dados na tabela Endereco
 insert into Endereco (estado, cidade, bairro, logradouro, numero, cep)
-            values   ('São Paulo', 'São Paulo', 'Centro', 'Rua das Palmeiras', 100, '01000-000'),
-                     ('Rio de Janeiro', 'Rio de Janeiro', 'Laranjeiras', 'Rua das Laranjeiras', 200, '22240-003'),
-                     ('Bahia', 'Salvador', 'Barra', 'Av. Oceânica', 300, '40140-130'),
-                     ('Paraná', 'Curitiba', 'Batel', 'Rua Buenos Aires', 400, '80240-120');
+            values   ('São Paulo', 'São Paulo', 'Centro', 'Rua das Palmeiras', '100', '01000-000'),
+                     ('Rio de Janeiro', 'Rio de Janeiro', 'Laranjeiras', 'Rua das Laranjeiras', '200', '22240-003'),
+                     ('Bahia', 'Salvador', 'Barra', 'Av. Oceânica', '300', '40140-130'),
+                     ('Paraná', 'Curitiba', 'Batel', 'Rua Buenos Aires', '400', '80240-120');
                      
 -- inserindo dados na tabela Empresa
 insert into Empresa (nome, cnpj, telefone, fkEndereco)
