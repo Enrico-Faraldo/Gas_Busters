@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../public/assets/img/logo.png">
+
+    <title>Gas-Busters | Login</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="/public/css/style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!--header inicio-->
+    <div class="header">
+        <div class="container">
+            <img src="../public/assets/img/logo_com_nome.png" width="200px">
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Menu</a>
+                </li>
+                <li>
+                    <a href="simulador.html">Simulador</a>
+                </li>
+                <li>|</li>
+                <li class="agora">
+                    <a href="#">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--header inicio-->
+
+<div class="corpo">
+
+    <div class="loginHTML">
+
+        <div class="container">
+            <div class="card-login">
+                <h2>Login</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <span>E-mail:</span>
+                        <input id="usuario_input" type="text" placeholder="Login">
+                        <br>
+                    </div>
+                    <div class="campo">
+                        <span>Senha:</span>
+                        <input id="senha_input" type="password" placeholder="******">
+                        <br>
+                    </div>
+                    <button class="botao" id="botao" onclick="fazerLogin()">Entrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--footer inicio-->
+    <div class="footer">
+        <div class="container">
+            <div class="conteudo">
+                <p>&copy; 2025 Gas-Busters<span class="marca-registrada">®</span>. Todos os direitos reservados.</p>
+                <div class="redes-sociais">
+                    <a href="https://www.instagram.com/gasbusterss/" target="_blank"><img src="../public/assets/img/instagram-icon.svg"
+                            alt="Instagram"></a>
+                    <a href="https://www.linkedin.com/in/g%C3%A1s-busters-b100bb361/" target="_blank"><img
+                            src="../public/assets/img/linkedIn-icon.svg" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer fim-->
+</div>
+
+</body>
+<script>
+    let listaUsuarios = ['John', 'Maria', 'Carlos', 'Fulano', 'Michele'];
+
+    function fazerLogin() {
+        let usuario = usuario_input.value;
+        let senha = senha_input.value;
+
+        if (usuario === "" || senha === "") {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
+        let loginValido = false;
+
+        for (let i = 0; i < listaUsuarios.length; i++) {
+            if (listaUsuarios[i] === usuario && senha === "1234") {
+                loginValido = true;
+                break;
+            }
+        }
+
+        if (loginValido) {
+            window.location.href = "dashboard.html";
+        } else {
+            alert("Usuário ou senha inválidos!");
+        }
+    }
+</script>
+
+<!-- <script>
+
+
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script> -->
+
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/logo.png">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="css/style2.css" />
+    <link rel="icon" href="assets/icon/favicon2.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+
+    <div class="header">
+        <div class="container">
+            <img src="img/logo_com_nome.png" width="200px">
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Menu</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="simulador.html">Simulador</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<div class="corpo">
+
+    <div class="plataforma">
+        <select class="select" id="plataformas" >
+        <option value="#">Selecione a plataforma</option>
+        <option value="op2">Plataforma 1</option>
+        <option value="op3">Plataforma 2</option>
+        <option value="op3">Plataforma 3</option>
+        <option value="op3">Plataforma 4</option>
+      </select>
+    </div>
+    
+    <div class="kpi">
+        <div class="alerta">
+            <h2>Alerta de Vazamento</h2>
+            <h3 style="color: red;">PLAT 1 - Corredor de Acesso: 6.1%</h3>
+            <p style="color: red;">↑ 1.1% Acima do limite</p>
+        </div>
+
+        <div class="alerta">
+            <h2>Detecção média na Plataforma</h2>
+            <h3 style="color: green;">2.6%</h3>
+            <p style="color: green;">↓ 2.4% Abaixo do limite</p>
+        </div>
+
+        <div class="alerta">
+            <h2>Quantidade de Alertas no Mês</h2>
+            <h3 style="color: red;">Abril: 3</h3>
+        </div>
+    </div>
+
+
+    <div class="dashboard">
+        <div class="grafico">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="grafico">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="grafico">
+            <canvas id="myChart3"></canvas>
+        </div>
+        <div class="grafico">
+            <canvas id="myChart4"></canvas>
+        </div>
+    </div>
+    
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="conteudo">
+                <p>&copy; 2025 Gas-Busters<span class="marca-registrada">®</span>. Todos os direitos reservados.</p>
+                <div class="redes-sociais">
+                    <a href="https://www.instagram.com/gasbusterss/" target="_blank"><img src="./img/instagram-icon.svg"
+                            alt="Instagram"></a>
+                    <a href="https://www.linkedin.com/in/g%C3%A1s-busters-b100bb361/" target="_blank"><img
+                            src="./img/linkedIn-icon.svg" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('myChart2');
+    const ctx3 = document.getElementById('myChart3');
+    const ctx4 = document.getElementById('myChart4');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [
+                {
+                    label: 'Porcentagem de gás',
+                    data: [0.8, 1.2, 0.9, 1.5, 0.7, 1.0],
+                    backgroundColor: 'rgba(255, 0, 255, 0.5)',
+                    borderColor: 'rgba(255, 0, 255, 1)',
+                    borderWidth: 1
+                },
+                {
+            type: 'line',
+            label: 'Limite',
+            data: [5, 5, 5, 5, 5, 5],
+            backgroundColor: '#E5270E',
+                borderColor: '#E5270E',
+                borderWidth: 1
+        }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+            title: {
+                display: true,
+                text: 'Detecção de gás em tempo real na SALA DE COMPRESSORES'
+            }
+        }
+            
+        }
+    });
+
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Novembro', 'Dezembro', 'Janeiro', 'Fevereiro', 'Março', 'Abril'],
+            datasets: [
+                {
+                    label: 'Porcentagem de gás',
+                    data: [2.1, 2.5, 2.3, 2.8, 3.3, 2.4],
+                    backgroundColor: 'rgba(255, 0, 255, 0.5)',
+                    borderColor: 'rgba(255, 0, 255, 0.5)',
+                    borderWidth: 1
+                }
+       ],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+            title: {
+                display: true,
+                text: 'Detecção média de gás mensal na SALA DE COMPRESSORES'
+            }
+        }
+            
+        }
+    });
+
+    new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [
+                {
+                    label: 'Porcentagem de gás',
+                    data: [0.7, 1.0, 2.7, 4.5, 3.4, 6.1],
+                    backgroundColor: '#E6960E',
+                    borderColor: '#E6960E',
+                    borderWidth: 1
+                },
+                {
+            type: 'line',
+            label: 'Limite',
+            data: [5, 5, 5, 5, 5, 5],
+            backgroundColor: '#E5270E',
+                borderColor: '#E5270E',
+                borderWidth: 1
+        }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+            title: {
+                display: true,
+                text: 'Detecção de gás em tempo real no CORREDOR DE ACESSO'
+            }
+        }
+            
+        }
+    });
+    
+    new Chart(ctx4, {
+        type: 'bar',
+        data: {
+            labels: ['Novembro', 'Dezembro', 'Janeiro', 'Fevereiro', 'Março', 'Abril'],
+            datasets: [
+                {
+                    label: 'Porcentagem de gás',
+                    data: [0.8, 1.2, 0.9, 1.5, 0.7, 2.0],
+                    backgroundColor: '#E6960E',
+                    borderColor: '#E6960E',
+                    borderWidth: 1
+                }
+          
+        ],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+            title: {
+                display: true,
+                text: 'Detecção média de gás mensal no CORREDOR DE ACESSO'
+            }
+        }
+            
+        }
+    });
+</script>
+
+</html>

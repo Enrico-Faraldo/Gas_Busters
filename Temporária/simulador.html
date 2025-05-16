@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../public/assets/img/logo.png">
+    <link rel="stylesheet" href="css/style2.css">
+    <title>Calculadora financeira</title>
+</head>
+
+<body>
+<!--header inicio-->
+    <div class="header">
+        <div class="container">
+            <img src="../public/assets/img/logo_com_nome.png" width="200px">
+            <ul class="navbar">
+                <li><a href="index.html">Menu</a></li>
+                <li class="agora"><a href="#">Simulador</a></li>
+                <li>|</li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </div>
+    </div>
+<!--header fim-->
+
+<div class="social">
+<div class="corpo">
+    <div class="login">
+        <div class="container" style="display: flex; gap: 30px;">
+
+            <div class="card-simulador borda" style="width: 60%;">
+                <h2>Simulador Financeiro</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <h3>Quantas plataformas sua empresa possui?</h3>
+                        <input type="number" id="ipt_plataformas">
+                    </div>
+                    <div class="campo">
+                        <h3>Qual o valor médio de uma plataforma (em R$)?</h3>
+                        <input type="number" id="ipt_valor">
+                    </div>
+                    <div class="campo">
+                        <h3>Por quantos meses o sistema será utilizado?</h3>
+                        <input type="number" id="ipt_meses">
+                    </div>
+                    <button onclick="calcular()" id="botao">Calcular</button>
+                    <div id="erro" class="erro"></div>
+                    <div id="resultado" style="text-align: center; padding: 10px; background-color: #f0f0f0; border-radius: 10px;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!--footer inicio-->
+<div class="footer">
+    <div class="container">
+        <div class="conteudo">
+            <p>&copy; 2025 Gas-Busters<span class="marca-registrada">®</span>. Todos os direitos reservados.</p>
+            <div class="redes-sociais">
+                <a href="https://www.instagram.com/gasbusterss/" target="_blank"><img src="../public/assets/img/instagram-icon.svg"
+                        alt="Instagram"></a>
+                <a href="https://www.linkedin.com/in/g%C3%A1s-busters-b100bb361/" target="_blank"><img
+                        src="../public/assets/img/linkedIn-icon.svg" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--footer fim-->
+
+    <script>
+        
+        /* essas duas variáveis servem para usar para cálculos futuros de prejuízos e economia com gases vazados 
+           seguindo a tabela de tarifas industriais da Comgás. Disponível em https://www.arsesp.sp.gov.br/ArquivosRegulamentacao/Tarifas/Gas/tabela%20de%20tarifas-comgas_dez.pdf na página 4.
+        */
+        const gasVazadoPorMes = 100000; // considerando 100 mil m³ de gás
+        const tarifaGas = 1.308925; // conforme faixa 50.000 a 300.000
+
+        function calcular() {
+            // lê as entradas do usuário
+            let plataformas = Number(ipt_plataformas.value);
+            let valorPlataforma = Number(ipt_valor.value);
+            let meses = Number(ipt_meses.value);
+
+            // caso as entradas seja, válidas, execute os cálculos
+            if (plataformas > 0 && valorPlataforma > 0 && meses > 0) {
+
+                // os valores econômicos abaixo segue com nosso objetivo de reduzir os prejuízos em 50%
+
+                // calcula a economia de explosões de acordo com a quantidade de meses que o usuário digitou
+                let economiaExplosesMeses = valorPlataforma * plataformas * meses * 0.5;
+
+                // calcula a economia de explosões por mês (essencial para o cálculo das projeções de economia de explosões)
+                let economiaExplosoesMensal = valorPlataforma * plataformas * 0.5;
+
+                // calcula as economias em projeções das explosões
+                let economiaExplosoes6Meses = economiaExplosoesMensal * 6;
+                let economiaExplosoes1Ano = economiaExplosoesMensal * 12;
+                let economiaExplosoes10Anos = economiaExplosoesMensal * 120;
+
+
+
+                // calcula a economia de gases vazados de acordo com a quantidade de meses que o usuário digitou
+                let economiaGasMeses = gasVazadoPorMes * tarifaGas * meses * plataformas * 0.5;
+
+                // calcula a economia mensal de gases por mês (essencial para o cálculo das projeções de economia de gases)
+                let economiaGasMensal = gasVazadoPorMes * tarifaGas * plataformas * 0.5;
+
+                // calcula as economias em projeções dos gases 
+                let economiaGas6Meses = economiaGasMensal * 6;
+                let economiaGas1Ano = economiaGasMensal * 12;
+                let economiaGas10Anos = economiaGasMensal * 120;
+
+                let economiaTotal = economiaExplosesMeses + economiaGasMeses;
+
+                // exibe o resultado na tela, com css aplicado dentro da própria tag
+                // além disso, foi usado uma função para converter os números para real brasileiro para facilitar a leitura
+                resultado.innerHTML = `
+            <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${economiaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses somando a economia de explosões + gás.</p>
+            <h2>Projeção de economia</h2>
+            <ul style="font-size: 25px">
+                <li>Em 1 mês (explosões evitadas): <strong>${economiaExplosoesMensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 6 meses (explosões evitadas): <strong>${economiaExplosoes6Meses.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 1 ano (explosões evitadas): <strong>${economiaExplosoes1Ano.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 10 anos (explosões evitadas): <strong>${economiaExplosoes10Anos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <br>
+                <li>Em 1 mês (gás não vazado): <strong>${economiaGasMensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 6 meses (gás não vazado): <strong>${economiaGas6Meses.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 1 ano (gás não vazado): <strong>${economiaGas1Ano.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+                <li>Em 10 anos (gás não vazado): <strong>${economiaGas10Anos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></li>
+            </ul>
+        </div>
+    `;
+                erro.innerHTML = "";
+
+                // exibe um alerta de erro caso o usuário não digite corretamente os valores em seus respectivos campos
+            } else {
+                alert('Preencha todos os campos com valores válidos!');
+                erro.innerHTML = "Verifique se todos os campos estão preenchidos corretamente.";
+                resultado.innerHTML = "";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
