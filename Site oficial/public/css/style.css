@@ -150,7 +150,7 @@ html{
 
     height: var(--tamanho-banner);
     color: white;
-    background-image: url('../assets/img/petroquimica4.jpg');
+    background-image: url('../assets/imgs/petroquimica4.jpg');
     background-size: cover;
     background-attachment: fixed; /* efeito de deixar a imagem estática, mesmo com scroll */
     background-position: center; /* deixando a imagem estática */
@@ -163,7 +163,7 @@ html{
 .banneri .containeri{
 
     height: var(--tamanho-banner);
-    background-image: url('../assets/img/QuemSomosV5.png');
+    background-image: url('../assets/imgs/QuemSomosV5.png');
     background-size: cover;
     width: 100%;
     width: 197.4vh;
@@ -215,7 +215,7 @@ html{
 
     height: var(--tamanho-banner);
     color: white;
-    background-image: url('../assets/img/plat_offshore.png');
+    background-image: url('../assets/imgs/plat_offshore.png');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;

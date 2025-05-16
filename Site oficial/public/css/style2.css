@@ -184,7 +184,7 @@ body{
     padding: 10px 250px;
 }
 
-#botao{
+.botao{
     background-color: #660101 ;
     color: #e5e5e5;
     border: none;
@@ -192,7 +192,8 @@ body{
     border-radius: 10px;
     padding: 10px 30px;
 }
-#botao:hover{
+
+.botao:hover{
     background-color: #880101AD;
     color: #fff;
     cursor: pointer;
@@ -298,4 +299,44 @@ body{
 
     justify-content: center;
     text-align: center;
+}
+
+/*LOADING CARD*/
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}
+
+
+
+/*CARDS DE ERRO*/
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #ED145B 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
 }

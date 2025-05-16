@@ -3,17 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../public/assets/img/logo.png">
-    <link rel="stylesheet" href="css/style2.css">
-    <title>Calculadora financeira</title>
+
+    <title>Gas-Busters | Simulador</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/style2.css">
+    <link rel="icon" href="./assets/icon/logo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
-<!--header inicio-->
+    <!--header inicio-->
     <div class="header">
         <div class="container">
-            <img src="../public/assets/img/logo_com_nome.png" width="200px">
+            <img src="../public/assets/imgs/logo_com_nome.png" width="200px">
             <ul class="navbar">
                 <li><a href="index.html">Menu</a></li>
                 <li class="agora"><a href="#">Simulador</a></li>
@@ -23,60 +29,62 @@
             </ul>
         </div>
     </div>
-<!--header fim-->
+    <!--header fim-->
 
-<div class="social">
-<div class="corpo">
-    <div class="login">
-        <div class="container" style="display: flex; gap: 30px;">
+    <div class="social">
+        <div class="corpo">
+            <div class="login">
+                <div class="container" style="display: flex; gap: 30px;">
 
-            <div class="card-simulador borda" style="width: 60%;">
-                <h2>Simulador Financeiro</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <h3>Quantas plataformas sua empresa possui?</h3>
-                        <input type="number" id="ipt_plataformas">
+                    <div class="card-simulador borda" style="width: 60%;">
+                        <h2>Simulador Financeiro</h2>
+                        <div class="formulario">
+                            <div class="campo">
+                                <h3>Quantas plataformas sua empresa possui?</h3>
+                                <input type="number" id="ipt_plataformas">
+                            </div>
+                            <div class="campo">
+                                <h3>Qual o valor médio de uma plataforma (em R$)?</h3>
+                                <input type="number" id="ipt_valor">
+                            </div>
+                            <div class="campo">
+                                <h3>Por quantos meses o sistema será utilizado?</h3>
+                                <input type="number" id="ipt_meses">
+                            </div>
+                            <button onclick="calcular()" class="botao">Calcular</button>
+                            <div id="erro" class="erro"></div>
+                            <div id="resultado"
+                                style="text-align: center; padding: 10px; background-color: #f0f0f0; border-radius: 10px;">
+                            </div>
+                        </div>
                     </div>
-                    <div class="campo">
-                        <h3>Qual o valor médio de uma plataforma (em R$)?</h3>
-                        <input type="number" id="ipt_valor">
-                    </div>
-                    <div class="campo">
-                        <h3>Por quantos meses o sistema será utilizado?</h3>
-                        <input type="number" id="ipt_meses">
-                    </div>
-                    <button onclick="calcular()" id="botao">Calcular</button>
-                    <div id="erro" class="erro"></div>
-                    <div id="resultado" style="text-align: center; padding: 10px; background-color: #f0f0f0; border-radius: 10px;"></div>
+
                 </div>
             </div>
-
         </div>
-    </div>
-</div>
 
 
 
-<!--footer inicio-->
-<div class="footer">
-    <div class="container">
-        <div class="conteudo">
-            <p>&copy; 2025 Gas-Busters<span class="marca-registrada">®</span>. Todos os direitos reservados.</p>
-            <div class="redes-sociais">
-                <a href="https://www.instagram.com/gasbusterss/" target="_blank"><img src="../public/assets/img/instagram-icon.svg"
-                        alt="Instagram"></a>
-                <a href="https://www.linkedin.com/in/g%C3%A1s-busters-b100bb361/" target="_blank"><img
-                        src="../public/assets/img/linkedIn-icon.svg" alt="LinkedIn"></a>
+        <!--footer inicio-->
+        <div class="footer">
+            <div class="container">
+                <div class="conteudo">
+                    <p>&copy; 2025 Gas-Busters<span class="marca-registrada">®</span>. Todos os direitos reservados.</p>
+                    <div class="redes-sociais">
+                        <a href="https://www.instagram.com/gasbusterss/" target="_blank"><img
+                                src="../public/assets/imgs/instagram-icon.svg" alt="Instagram"></a>
+                        <a href="https://www.linkedin.com/in/g%C3%A1s-busters-b100bb361/" target="_blank"><img
+                                src="../public/assets/imgs/linkedIn-icon.svg" alt="LinkedIn"></a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 
-<!--footer fim-->
+    <!--footer fim-->
 
     <script>
-        
+
         /* essas duas variáveis servem para usar para cálculos futuros de prejuízos e economia com gases vazados 
            seguindo a tabela de tarifas industriais da Comgás. Disponível em https://www.arsesp.sp.gov.br/ArquivosRegulamentacao/Tarifas/Gas/tabela%20de%20tarifas-comgas_dez.pdf na página 4.
         */
