@@ -1,25 +1,26 @@
 var database = require("../database/config");
 
 function buscarPorId(id) {
-  var instrucaoSql = `SELECT * FROM empresa WHERE id = '${id}'`;
+  var instrucaoSql = `SELECT * FROM Empresa WHERE idEmpresa = '${id}'`;
 
   return database.executar(instrucaoSql);
 }
 
 function listar() {
-  var instrucaoSql = `SELECT id, razao_social, cnpj, codigo_ativacao FROM empresa`;
+  var instrucaoSql = `SELECT e.idEmpresa id, e.nome, e.cnpj, t.codigo FROM Empresa e
+                      INNER JOIN Token t on t.fkEmpresa = e.idEmpresa`;
 
   return database.executar(instrucaoSql);
 }
 
 function buscarPorCnpj(cnpj) {
-  var instrucaoSql = `SELECT * FROM empresa WHERE cnpj = '${cnpj}'`;
+  var instrucaoSql = `SELECT * FROM Empresa WHERE cnpj = '${cnpj}'`;
 
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(razaoSocial, cnpj) {
-  var instrucaoSql = `INSERT INTO empresa (razao_social, cnpj) VALUES ('${razaoSocial}', '${cnpj}')`;
+function cadastrar(nome, cnpj) {
+  var instrucaoSql = `INSERT INTO Empresa (nome, cnpj) VALUES ('${nome}', '${cnpj}')`;
 
   return database.executar(instrucaoSql);
 }

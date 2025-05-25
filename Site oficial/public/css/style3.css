@@ -39,6 +39,14 @@ body {
 .header a{
     text-decoration: none;
     color: #ffffff;
+
+    transition: all 0.15s;
+}
+
+.header a:hover {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 17px;
 }
 
 .agora{
