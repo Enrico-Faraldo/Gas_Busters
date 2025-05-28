@@ -361,61 +361,6 @@ h1 {
 }
 
 
-/* formulário */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-
-/* texto informativo de campo do formulário  */
-label {
-    margin-bottom: 5px;
-    color: #555;
-}
-
-
-/* relacionado as caixas de input do formulário */
-input, textarea {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    resize: vertical;
-}
-
-
-/* botão do formulário */
-button {
-    padding: 12px;
-    background-color: rgb(177, 94, 91);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-
-/* degradê de cor ao maouse passar por cima do botão */
-button:hover {
-    background-color: rgb(105, 13, 10);
-}
-
-
-/* compartimento da tabela*/
-.containero {
-
-    width: 90%;
-    max-width: 800px;
-    flex-direction: row;
-    margin-top: -150px;
-    margin-bottom: 150px;
-}
-/*Encerramento dos códigos do formulário*/
-
 
 
 
