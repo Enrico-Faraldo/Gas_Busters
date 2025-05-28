@@ -29,7 +29,9 @@ function autenticar(req, res) {
                                         cpf: resultadoAutenticar[0].cpf,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
-                                        plataformas: resultadoPlataformas
+                                        plataformas: resultadoPlataformas,
+                                        idEmpresa: resultadoAutenticar[0].empresaId
+
                                     });
                                 } else {
                                     res.status(204).json({ plataformas: [] });

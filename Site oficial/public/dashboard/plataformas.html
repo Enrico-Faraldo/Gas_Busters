@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,9 @@
 
     <script src="../js/sessao.js"></script>
 </head>
+
 <body onload="validarSessao()">
-     <div class="header">
+    <div class="header">
         <div class="container">
             <img src="../public/assets/img/logo_com_nome.png" width="200px">
             <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -42,62 +44,57 @@
                     <option value="#">Filtrar por</option>
                 </select>
             </div>
-            <div class="cards">
-                <div class="card">1</div>
-                <div class="card">2</div>
-                <div class="card">3</div>
-                <div class="card">4</div>
-                <div class="card">5</div>
-                <div class="card">6</div>
-                <div class="card">7</div>
-                <div class="card">8</div>
-                <div class="card">9</div>
-                <div class="card">10</div>
-                <div class="card">11</div>
-                <div class="card">12</div>
-            </div>
+            <div id="div_cards" class="cards"></div>
         </div>
 
     </div>
 
 
 </body>
+
 </html>
 <script>
-    /*window.onload = function () {
-        buscarPlataformas
-    }*/
+    window.onload = function () {
+        buscarPlataformas()
+    }
     console.log(sessionStorage);
-    
-    const idEmpresa = sessionStorage.idEmpresa;
+
+    const idEmpresa = sessionStorage.ID_EMPRESA;
 
     function buscarPlataformas() {
-        
 
-        fetch(`/aquarios/buscarPlataformas?idEmpresa=${idEmpresa}`, {
+        let cards = ''
+
+        fetch(`/plataformas/?empresaId=${idEmpresa}`, {
             method: "GET",
             cache: 'no-store'
         })
-        .then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-    
-                    div_comentario_principal.innerHTML += `
-                        <div id="div_comentario_principal" class="comentario_principal">
-                            <div class="info">
-                                <span class="usuario">${resposta[0].nome_usuario}</span>
-                                <span class="data">${resposta[0].data_postagem} ${resposta[0].hora_postagem}</span>
-                            </div>
-                            <div class="comentario">${resposta[0].conteudo}</div>
-                        </div>`;
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados: ${error.message}`);
-        });
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        for (let i = 0; i < resposta.length; i++) {
+
+                            cards += `
+                        <div id="div_cards" class="cards">
+                            <div class="card">
+                                ${resposta[i].nome}
+                                </div>
+                                </div>`;
+                        }
+
+                        div_cards.innerHTML = cards;
+
+                        console.log(JSON.stringify(resposta));
+                        
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
     }
 </script>

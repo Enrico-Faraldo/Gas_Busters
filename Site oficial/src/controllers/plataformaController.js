@@ -44,7 +44,7 @@ function cadastrar(req, res) {
 }
 
 function buscarPlataformas(req, res) {
-  var idPlataforma = req.params.idUsuario;
+  var idPlataforma = req.params.idEmpresa;
 
   plataformaModel.buscarPlataformas(idUsuario).then((resultado) => {
     if (resultado.length > 0) {
