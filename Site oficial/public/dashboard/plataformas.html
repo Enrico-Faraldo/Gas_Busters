@@ -63,3 +63,41 @@
 
 </body>
 </html>
+<script>
+    /*window.onload = function () {
+        buscarPlataformas
+    }*/
+    console.log(sessionStorage);
+    
+    const idEmpresa = sessionStorage.idEmpresa;
+
+    function buscarPlataformas() {
+        
+
+        fetch(`/aquarios/buscarPlataformas?idEmpresa=${idEmpresa}`, {
+            method: "GET",
+            cache: 'no-store'
+        })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    
+                    div_comentario_principal.innerHTML += `
+                        <div id="div_comentario_principal" class="comentario_principal">
+                            <div class="info">
+                                <span class="usuario">${resposta[0].nome_usuario}</span>
+                                <span class="data">${resposta[0].data_postagem} ${resposta[0].hora_postagem}</span>
+                            </div>
+                            <div class="comentario">${resposta[0].conteudo}</div>
+                        </div>`;
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados: ${error.message}`);
+        });
+    }
+</script>

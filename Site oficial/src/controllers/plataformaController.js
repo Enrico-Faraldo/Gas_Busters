@@ -1,9 +1,9 @@
-var aquarioModel = require("../models/aquarioModel");
+var plataformaModel = require("../models/plataformaModel");
 
-function buscarAquariosPorEmpresa(req, res) {
+function buscarPlataformasPorEmpresa(req, res) {
   var idUsuario = req.params.idUsuario;
 
-  aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
+  plataformaModel.buscarPlataformasPorEmpresa(idUsuario).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -11,7 +11,7 @@ function buscarAquariosPorEmpresa(req, res) {
     }
   }).catch(function (erro) {
     console.log(erro);
-    console.log("Houve um erro ao buscar os aquarios: ", erro.sqlMessage);
+    console.log("Houve um erro ao buscar os plataformas: ", erro.sqlMessage);
     res.status(500).json(erro.sqlMessage);
   });
 }
@@ -28,7 +28,7 @@ function cadastrar(req, res) {
   } else {
 
 
-    aquarioModel.cadastrar(descricao, idUsuario)
+    plataformaModel.cadastrar(descricao, idUsuario)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -43,7 +43,24 @@ function cadastrar(req, res) {
   }
 }
 
+function buscarPlataformas(req, res) {
+  var idPlataforma = req.params.idUsuario;
+
+  plataformaModel.buscarPlataformas(idUsuario).then((resultado) => {
+    if (resultado.length > 0) {
+      res.status(200).json(resultado);
+    } else {
+      res.status(204).json([]);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar os plataformas: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
+
 module.exports = {
-  buscarAquariosPorEmpresa,
-  cadastrar
+  buscarPlataformasPorEmpresa,
+  cadastrar,
+  buscarPlataformas
 }
