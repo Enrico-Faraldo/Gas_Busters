@@ -35,7 +35,7 @@
 
     <div class="corpo-dash">
         <div class="titulo">
-            <h1 class="plataforma">Plataforma X</h1>
+            <h1 id="h1_plataforma" class="plataforma"></h1>
         </div>
 
         <div class="centro">
@@ -64,6 +64,11 @@
 
 <script>
     const ctx = document.getElementById('myChart');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const idPlataforma = urlParams.get('idPlataforma');
+
+    document.getElementById('h1_plataforma').innerHTML = `Plataforma ${idPlataforma}`
 
     new Chart(ctx, {
         type: 'line',
