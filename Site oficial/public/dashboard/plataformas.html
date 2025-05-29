@@ -49,6 +49,7 @@
 
     </div>
 
+    <button onclick="visualizarPlataforma()"></button>
 
 </body>
 
@@ -60,6 +61,7 @@
     console.log(sessionStorage);
 
 
+    window.location.href = `comentarios.html?idPostagem=${idPostagem}`;
     function buscarPlataformas() {
 
         let cards = ''
@@ -76,14 +78,14 @@
                         for (let i = 0; i < resposta.length; i++) {
 
                             cards += `
-                            <div class="card">
+                            <button onclick="visualizarPlataforma(${resposta[i].idPlataforma})" class="card">
                                 ${resposta[i].nome}
-                                </div>
+                                </button>
                                 `;
                         }
 
                         div_cards.innerHTML = cards;
-                        
+
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
@@ -92,5 +94,9 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados: ${error.message}`);
             });
+    }
+
+    function visualizarPlataforma(idPlataforma) {
+        window.location.href = `dashboard.html?idPlataforma=${idPlataforma}`;
     }
 </script>
