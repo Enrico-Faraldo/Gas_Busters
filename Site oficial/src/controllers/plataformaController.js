@@ -1,9 +1,9 @@
 var plataformaModel = require("../models/plataformaModel");
 
 function buscarPlataformasPorEmpresa(req, res) {
-  var idUsuario = req.params.idUsuario;
+  var empresaId = req.params.empresaId;
 
-  plataformaModel.buscarPlataformasPorEmpresa(idUsuario).then((resultado) => {
+  plataformaModel.buscarPlataformasPorEmpresa(empresaId).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -43,24 +43,9 @@ function cadastrar(req, res) {
   }
 }
 
-function buscarPlataformas(req, res) {
-  var idPlataforma = req.params.idEmpresa;
 
-  plataformaModel.buscarPlataformas(idUsuario).then((resultado) => {
-    if (resultado.length > 0) {
-      res.status(200).json(resultado);
-    } else {
-      res.status(204).json([]);
-    }
-  }).catch(function (erro) {
-    console.log(erro);
-    console.log("Houve um erro ao buscar os plataformas: ", erro.sqlMessage);
-    res.status(500).json(erro.sqlMessage);
-  });
-}
 
 module.exports = {
   buscarPlataformasPorEmpresa,
-  cadastrar,
-  buscarPlataformas
+  cadastrar
 }

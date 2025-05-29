@@ -59,13 +59,12 @@
     }
     console.log(sessionStorage);
 
-    const idEmpresa = sessionStorage.ID_EMPRESA;
 
     function buscarPlataformas() {
 
         let cards = ''
 
-        fetch(`/plataformas/?empresaId=${idEmpresa}`, {
+        fetch(`/plataformas/${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
             cache: 'no-store'
         })
@@ -85,8 +84,6 @@
                         }
 
                         div_cards.innerHTML = cards;
-
-                        console.log(JSON.stringify(resposta));
                         
                     });
                 } else {
