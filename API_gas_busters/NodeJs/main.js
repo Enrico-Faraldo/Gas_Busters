@@ -13,6 +13,7 @@ const HABILITAR_OPERACAO_INSERIR = true;
 // função para comunicação serial
 const serial = async (
     valoresSensorAnalogico,
+    valoresSensor2
     
 ) => {
 
@@ -53,19 +54,26 @@ const serial = async (
         const valores = data.split(';');
        
         const sensorAnalogico = parseFloat(valores[0]);
+        const sensor2 = sensorAnalogico * 1.5
 
         // armazena os valores dos sensores nos arrays correspondentes
         valoresSensorAnalogico.push(sensorAnalogico);
+        valoresSensor2.push(sensor2);
        
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
 
             // este insert irá inserir os dados na tabela "Leitura"
             await poolBancoDados.execute(
-                'INSERT INTO Leitura (quantidade, dataLeitura) VALUES (?, current_timestamp())',
+                'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 1)',
                 [sensorAnalogico]
             );
+            await poolBancoDados.execute(
+                'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 2)',
+                [sensor2]
+            );
             console.log("valores inseridos no banco: ", sensorAnalogico);
+            console.log("valores inseridos no banco: ", sensor2);
 
         }
 
@@ -80,6 +88,7 @@ const serial = async (
 // função para criar e configurar o servidor web
 const servidor = (
     valoresSensorAnalogico,
+    valoresSensor2
 
 ) => {
     const app = express();
@@ -98,7 +107,7 @@ const servidor = (
 
     // define os endpoints da API para cada tipo de sensor
     app.get('/sensores/analogico', (_, response) => {
-        return response.json(valoresSensorAnalogico);
+        return response.json(valoresSensorAnalogico), response.json(valoresSensor2);
     });
    
 }
@@ -107,15 +116,18 @@ const servidor = (
 (async () => {
     // arrays para armazenar os valores dos sensores
     const valoresSensorAnalogico = [];
+    const valoresSensor2 = [];
     
 
     // inicia a comunicação serial
     await serial(
-        valoresSensorAnalogico
+        valoresSensorAnalogico,
+        valoresSensor2
     );
 
     // inicia o servidor web
     servidor(
-        valoresSensorAnalogico
+        valoresSensorAnalogico,
+        valoresSensor2
     );
 })();

@@ -61,7 +61,7 @@
     console.log(sessionStorage);
 
 
-    window.location.href = `comentarios.html?idPostagem=${idPostagem}`;
+
     function buscarPlataformas() {
 
         let cards = ''
@@ -78,7 +78,7 @@
                         for (let i = 0; i < resposta.length; i++) {
 
                             cards += `
-                            <button onclick="visualizarPlataforma(${resposta[i].idPlataforma})" class="card">
+                            <button onclick="visualizarPlataforma(${resposta[i].idPlataforma}, '${resposta[i].nome}')" class="card">
                                 ${resposta[i].nome}
                                 </button>
                                 `;
@@ -96,7 +96,7 @@
             });
     }
 
-    function visualizarPlataforma(idPlataforma) {
-        window.location.href = `dashboard.html?idPlataforma=${idPlataforma}`;
+    function visualizarPlataforma(idPlataforma, nome) {
+        window.location.href = `dashboard.html?idPlataforma=${idPlataforma}&nome="${nome}"`;
     }
 </script>
