@@ -19,21 +19,14 @@ body {
 
 /*logo*/
 .container .logo {
-
     height: 5vh;
-    width: 5vw;
+    width: 4vw;
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     align-items: flex-start;
     margin-bottom: 12px;
-    margin-left: -9vw;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.logo:hover {
-    transform: scale(1.2);
+    margin-left: -6vw;
 
 }
 
@@ -43,6 +36,13 @@ body {
     margin-left: -45vw;
     margin-top: -2vh;
     font-size: 3vh;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.textoNavbar:hover {
+    transform: scale(1.1);
 
 }
 
@@ -56,6 +56,8 @@ body {
     /* fica na frente de outros elementos */
     transition: 0.5s;
     /* efeito ao voltar para o topo */
+    box-shadow: 0 0.1vh 5vh rgb(0, 1, 5);
+
 }
 
 /*animação do header para aparecer ao descer a página*/
@@ -66,9 +68,10 @@ body {
     padding: 10px 0;
     transition: 0.5s;
     /* efeito ao sair do topo */
+    box-shadow: 0vh 0.5vh 5vh rgba(0, 1, 5, 0);
 }
 
-.header.rolar .a:hover{
+.header.rolar .a:hover {
     color: rgb(204, 90, 86);
 
 }
@@ -92,11 +95,13 @@ body {
 /*itens do cabeçaalho para navegação*/
 .navbar {
 
-    width: 500px;
+    width: 550px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
+    margin-right: -4vw;
+
 }
 
 /*efeito para fazer a página subir ao ser clicado no navbar "Início"*/
@@ -123,11 +128,15 @@ html {
 }
 
 /*negrito no presente navbar*/
-.agora .a{
+.agora .a {
     font-weight: 800;
     color: rgb(204, 90, 86);
 
 }
+
+
+
+
 
 
 
@@ -138,6 +147,101 @@ html {
 
 }
 
+.imageFundo img {
+    height: 50vh;
+    width: auto;
+    margin-top: 32vh;
+    margin-left: 57vw;
+    box-shadow: 2.5vh 2.5vh 1.9vh rgb(0, 2, 10);
+    animation: aparecerSumir 2s ease-in-out 1;
+
+}
+
+.boasVindas h1 {
+    width: 30vw;
+    height: auto;
+    margin-left: 12vw;
+    margin-top: -53vh;
+    font-size: 4vw;
+    color: rgb(204, 90, 86);
+    animation: aparecerSumir 2s ease-in-out 1;
+
+}
+
+.contexto {
+    width: 30vw;
+    height: auto;
+    color: #ffffffb2;
+    margin-left: 10vw;
+    font-size: 1.4vw;
+    animation: aparecerSumir 2s ease-in-out 1;
+    font-family: Times;
+    font-weight: bold;
+}
+
+.botoesMenu {
+    margin-left: 12vw;
+    margin-top: 7vh;
+
+}
+
+.botaoServicos {
+    padding: 2vh;
+    background-color: rgb(204, 90, 86);
+    border: 0.3vh solid rgb(204, 90, 86);
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.5s;
+
+}
+
+.botaoEquipe {
+    padding: 2vh;
+    background-color: rgba(204, 90, 86, 0);
+    border: 0.3vh solid rgb(255, 255, 255);
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 1vw;
+    transition: 0.5s;
+
+}
+
+.botaoServicos:hover {
+    background-color: rgb(85, 18, 16);
+    border: 0.3vh solid rgb(85, 18, 16);
+    cursor: pointer;
+
+
+}
+
+
+.botaoEquipe:hover {
+    background-color: #fff;
+    color: #0d1620;
+    cursor: pointer;
+
+
+}
+
+
+@keyframes aparecerSumir {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
 .corpo2 {
     width: 100%;
     height: 70vh;
@@ -147,8 +251,103 @@ html {
 
 .corpo3 {
     width: 100%;
-    height: 70vh;
-    background-color: rgb(229, 229, 229);
+    height: 50vh;
+    margin-bottom: -2vh;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.minerTrabaiando img {
+    height: 17vh;
+    width: auto;
+    margin-top: 20vh;
+    margin-left: 70vw;
+
+}
+
+.minerCorrendo img {
+    height: 40vh;
+    width: auto;
+    margin-top: -100vh;
+    margin-bottom: -2.9vh;
+    animation: andar 3s linear
+        /*alternate - ida e volta*/
+        infinite
+}
+
+.alertaAlerta img {
+    height: 1.2vh;
+    width: auto;
+    margin-left: 76vw;
+    margin-top: -30vh;
+    margin-bottom: 5.5vh;
+    animation: sombraAlerta 01s linear alternate infinite
+}
+
+.textoAlerta h1{
+    width: 50vw;
+    height: auto;
+    z-index: -1;
+    margin-top: -16vh;
+    margin-left: 11vw;
+    font-size: 2.5vw;
+    color: #0d162046;
+    font-family:cursive;
+}
+
+
+
+@keyframes andar {
+    0% {
+        margin-left: -5vw;
+        opacity: 0;
+    }
+
+    10% {
+        margin-left: 5vw;
+        opacity: 1;
+    }
+
+    25% {
+        margin-left: 20vw;
+        opacity: 1;
+    }
+
+    50% {
+        margin-left: 40vw;
+        opacity: 1;
+    }
+
+    75% {
+        margin-left: 55vw;
+        opacity: 1;
+    }
+
+    100% {
+        margin-left: 79.5vw;
+        opacity: 0;
+    }
+
+}
+
+
+
+@keyframes sombraAlerta {
+    0% {
+        filter: drop-shadow(0 0.2vh 0.2vh #00000059);
+    }
+
+    25% {
+        filter: drop-shadow(0 1vh 1vh #00000059) drop-shadow(0 0.7vh 0.2vh #b60606);
+    }
+
+    50% {
+        filter: drop-shadow(0 0.2vh 0.2vh #00000059);
+    }
+
+    100% {
+        filter: drop-shadow(0 1vh 1vh #00000059) drop-shadow(0 0.7vh 0.2vh #b60606);
+    }
 
 }
 

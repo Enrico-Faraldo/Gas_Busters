@@ -20,7 +20,10 @@
   <!-- Navbar do site -->
   <div class="header">
     <div class="container">
-      <img class="logo" src="../public/imgs/logo_sem_fundo.png" onclick="window.location.href='./index.html'"><div class="textoNavbar"><h3><span style="color: rgb(204, 90, 86);">Gas</span> Busters</h3></div>
+      <img class="logo" src="../public/imgs/logo_sem_fundo.png">
+      <div class="textoNavbar">
+        <h3 onclick="window.location.href='./index.html'"><span style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
+      </div>
       <ul class="navbar">
         <li class="agora">
           <a class="a borda" href="#">Início</a>
@@ -38,6 +41,10 @@
         <li>
           <a class="a borda" href="cadastro.html">Cadastro</a>
         </li>
+        <li>
+          <a class="a borda" href="bobia.html"
+            style="text-decoration: line-through; color:  rgb(204, 90, 86);">BoBIA</a>
+        </li><img src="./imgs/block.png" style="height: 1.5vh; width: auto; margin-top: 0.1vh; margin-left: -1.5vw;">
       </ul>
     </div>
   </div>
@@ -49,15 +56,58 @@
 
   <!-- topo da página -->
 
-  <div class="corpo1">
+  <section>
+    <div class="corpo1">
+      <div class="imageFundo">
+        <img src="./imgs/fundo_dashboard2.jpg">
+      </div>
+      <div class="boasVindas">
+        <h1>
+          <span style="color: azure;">Bem-Vindo a</span> Gas Busters<span style="color: azure;">!</span>
+        </h1>
+      </div>
+      <div class="contexto">
+        <span>
+          Somos uma empresa focada na detecção de todo e qualquer gás inflamável presente em indústrias petroquímicas
+          off-shore, garantindo segurança e integridade aos nossos clientes!
+        </span>
+      </div>
+      <div class="botoesMenu">
+        <button class="botaoServicos"
+          onclick="document.getElementById('sobre').scrollIntoView({ behavior: 'smooth' });">Conheça Nossos
+          Serviços</button>
 
-  </div>
-  <div class="corpo2">
+        <button class="botaoEquipe"
+          onclick="document.getElementById('sobre').scrollIntoView({ behavior: 'smooth' });">Conheça Nossa
+          Equipe</button>
+      </div>
+    </div>
 
-  </div>
-  <div class="corpo3">
+  </section>
 
-  </div>
+  <section>
+    <div class="corpo2">
+    </div>
+  </section>
+
+  <section>
+    <div class="corpo3">
+      <div class="minerTrabaiando">
+        <img src="./imgs/minerWorking.gif">
+      </div>
+      <div class="alertaAlerta">
+        <img src="./imgs/alert.gif">
+      </div>
+      <div class="textoAlerta">
+        <h1>"Alerta! Gás encontrado na ala B!!"</h1>
+      </div>
+    </div>
+    <div class="minerCorrendo">
+      <img src="./imgs/minerWalking.gif">
+    </div>
+
+  </section>
+
   <div class="corpo4">
 
   </div>

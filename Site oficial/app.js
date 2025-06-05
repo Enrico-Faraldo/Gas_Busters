@@ -45,6 +45,7 @@ app.use("/empresas", empresasRouter);
 // configurando o servidor para servir arquivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
 
+
 // configurando CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
