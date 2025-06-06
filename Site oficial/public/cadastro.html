@@ -19,39 +19,54 @@
 </head>
 
 <body onload="listar()">
-  <!--header inicio-->
+  <!-- Navbar do site -->
   <div class="header">
     <div class="container">
-      <img src="../public/assets/imgs/logo_com_nome.png" width="200px">
+
+      <h3 onclick="window.location.href='./index.html'" class="titulo-gas-busters"><span
+          style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
+
       <ul class="navbar">
         <li>
-          <a href="index.html">Menu</a>
+          <a class="a borda" href="index.html">Início</a>
         </li>
         <li>
-          <a href="simulador.html">Simulador</a>
+          <a class="a borda" href="https://bustersgass.atlassian.net/servicedesk/customer/portal/1">Fale Conosco</a>
         </li>
-        <li>|</li>
         <li>
-          <a href="login.html">Login</a>
+          <a class="a borda" href="simulador.html">Simulador</a>
+        </li>
+        <li class="a">|</li>
+        <li>
+          <a class="a borda" href="login.html">Login</a>
         </li>
         <li class="agora">
-          <a href="#">Cadastro</a>
+          <a class="a borda" href="#">Cadastro</a>
         </li>
+        <li>
+          <a class="a borda" href="bobia.html"
+            style="text-decoration: line-through; color:  rgb(204, 90, 86);">BoBIA</a>
+        </li><img src="./imgs/block.png" style="height: 1.5vh; width: auto; margin-top: 0.1vh; margin-left: -1.5vw;">
       </ul>
     </div>
   </div>
-  <!--header fim-->
+  <!-- fim desse compartimento -->
 
-  <div class="login">
+
+  <!--Corpo da página-->
+  <div class="corpo">
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
       </div>
     </div>
     <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
+      <div class="card">
+        <div class="card-imagem">
+
+        </div>
         <div class="formulario">
+          <h2>Bem-vindo!</h2>
           <div class="campo">
             <span>Código da empresa:</span>
             <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
@@ -86,23 +101,7 @@
       </div>
     </div>
   </div>
-
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <div class="conteudo">
-        <p>&copy; 2025 Gas-Busters<span class="marca-registrada">®</span>. Todos os direitos reservados.</p>
-        <div class="redes-sociais">
-          <a href="https://www.instagram.com/gasbusterss/" target="_blank"><img
-              src="../public/assets/imgs/instagram-icon.svg" alt="Instagram"></a>
-          <a href="https://www.linkedin.com/in/g%C3%A1s-busters-b100bb361/" target="_blank"><img
-              src="../public/assets/imgs/linkedIn-icon.svg" alt="LinkedIn"></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  <!--footer fim-->
+  <!--Fim do compartimento-->
 </body>
 
 </html>
