@@ -118,7 +118,7 @@
 
     function obterDadosGrafico(idPlataforma) {
 
-        alterarTitulo(idPlataforma)
+        //alterarTitulo(idPlataforma)
 
         /*if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
@@ -145,7 +145,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
+    function plotarGrafico(resposta, idPlataforma) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -156,7 +156,7 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
+                label: 'Concentração de Gás',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
@@ -172,7 +172,7 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
+            dados.datasets[0].data.push(registro.percentual_de_gas);
         }
 
         console.log('----------------------------------------------')
@@ -183,6 +183,8 @@
         console.log(dados.datasets)
         console.log('----------------------------------------------')
 
+        for (let j = 0; j < resposta.length; j++){}
+
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'line',
@@ -191,11 +193,11 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
+            document.getElementById(`myChartCanvas${idPlataforma}`),
             config
         );
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(idPlataforma, dados, myChart), 2000);
     }
 
 
@@ -204,28 +206,28 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart) {
+    function atualizarGrafico(idPlataforma, dados, myChart) {
 
 
 
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${idPlataforma}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    obterdados(idAquario);
-                    // alertar(novoRegistro, idAquario);
+                    //obterdados(idPlataforma);
+                    // alertar(novoRegistro, idPlataforma);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-                    avisoCaptura.innerHTML = ""
+                    /*let avisoCaptura = document.getElementById(`avisoCaptura${idPlataforma}`)
+                    avisoCaptura.innerHTML = ""*/
 
 
                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        //avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                         console.log("Horário do novo dado capturado:")
                         console.log(novoRegistro[0].momento_grafico)
                         console.log("Horário do último dado capturado:")
@@ -246,12 +248,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idPlataforma, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idPlataforma, dados, myChart), 2000);
             }
         })
             .catch(function (error) {

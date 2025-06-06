@@ -7,7 +7,7 @@ router.get("/ultimas/:idPlataforma", function (req, res) {
     medidaController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/tempo-real/:idAquario", function (req, res) {
+router.get("/tempo-real/:idPlataforma", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
