@@ -106,11 +106,19 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
+
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardar();
             return false;
-        }
+
+        }else if(emailVar == "n3@gmail.com" && senhaVar == "123321"){
+
+            window.location.href="./bobia.html"
+            setInterval(sumirMensagem, 5000)
+            finalizarAguardar();
+
+        }   
         else {
             setInterval(sumirMensagem, 5000)
         }
