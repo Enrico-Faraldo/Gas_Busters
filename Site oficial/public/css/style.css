@@ -9,6 +9,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Barlow', sans-serif;
+
+    overflow-x: hidden;
 }
 
 /*define o tamanho do cabeçalho, rodapé e banner, para que um não sobreponha o outro*/
@@ -17,41 +19,45 @@ body {
     --tamanho-header: 80px;
 }
 
-/*logo*/
-.container .logo {
-    height: 5vh;
-    width: 4vw;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom: 12px;
-    margin-left: -6vw;
+/*CSS do Título para adicionar a logo*/
+.titulo-gas-busters {
 
-}
+    margin-left: -3vh;
+    color: #ffff;
 
-
-.textoNavbar {
-    color: #ffffff;
-    margin-left: -45vw;
-    margin-top: -2vh;
     font-size: 3vh;
     cursor: pointer;
     transition: 0.3s;
-
 }
 
-.textoNavbar:hover {
+.titulo-gas-busters::before {
+    content: '';
+    display: inline-block;
+
+    background-image: url('../imgs/logo_sem_fundo.png');
+    background-position: center;
+    background-size: cover;
+
+    vertical-align: middle;
+
+    height: 4vh;
+    width: 5vh;
+}
+
+
+
+
+.titulo-gas-busters:hover {
     transform: scale(1.1);
-
 }
 
-/* abeçalho com uma largura de 100%, tendo sua animação de sumiço ao subir ao topo da página */
+/* Cabeçalho com uma largura de 100%, tendo sua animação de sumiço ao subir ao topo da página */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 9vh;
     z-index: 1000;
     /* fica na frente de outros elementos */
     transition: 0.5s;
@@ -90,6 +96,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    width: 90%;
 }
 
 /*itens do cabeçaalho para navegação*/
@@ -100,7 +107,6 @@ body {
     align-items: center;
     justify-content: space-between;
     list-style: none;
-    margin-right: -4vw;
 
 }
 
