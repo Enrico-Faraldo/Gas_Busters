@@ -155,14 +155,13 @@ body {
 }
 
 .card {
-    width: 70%;
+    width:85%;
     height: 90%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    border: 2px solid white;
 }
 
 .formulario {
@@ -174,24 +173,73 @@ body {
     justify-content: space-evenly;
     align-items: center;
 
-    border: 2px solid red;
+    background-color: #ffff;
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.formulario h2 {
+    margin: 0;
+
+    font-size: 35px;
+    color: rgb(204, 90, 86);
 }
 
 .formulario .campo {
-    width: 100%;
-    height: 20%;
+    width: 60%;
+    height: 10%;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.formulario span {
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #2e4e6e;
+}
+
+.formulario button {
+    width: 30%;
+    height: 4vh;
+
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+
+    background-color: #ef4444b0;
+    border: none;
+    border-radius: 5px;
+
+    transition: all 0.15s ease;
+}
+
+.formulario button:hover {
+    cursor: pointer;
+    background-color: #f00404;
+
+}
+
+.campo input {
+    width: 100%;
+    height: 50%;
 }
 
 .card-imagem {
     width: 50%;
     height: 100%;
 
-    background-color: white;
+    background-image: url('../imgs/imagem-cadastro.png');
+    filter: brightness(0.4);
+    background-size: cover;
+    background-position: left;
+
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 
