@@ -11,49 +11,54 @@ body {
     font-family: 'Barlow', sans-serif;
 }
 
-
-
 /*define o tamanho do cabeçalho, rodapé e banner, para que um não sobreponha o outro*/
 :root {
 
-    --tamanho-header : 80px;
-    --tamanho-footer: 90px;
-    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-header: 80px;
 }
-
-
-
 
 /*logo*/
 .container .logo {
-
-    height: 70px;
-    width: 180px;
+    height: 5vh;
+    width: 4vw;
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
     align-items: flex-start;
     margin-bottom: 12px;
-    margin-left: -70px;
+    margin-left: -6vw;
+
 }
 
 
+.textoNavbar {
+    color: #ffffff;
+    margin-left: -45vw;
+    margin-top: -2vh;
+    font-size: 3vh;
+    cursor: pointer;
+    transition: 0.3s;
 
+}
 
-/*cabeçalho com uma largura de 100%, tendo sua animação de sumiço ao subir ao topo da página */
+.textoNavbar:hover {
+    transform: scale(1.1);
+
+}
+
+/* abeçalho com uma largura de 100%, tendo sua animação de sumiço ao subir ao topo da página */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* fica na frente de outros elementos */
-    transition: 0.5s; /* efeito ao voltar para o topo */
+    z-index: 1000;
+    /* fica na frente de outros elementos */
+    transition: 0.5s;
+    /* efeito ao voltar para o topo */
+    box-shadow: 0 0.1vh 5vh rgb(0, 1, 5);
+
 }
-
-
-
-
-
 
 /*animação do header para aparecer ao descer a página*/
 .header.rolar {
@@ -61,13 +66,15 @@ body {
     height: var(--tamanho-header);
     background-color: rgb(105, 13, 10);
     padding: 10px 0;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transition: 0.5s; /* efeito ao sair do topo */
+    transition: 0.5s;
+    /* efeito ao sair do topo */
+    box-shadow: 0vh 0.5vh 5vh rgba(0, 1, 5, 0);
 }
 
+.header.rolar .a:hover {
+    color: rgb(204, 90, 86);
 
-
-
+}
 
 /*compartimento para os itens*/
 .container {
@@ -77,11 +84,6 @@ body {
     margin: auto;
 }
 
-
-
-
-
-
 /*compartimento do cabeçalho*/
 .header .container {
 
@@ -90,54 +92,46 @@ body {
     height: 100%;
 }
 
-
-
-
-
 /*itens do cabeçaalho para navegação*/
 .navbar {
 
-    width: 500px;
+    width: 550px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
+    margin-right: -4vw;
+
 }
-
-
 
 /*efeito para fazer a página subir ao ser clicado no navbar "Início"*/
-html{
+html {
 
     scroll-behavior: smooth;
-    
+
 }
-
-
 
 /*cor dos itens da navbar*/
-.navbar .a{
+.navbar .a {
     color: #ffffff;
-   
+
 }
-
-
-
-
-
 
 /*remover o sublinhado*/
-.header a{
-
+.header a {
     text-decoration: none;
+    transition: 0.3s;
 }
 
-
-
+.header a:hover {
+    color: rgb(204, 90, 86);
+}
 
 /*negrito no presente navbar*/
-.agora{
+.agora .a {
     font-weight: 800;
+    color: rgb(204, 90, 86);
+
 }
 
 
@@ -145,378 +139,400 @@ html{
 
 
 
-/*banner, com tamanho estabelecido entre o header e o footer*/
-.banner {
 
-    height: var(--tamanho-banner);
-    color: white;
-    background-image: url('../assets/imgs/petroquimica4.jpg');
-    background-size: cover;
-    background-attachment: fixed; /* efeito de deixar a imagem estática, mesmo com scroll */
-    background-position: center; /* deixando a imagem estática */
-}
-
-
-
-
-/*banner, só que com as especificações específicas do "Quem Somos"*/
-.banneri .containeri{
-
-    height: var(--tamanho-banner);
-    background-image: url('../assets/imgs/QuemSomosV5.png');
-    background-size: cover;
+.corpo1 {
     width: 100%;
-    width: 197.4vh;
-    margin-left: -190px;
+    height: 70vh;
+    background: linear-gradient(135deg, #1a2a3a 0%, #0d1620 100%);
+
+}
+
+.imageFundo img {
+    height: 50vh;
+    width: auto;
+    margin-top: 32vh;
+    margin-left: 57vw;
+    box-shadow: 2.5vh 2.5vh 1.9vh rgb(0, 2, 10);
+    animation: aparecerSumir 2s ease-in-out 1;
+
+}
+
+.boasVindas h1 {
+    width: 30vw;
+    height: auto;
+    margin-left: 12vw;
+    margin-top: -53vh;
+    font-size: 4vw;
+    color: rgb(204, 90, 86);
+    animation: aparecerSumir 2s ease-in-out 1;
+
+}
+
+.contexto {
+    width: 30vw;
+    height: auto;
+    color: #ffffffb2;
+    margin-left: 10vw;
+    font-size: 1.4vw;
+    animation: aparecerSumir 2s ease-in-out 1;
+    font-family: Times;
+    font-weight: bold;
+}
+
+.botoesMenu {
+    margin-left: 12vw;
+    margin-top: 7vh;
+    animation: aparecerSumir 2s ease-in-out 1;
+
+}
+
+.botaoServicos {
+    padding: 2vh;
+    background-color: rgb(204, 90, 86);
+    border: 0.3vh solid rgb(204, 90, 86);
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.5s;
+
+}
+
+.botaoEquipe {
+    padding: 2vh;
+    background-color: rgba(204, 90, 86, 0);
+    border: 0.3vh solid rgb(255, 255, 255);
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 1vw;
+    transition: 0.5s;
+
+}
+
+.botaoServicos:hover {
+    background-color: rgb(85, 18, 16);
+    border: 0.3vh solid rgb(85, 18, 16);
+    cursor: pointer;
+
+
 }
 
 
+.botaoEquipe:hover {
+    background-color: #fff;
+    color: #0d1620;
+    cursor: pointer;
 
 
-/*container, só que do "Quem Somos"*/
-.containeri {
+}
 
-    display: flex;
+
+@keyframes aparecerSumir {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+.corpo2 {
     width: 100%;
-    margin: auto;
-    filter: blur(100%);
+    height: 70vh;
+    background: linear-gradient(45deg, #1a2a3a 0%, #0d1620 100%);
+
+}
+
+.corpo3 {
+    width: 100%;
+    height: 50vh;
+    margin-bottom: -2vh;
+    background-color: rgb(231, 231, 231);
+
+}
+
+.minerTrabaiando img {
+    height: 17vh;
+    width: auto;
+    margin-top: 20vh;
+    margin-left: 70vw;
+
+}
+
+.minerCorrendo img {
+    height: 40vh;
+    width: auto;
+    margin-top: -100vh;
+    margin-bottom: -3vh;
+    animation: andar 3s linear
+        /*alternate - ida e volta*/
+        infinite
+}
+
+.alertaAlerta img {
+    height: 1.2vh;
+    width: auto;
+    margin-left: 76vw;
+    margin-top: -30vh;
+    margin-bottom: 5.5vh;
+    animation: sombraAlerta 01s linear alternate infinite
+}
+
+.textoAlerta h1 {
+    width: 50vw;
+    height: auto;
+    z-index: -1;
+    margin-top: -16vh;
+    margin-left: 11vw;
+    font-size: 2.5vw;
+    color: #0d162046;
+    font-family: cursive;
 }
 
 
 
-/*texto que está dentro da imagem de "Quem Somos"*/
-.social .container .corpo .banneri .containeri h3 {
+@keyframes andar {
+    0% {
+        margin-left: -5vw;
+        opacity: 0;
+    }
 
-    
-    flex-direction: row;
-    width: 43%;
-    margin-top: 320px;
-    font-size: 30px;
-    margin-left: 100px;
-    color: rgb(255, 255, 255);
-    font-weight: bolder;
+    10% {
+        margin-left: 5vw;
+        opacity: 1;
+    }
+
+    25% {
+        margin-left: 20vw;
+        opacity: 1;
+    }
+
+    50% {
+        margin-left: 40vw;
+        opacity: 1;
+    }
+
+    75% {
+        margin-left: 55vw;
+        opacity: 1;
+    }
+
+    100% {
+        margin-left: 79.5vw;
+        opacity: 0;
+    }
+
 }
 
 
 
-/*compartimento relacionado à imagem da plataforma*/
-.containere {
+@keyframes sombraAlerta {
+    0% {
+        filter: drop-shadow(0 0.2vh 0.2vh #00000059);
+    }
 
+    25% {
+        filter: drop-shadow(0 1vh 1vh #00000059) drop-shadow(0 0.7vh 0.2vh #b60606);
+    }
+
+    50% {
+        filter: drop-shadow(0 0.2vh 0.2vh #00000059);
+    }
+
+    100% {
+        filter: drop-shadow(0 1vh 1vh #00000059) drop-shadow(0 0.7vh 0.2vh #b60606);
+    }
+
+}
+
+.corpo4 {
+    width: 100%;
+    height: 160vh;
+    background: linear-gradient(180deg, #1a2a3a 0%, #0d1620 100%);
+
+}
+
+.eles h1{
+
+    color: #ffffff;
+    margin-left: 38vw;
+    margin-top: -120vh;
+    font-size: 3vw;
+
+}
+
+.corpo4 img {
+    margin-top: 40vh;
+
+}
+
+.imageDavi img {
+    height: 37vh;
+    width: auto;
+    margin-left: 4.5vw;
+    margin-bottom: -1.7vh;
+    border-radius: 20px;
+    box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
+}
+
+.imageMeki img {
+    height: 37vh;
+    width: auto;
+    margin-left: 40vw;
+    margin-top: -45vh;
+    border-radius: 20px;
+    box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
+
+}
+
+.imageRenan img {
+    height: 37vh;
+    width: auto;
+    margin-left: 76vw;
+    margin-top: -45vh;
+    margin-bottom: 0.7vh;
+    border-radius: 20px;
+    box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
+
+}
+
+.imageHenry img {
+    height: 37vh;
+    width: auto;
+    margin-left: 22vw;
+    margin-top: 20vh;
+    margin-bottom: -0.4vh;
+    border-radius: 20px;
+    box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
+
+}
+
+.imageEnrico img {
+    height: 37vh;
+    width: auto;
+    margin-left: 58vw;
+    margin-top: -45vh;
+    margin-bottom: 1vh;
+    border-radius: 20px;
+    box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
+
+}
+
+.imageHenry {
+    position: relative;
+    display: inline-block;
+}
+
+.imageHenry .card-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 37vh; /* cobre toda a imagem */
+    width: 18.2vw;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 20px;
     display: flex;
-    width: 80%;
-    margin: auto;
-    filter: blur(100%);
-}
-
-
-
-/*Aqui, a imagem da plataforma fica parada, mesmo dando um scroll com o mouse*/
-.bannere {
-
-    height: var(--tamanho-banner);
-    color: white;
-    background-image: url('../assets/imgs/plat_offshore.png');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    filter: brightness(90%);
-}
-
-
-
-
-
-/*o corpo dos itens, dentro do compartimento "container" e "social"*/
-.corpo{
-
-    height: var(--tamanho-banner);
-    color: white;
-    background-size: cover;
-}
-
-
-
-
-/* parte relacionada ao texto do início */
-.banner .container p {
-
-    width: 50%;
-    margin-top: 150px;
-    padding: 0;
-    font-size: 70px;
-    font-weight: bolder;
-}
-
-
-
-
-
-/* fonte e tamanho relacionados ao texto do início */
-.banner .container .coach {
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
-}
-
-
-
-
-
-/* cor de específicas palavras no início */
-.corCoach {
-
-    color: #f89b8f;
-    font-size: 50px;
-}
-
-
-
-/* largura e grossura das palavras */
-.banner .container span{
-
-    font-weight: 800;
-    width: 100px;
-}
-
-
-
-
-/* compartimento relacionado a nossos valores e serviços */
-.social .quem2 {
-
-    flex-direction: row;
-    margin-left: -100px;
-}
-
-
-
-
-
-/* sublinhado vermelho que fica abaixo do texto */
-.social .corpo .sublinhado2 {
-
-    flex-direction: row;
-    margin-left: 93px;
-    margin-top: -140px;
-}
-
-
-
-
-/* texto com o nome descritivo, abaixco da imagem */
-.social .corpo .quem2 h1 {
-
-    flex-direction: row;
-    color: black;
-    font-size: 50px;
-    margin-top: 150px;
-    margin-left: 100px;
-}
-
-
-
-/* compartimento relacionado a quem somos*/
-.social .quem {
-
-    flex-direction: row;
-    margin-left: -240px;
-}
-
-
-
-/* texto do compartimento relacionado a quem somos */
-.social .corpo .quem h1 {
-
-    flex-direction: row;
-    color: black;
-    font-size: 50px;
-    margin-top: 150px;
-    margin-left: 100px;
-}
-
-
-
-
-
-/* texto do compartimento relacionado aos serviços */
-.social .corpo .servicos h1 {
-
-    flex-direction: row;
-    color: black;
-    font-size: 50px;
-    margin-top: 150px;
-    margin-left: 590px;
-}
-
-
-
-
-
-/* Códigos relacionados a tabela de fale-conosco*/
-/* seu texto */
-h1 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5vh;
     text-align: center;
-    margin-bottom: 30px;
-    color: #333;
+    padding: 1vh;
+    box-sizing: border-box;
+    margin-left: 22vw;
+    margin-bottom: -10vh;
+    margin-top: 20vh;
+
+}
+
+
+.imageHenry:hover .card-overlay{
+    opacity: 1;
+
 }
 
 
 
 
-
-/* relacionados a todos os textos h3 dentro do compartimento corpo */
-.social .container .corpo h3 {
-
-    flex-direction: row;
-    justify-content: center;
-    color: black;
-    padding: auto;
-    margin-left: 130px;
-}
-
-
-
-/* relacionados a todos os textos h2 dentro do compartimento corpo */
-.social .container .corpo h2 {
-
-    flex-direction: row;
-    justify-content: center;
-    color: black;
-    padding: auto;
-}
-
-
-
-/* relacionbado ao sublinhado dentro do compartimento container */
-.social .container .sublinhado {
- 
-    flex-direction: row;
-    margin-top: -150px;
-    margin-left: 80px;     
-}
-
-
-
-
-/* compartimento primário para todos os compartimentos do site */
-.social {
-
-    background-color: #e5e5e5;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-
-/* compartimento das boxes (caixas) dos membros - Quem Somos? e nossos serviços */
-.social .container .boxes {
-
-    display: flex;
-    justify-content: space-between;
+.corpo5 {
     width: 100%;
-    padding: 30px 0;
+    height: 70vh;
+     background-color: rgb(231, 231, 231);
+
 }
 
+.imageUnion img {
+    height: 30vh;
+    width: auto;
+    margin-top: 20vh;
+    margin-left: 10vw;
+    display: block;
 
-/* caixa de 3 representantes - Davi, Meki e Renan */
-.box {
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
+.imageLupa img {
+    height: 30vh;
+    width: auto;
+    margin-top: -30vh;
+    margin-left: 38.5vw;
+    margin-bottom: 1.1vh;
 
-
-/* caixa de 2 representantes - Henry e Enrico */
-.box2 {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
+.imageRespect img {
+    height: 30vh;
+    width: auto;
+    margin-top: -31.3vh;
+    margin-left: 72vw;
+    margin-bottom: 5vh;
 
-
-/* imagem dessas caixas */
-.box img {
-   
-    width: 740px;
-    margin-left: -190px;
-}
-
-
-
-/* imagem dessas caixas */
-.box2 img {
-
-    width: 750px;
-}
-
-
-
-/* texto dessas caixas */
-.boxTexto {
-
-    max-width: 80%;
-    margin-left: -170px;
 }
 
 
 
 
-
-
-/* Boxes (caixas) dos Nossos Valores e Serviços */
-.social .containeri .boxes3 {
-
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    padding: 30px 0;
-    margin-top: -400px;
-    margin-left: 50px;
+.imageUnion {
+    position: relative;
+    overflow: hidden;
 }
 
 
-/* caixa dos valores e serviços */
-.box3 {
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: auto;
+    background: rgba(0, 76, 153, 0.9);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+.imageUnion:hover .card-overlay {
+    opacity: 1;
+}
+
+.corpo6 {
+    width: 100%;
+    height: 90vh;
+    background: linear-gradient(180deg, #1a2a3a 0%, #0d1620 100%);
+
 }
 
 
-
-/* texto dessas caixas */
-.boxTexto3 {
-
-    max-width: 50%;
-    margin-left: -20px;
-}
-
-
-
-/* imagem dessas caixas */
-.box3 img {
-   
-    margin-left: -25px;
-    background-size: 100px;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-
-
-/* classe das imagens relacionadas aos nossos valores e serviços */
- .valor{
-
-    height: 300px;   
-    width: 300px;
-}
-/* Fim desses códigos - das boxes */
 
 
 
@@ -527,21 +543,22 @@ h1 {
 /* do rodapé em diante*/
 /* rodapé */
 .footer {
-
     background-color: rgb(177, 94, 91);
-    height: var(--tamanho-footer);
+    height: 12vh;
     color: #fff;
     display: flex;
     font-size: 15px;
+
+    margin-bottom: -18vh;
+
 }
 
 
-
 /* compartimento do rodapé */
-.footer .container{
-
+.footer .container {
     justify-content: center;
     text-align: center;
+
 }
 
 
@@ -549,40 +566,46 @@ h1 {
 .rodape .conteudo {
     max-width: 800px;
     margin: 0 auto;
+
 }
-  
+
 
 /* símbolo de marca registrada ® */
-  .marca-registrada {
+.marca-registrada {
     font-size: 1em;
     vertical-align: super;
     margin-left: 2px;
 }
-  
+
 
 /* classe referente as redes sociais */
-  .redes-sociais {
+.redes-sociais {
     margin-top: 15px;
+
 }
-  
+
 
 /* link das redes sociais */
-  .redes-sociais a {
+.redes-sociais a {
     margin: 0 10px;
-    display: inline-block; /* ou seja, oculta o link de direcionamento */
+    display: inline-block;
+    /* ou seja, oculta o link de direcionamento */
+
 }
-  
+
 
 /* ícone (imagem) que representa a específica rede social*/
-  .redes-sociais img {
+.redes-sociais img {
     width: 24px;
     height: 24px;
-    filter: brightness(0) invert(1); /* deixa branco se o ícone for escuro */
-    transition: transform 0.3s ease;
-  }
-  
+    filter: brightness(0) invert(1);
+    /* deixa branco se o ícone for escuro */
+    transition: transform 0.3s;
 
-  /* define o tamanho em que a imagem crescerá quando o mouse passar por cima */
-  .redes-sociais a:hover img {
+}
+
+
+/* define o tamanho em que a imagem crescerá quando o mouse passar por cima */
+.redes-sociais a:hover img {
     transform: scale(1.2);
-  }
+}
