@@ -13,7 +13,8 @@ const HABILITAR_OPERACAO_INSERIR = true;
 // função para comunicação serial
 const serial = async (
     valoresSensorAnalogico,
-    valoresSensor2
+    valoresSensor2,
+    valoresSensor3
     
 ) => {
 
@@ -21,10 +22,10 @@ const serial = async (
     let poolBancoDados = mysql.createPool(
         {
             host: '127.0.0.1',
-            user: 'buster',
-            password: 'SPTech#2024',
+            user: 'aluno',
+            password: 'sptech',
             database: 'Gas_busters',
-            port: 3307
+            port: 3306
         }
     ).promise();
 
@@ -55,10 +56,12 @@ const serial = async (
        
         const sensorAnalogico = parseFloat(valores[0]);
         const sensor2 = sensorAnalogico * 1.5
+        const sensor3 = sensorAnalogico * 2
 
         // armazena os valores dos sensores nos arrays correspondentes
         valoresSensorAnalogico.push(sensorAnalogico);
         valoresSensor2.push(sensor2);
+        valoresSensor3.push(sensor3);
        
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
@@ -72,8 +75,13 @@ const serial = async (
                 'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 2)',
                 [sensor2]
             );
+            await poolBancoDados.execute(
+                'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 10)',
+                [sensor3]
+            );
             console.log("valores inseridos no banco: ", sensorAnalogico);
             console.log("valores inseridos no banco: ", sensor2);
+            console.log("valores inseridos no banco: ", sensor3);
 
         }
 
@@ -88,7 +96,8 @@ const serial = async (
 // função para criar e configurar o servidor web
 const servidor = (
     valoresSensorAnalogico,
-    valoresSensor2
+    valoresSensor2,
+    valoresSensor3
 
 ) => {
     const app = express();
@@ -107,7 +116,7 @@ const servidor = (
 
     // define os endpoints da API para cada tipo de sensor
     app.get('/sensores/analogico', (_, response) => {
-        return response.json(valoresSensorAnalogico), response.json(valoresSensor2);
+        return response.json(valoresSensorAnalogico), response.json(valoresSensor2), response.json(valoresSensor3);
     });
    
 }
@@ -117,17 +126,20 @@ const servidor = (
     // arrays para armazenar os valores dos sensores
     const valoresSensorAnalogico = [];
     const valoresSensor2 = [];
+    const valoresSensor3 = [];
     
 
     // inicia a comunicação serial
     await serial(
         valoresSensorAnalogico,
-        valoresSensor2
+        valoresSensor2,
+        valoresSensor3
     );
 
     // inicia o servidor web
     servidor(
         valoresSensorAnalogico,
-        valoresSensor2
+        valoresSensor2,
+        valoresSensor3
     );
 })();
