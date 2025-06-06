@@ -86,7 +86,7 @@ insert into Endereco (estado, cidade, bairro, logradouro, numero, cep)
                      ('Rio de Janeiro', 'Rio de Janeiro', 'Laranjeiras', 'Rua das Laranjeiras', '200', '22240-003'),
                      ('Bahia', 'Salvador', 'Barra', 'Av. Oceânica', '300', '40140-130'),
                      ('Paraná', 'Curitiba', 'Batel', 'Rua Buenos Aires', '400', '80240-120');
-                     
+					
 -- inserindo dados na tabela Empresa
 insert into Empresa (nome, cnpj, telefone, fkEndereco)
             values  ('Petrobras', '11111111000111', '2126354321', 1),
@@ -130,7 +130,8 @@ insert into Sensor (status, posicionamento, fkPlataforma)
                    ('Ativo', 'Área Externa', 5),
                    ('Inativo', 'Subsolo', 6),
                    ('Ativo', 'Laboratório', 7),
-                   ('Inativo', 'Estoque', 8);
+                   ('Inativo', 'Estoque', 8),
+                   ('Ativo', 'Setor A', 1);
                    
 -- inserindo dados na tabela Leitura
 insert into Leitura (fkSensor, quantidade, dataLeitura)
@@ -166,3 +167,5 @@ inner join Plataforma p on s.fkPlataforma = p.idPlataforma;
 -- selecionando os endereços de cada empresa:
 select en.estado as Estado, en.cidade as Cidade, en.bairro as Bairro, e.nome as Empresa from Empresa e
 inner join Endereco en on e.fkEndereco = en.idEndereco;
+
+select * from Usuario;
