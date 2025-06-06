@@ -123,6 +123,7 @@ insert into Plataforma (nome, status, localizacao, fkEmpresa)
 -- inserindo dados na tabela Sensor
 insert into Sensor (status, posicionamento, fkPlataforma)
             values ('Ativo', 'Setor A', 1),
+				   ('Ativo', 'Setor C', 1),
                    ('Inativo', 'Setor B', 2),
                    ('Ativo', 'Sala Técnica', 3),
                    ('Ativo', 'Sala de Controle', 4),

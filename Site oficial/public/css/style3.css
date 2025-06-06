@@ -316,3 +316,17 @@ body {
 
     background-color: white;
 }
+
+/*#opt_area {
+    height: 20vh;
+    width: 30vw;
+    position: absolute;
+    right: 5vw;
+    top: 10vw;
+
+}*/
+
+.selecao #opt_area {
+    height: 30%;
+    width: 80%;
+}
