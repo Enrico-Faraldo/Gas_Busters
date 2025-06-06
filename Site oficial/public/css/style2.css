@@ -1,308 +1,199 @@
-@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap');
+/* fontes importadas para a página */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 
+/*define características básicas do corpo da página*/
+body {
+    height: 100vh;
+    width: 100vw;
 
-:root {
-
-    --tamanho-header : 80px;
-    --tamanho-footer: 90px;
-    --tamanho-corpo: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-
-.corpo {
-
-    flex: 1
-
-}
-
-.loginHTML{
-
-    height: var(--tamanho-corpo);
-    background-size: cover;
-    display: flex;
-    flex-direction: row;
-    margin-left: 25vh;
-
-}
-
-.social{
-
-    flex: 1;
-    display: flex;
-    flex-direction: column
-
-}
-
-
-
-
-body{
     margin: 0;
     padding: 0;
     font-family: 'Barlow', sans-serif;
-    background-color: rgb(255, 255, 255);
+
+    overflow-x: hidden;
+}
+
+/*define o tamanho do cabeçalho, rodapé e banner, para que um não sobreponha o outro*/
+:root {
+
+    --tamanho-header: 80px;
+}
+
+/*CSS do Título para adicionar a logo*/
+.titulo-gas-busters {
+
+    margin-left: -3vh;
+    color: #ffff;
+
+    font-size: 3vh;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.titulo-gas-busters::before {
+    content: '';
+    display: inline-block;
+
+    background-image: url('../imgs/logo_sem_fundo.png');
+    background-position: center;
+    background-size: cover;
+
+    vertical-align: middle;
+
+    height: 4vh;
+    width: 5vh;
 }
 
 
 
-/* HEADER */
 
-.header{
-    
-    background-color: #660101F2 ;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    padding: 20px;
-    
+.titulo-gas-busters:hover {
+    transform: scale(1.1);
 }
 
-.container{
+/* Cabeçalho com uma largura de 100%, tendo sua animação de sumiço ao subir ao topo da página */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 9vh;
+    z-index: 1000;
+    /* fica na frente de outros elementos */
+    transition: 0.5s;
+    /* efeito ao voltar para o topo */
+    box-shadow: 0 0.1vh 5vh rgb(0, 1, 5);
+
+}
+
+/*animação do header para aparecer ao descer a página*/
+.header.rolar {
+
+    height: var(--tamanho-header);
+    background-color: rgb(105, 13, 10);
+    padding: 10px 0;
+    transition: 0.5s;
+    /* efeito ao sair do topo */
+    box-shadow: 0vh 0.5vh 5vh rgba(0, 1, 5, 0);
+}
+
+.header.rolar .a:hover {
+    color: rgb(204, 90, 86);
+
+}
+
+/*compartimento para os itens*/
+.container {
+
     display: flex;
     width: 80%;
     margin: auto;
 }
 
-.header .container{
-    margin: 0;
-    width: 90%;
+/*compartimento do cabeçalho*/
+.header .container {
+
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    width: 90%;
 }
 
-.navbar{
-    width: 300px;
+/*itens do cabeçaalho para navegação*/
+.navbar {
+
+    width: 550px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
-    color: #ffffff;
+
 }
 
-.header a{
+/*cor dos itens da navbar*/
+.navbar .a {
+    color: #ffffff;
+
+}
+
+/*remover o sublinhado*/
+.header a {
     text-decoration: none;
-    color: #ffffff;
+    transition: 0.3s;
 }
 
-.agora{
-    font-weight: 700;
+.header a:hover {
+    color: rgb(204, 90, 86);
 }
 
-/* FOOTER */
-.footer {
-
-    background-color: rgb(177, 94, 91);
-    height: var(--tamanho-footer);
-    color: #fff;
-    display: flex;
-    font-size: 15px;
-}
-
-.footer .container{
-
-    justify-content: center;
-    text-align: center;
-}
-
-.rodape .conteudo {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .marca-registrada {
-    font-size: 0.8em;
-    vertical-align: super;
-    margin-left: 2px;
-  }
-  
-  .redes-sociais {
-    margin-top: 15px;
-  }
-  
-  .redes-sociais a {
-    margin: 0 10px;
-    display: inline-block;
-  }
-  
-  .redes-sociais img {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1); /* deixa branco se o ícone for escuro */
-    transition: transform 0.3s ease;
-  }
-  
-  .redes-sociais a:hover img {
-    transform: scale(1.2);
-  }
-
-
-/* CADASTRO */
-.login .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    height: var(--tamanho-corpo);
-}
-
-.card-cadastro{
-    width: 600px;
-    margin: 88px;
-    background-color: #d1c6c6;
-    height: fit-content;
-    border-radius: 10px;
-    color: #660101;
-    padding: 10px 40px;
-    text-align: center;
-    border: 2px solid #660101;
-    
-}
-
-.campo{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    text-align: left;
-}
-
-.campo input{
-    border: solid #660101;
-    width: 100px;
-    border-radius: 10px;
-    text-align: center;
-    padding: 10px 250px;
-}
-
-.botao{
-    background-color: #660101 ;
-    color: #e5e5e5;
-    border: none;
-    margin-top: 5px;
-    border-radius: 10px;
-    padding: 10px 30px;
-}
-
-.botao:hover{
-    background-color: #880101AD;
-    color: #fff;
-    cursor: pointer;
-}
-
-/* LOGIN */
-
-.card-login{
-    width: 600px;
-    margin: 212px ;
-    background-color: #d1c6c6;
-    height: fit-content;
-    border-radius: 10px;
-    text-align: center;
-    color: #660101;
-    padding: 10px 40px;
-    border: 2px solid #660101;
-}
-
-.card-simulador{
-    width: 600px;
-    margin: 100px ;
-    background-color: #d1c6c6;
-    height: fit-content;
-    border-radius: 10px;
-    text-align: center;
-    color: #660101;
-    padding: 10px 40px;
-    border: 2px solid #660101;
-}
-/*DASHBOARD*/
-.dashboard {
-    background-color: #d1c6c6;
-    padding: 20px 20px;
-    min-height: 600px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.plataforma{
-    background-color: #d1c6c6; 
-    margin: 0;
-    padding: 20px 64px;
-    border: none;
-}
-
-.select {
-    background-color: #ffffff; 
-    margin: 0;
-    padding: 10px;
+/*negrito no presente navbar*/
+.agora .a {
     font-weight: 800;
-    border: 2px solid #660101;
-    border-radius: 10px;
-    color: #660101;
+    color: rgb(204, 90, 86);
+
 }
 
-.kpi {
-    background-color: #d1c6c6;
-    padding: 0px 64px;
-    min-height: 130px;
-    display: grid;
+/*Corpo das páginas Login/Cadastro*/
+.corpo {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
     justify-content: center;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    align-items: center;
+
+    background: linear-gradient(135deg, #1a2a3a 0%, #0d1620 100%);
 }
 
-.alerta {
-    background-color: white;
-    border: 2px solid #660101;
-    padding: 20px;
-    color: #660101; 
-    border-radius: 10px;
-}
-.grafico {
-    background-color: white;
-    border: 2px solid #660101;
-    border-radius: 10px;
-    padding: 20px;
-    flex: 1 1 45%;
-    max-width: 45%;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+.corpo .container {
+    height: 80%;
+    
+    justify-content: center;
+    align-items: center;
 }
 
-/*FORMULARIO DO SIMULADOR*/
-.formulario{
+.card {
+    width: 70%;
+    height: 90%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 2px solid white;
+}
+
+.formulario {
+    height: 100%;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    border: 2px solid red;
+}
+
+.formulario .campo {
+    width: 100%;
+    height: 20%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: left;
 }
-/*FOOTER DO SIMULADOR*/
-.footersimulador {
 
-    background-color: rgb(177, 94, 91);
-    height: var(--tamanho-footer);
-    color: #fff;
-    display: flex;
-    font-size: 15px;
-}
-.footersimulador .container{
+.card-imagem {
+    width: 50%;
+    height: 100%;
 
-    justify-content: center;
-    text-align: center;
+    background-color: white;
 }
+
 
 /*LOADING CARD*/
 .loading-div {
