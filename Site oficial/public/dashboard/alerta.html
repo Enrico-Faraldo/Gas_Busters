@@ -11,45 +11,49 @@
 </head>
 
 <body onload="validarSessao()">
+    <!-- Navbar do site -->
     <div class="header">
         <div class="container">
-            <img src="../public/assets/img/logo_com_nome.png" width="200px">
-            <h3>Olá, <span id="b_usuario"></span>!</h3>
+
+            <h3 onclick="window.location.href='./index.html'" class="titulo-gas-busters"><span
+                    style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
+
             <ul class="navbar">
-                <li>
-                    <a href="index.html">Menu</a>
-                </li>
-                <li>
-                    <a href="plataformas.html">Plataformas</a>
-                </li>
                 <li class="agora">
-                    <a href="#">Alertas</a>
+                    <a class="a borda" href="#">Alertas</a>
                 </li>
-                <li>|</li>
                 <li>
-                    <a href="">Suporte</a>
+                    <a class="a borda" href="plataformas.html">Plataformas</a>
                 </li>
-                <a onclick="limparSessao()">Sair</a>
+                <li>
+                    <a class="a borda">Suporte</a>
+                </li>
+                <li class="a">|</li>
+                <li>
+                    <a class="a borda">Sair</a>
+                </li>
             </ul>
         </div>
     </div>
+    <!-- fim desse compartimento -->
+
 
     <div class="corpo">
 
+
+        <div class="dados">
+            <div id="div_alerta_maximo" class="kpi">1</div>
+            <div id="div_alerta_semi_critico" class="kpi">2</div>
+            <div id="div_alertas_mensais" class="kpi">3</div>
+        </div>
+
         <div class="container">
 
-            <div id="div_alerta_principal">
+            <div id="div_alerta_principal" class="aviso">
                 <!--<h2>Tudo Certo!</h2>
                 <h4>Você não tem alertas</h4>-->
             </div>
 
-        </div>
-
-
-        <div class="dados">
-            <div id="div_alerta_maximo" class="filho">1</div>
-            <div id="div_alerta_semi_critico" class="filho">2</div>
-            <div id="div_alertas_mensais" class="filho">3</div>
         </div>
 
     </div>
@@ -177,7 +181,7 @@
                     }
 
                     if (!haRisco) {
-                       div_alerta_semi_critico.innerHTML = `<h2>Tudo Certo!</h2>
+                        div_alerta_semi_critico.innerHTML = `<h2>Tudo Certo!</h2>
                 <h4>Você não tem alertas</h4>`
                     }
 
