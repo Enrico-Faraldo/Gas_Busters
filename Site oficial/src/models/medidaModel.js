@@ -40,8 +40,29 @@ function buscarLocaisPorPlataforma(idPlataforma) {
     return database.executar(instrucaoSql);
 }
 
+function buscarMedidasCriticas(idEmpresa) {
+
+    var instrucaoSql = `SELECT p.nome nome_plataforma, posicionamento, quantidade percentual_de_gas, DATE_FORMAT(dataLeitura, '%H:%i:%s') hora_captura
+                    FROM Plataforma p
+                    INNER JOIN Sensor s ON s.fkPlataforma = p.idPlataforma
+                    INNER JOIN Leitura l ON s.idSensor = l.fkSensor
+                    WHERE p.fkEmpresa = ${idEmpresa};`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarLocaisPorPlataforma(idPlataforma) {
+
+    var instrucaoSql = `SELECT idSensor, posicionamento FROM Sensor WHERE fkPlataforma = ${idPlataforma};`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarLocaisPorPlataforma
+    buscarLocaisPorPlataforma,
+    buscarMedidasCriticas
 }

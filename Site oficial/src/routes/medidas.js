@@ -15,4 +15,8 @@ router.get("/locaisPorPlataforma/:idPlataforma", function (req, res) {
     medidaController.buscarLocaisPorPlataforma(req, res);
 });
 
+router.get("/medidasCriticas/:idEmpresa", function (req, res) {
+    medidaController.buscarMedidasCriticas(req, res);
+});
+
 module.exports = router;
