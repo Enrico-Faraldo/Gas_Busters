@@ -9,14 +9,14 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Barlow', sans-serif;
-
     overflow-x: hidden;
+
 }
 
 /*define o tamanho do cabeçalho, rodapé e banner, para que um não sobreponha o outro*/
 :root {
-
     --tamanho-header: 80px;
+
 }
 
 /*CSS do Título para adicionar a logo*/
@@ -366,7 +366,7 @@ html {
     flex-wrap: wrap;
     gap: 2vw;
     align-items: center;
-    margin-bottom: -20vh;
+    margin-bottom: -60vh;
 
 }
 
@@ -379,22 +379,17 @@ html {
 
 }
 
-.corpo4 img {
-    margin-top: 40vh;
-
-}
-
 .imageDavi img {
-    height: 37vh;
+    height: 35vh;
     width: auto;
     border-radius: 20px;
-    margin-left: 3.5vw;
+    margin-left: 2.4vw;
     box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
 
 }
 
 .imageMeki img {
-    height: 37vh;
+    height: 35vh;
     width: auto;
     border-radius: 20px;
     box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
@@ -402,7 +397,7 @@ html {
 }
 
 .imageRenan img {
-    height: 37vh;
+    height: 35vh;
     width: auto;
     border-radius: 20px;
     box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
@@ -410,7 +405,7 @@ html {
 }
 
 .imageHenry img {
-    height: 37vh;
+    height: 35vh;
     width: auto;
     border-radius: 20px;
     box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
@@ -419,7 +414,7 @@ html {
 }
 
 .imageEnrico img {
-    height: 37vh;
+    height: 35vh;
     width: auto;
     border-radius: 20px;
     box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
@@ -431,16 +426,17 @@ html {
 .imageMeki {
     position: relative;
     display: inline-block;
+
 }
 
 .imageMeki .card-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    height: 37vh;
+    height: 35vh;
     /* cobre toda a imagem */
-    width: 16.75vw;
-    background: rgba(0, 0, 0, 0.6);
+    width: 17.4vw;
+    background: rgba(0, 0, 0, 0.808);
     color: white;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -454,8 +450,7 @@ html {
     text-align: center;
     padding: 1vh;
     box-sizing: border-box;
-    margin-top: 40vh;
-    
+    margin-left: -0.08vh;
 
 }
 
@@ -467,19 +462,21 @@ html {
 
 
 
+
 .imageDavi {
     position: relative;
     display: inline-block;
+
 }
 
 .imageDavi .card-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    height: 37vh;
+    height: 35vh;
     /* cobre toda a imagem */
-    width: 16.7vw;
-    background: rgba(0, 0, 0, 0.6);
+    width: 17.3vw;
+    background: rgba(0, 0, 0, 0.808);
     color: white;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -493,8 +490,7 @@ html {
     text-align: center;
     padding: 1vh;
     box-sizing: border-box;
-    margin-top: 40vh;
-    margin-left: 3.5vw;
+    margin-left: 2.369vw;
 
 }
 
@@ -504,19 +500,22 @@ html {
 }
 
 
-.imageRenan{
+
+
+.imageRenan {
     position: relative;
     display: inline-block;
+
 }
 
 .imageRenan .card-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    height: 37vh;
+    height: 35vh;
     /* cobre toda a imagem */
-    width: 16.7vw;
-    background: rgba(0, 0, 0, 0.6);
+    width: 17.3vw;
+    background: rgba(0, 0, 0, 0.808);
     color: white;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -530,7 +529,7 @@ html {
     text-align: center;
     padding: 1vh;
     box-sizing: border-box;
-    margin-top: 40vh;
+    margin-left: -0.08vh;
 
 }
 
@@ -543,16 +542,17 @@ html {
 .imageEnrico {
     position: relative;
     display: inline-block;
+
 }
 
 .imageEnrico .card-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    height: 37vh;
+    height: 35vh;
     /* cobre toda a imagem */
-    width: 16.7vw;
-    background: rgba(0, 0, 0, 0.6);
+    width: 17.3vw;
+    background: rgba(0, 0, 0, 0.808);
     color: white;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -566,7 +566,7 @@ html {
     text-align: center;
     padding: 1vh;
     box-sizing: border-box;
-    margin-top: 40vh;
+    margin-left: -0.04vh;
 
 }
 
@@ -581,16 +581,17 @@ html {
 .imageHenry {
     position: relative;
     display: inline-block;
+
 }
 
 .imageHenry .card-overlay {
     position: absolute;
     top: 0;
     left: 0;
-    height: 37vh;
+    height: 35vh;
     /* cobre toda a imagem */
-    width: 16.7vw;
-    background: rgba(0, 0, 0, 0.6);
+    width: 17.3vw;
+    background: rgba(0, 0, 0, 0.808);
     color: white;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -604,7 +605,7 @@ html {
     text-align: center;
     padding: 1vh;
     box-sizing: border-box;
-    margin-top: 40vh;
+    margin-left: -0.08vh;
 
 }
 
@@ -620,66 +621,184 @@ html {
     width: 100%;
     height: 70vh;
     background-color: rgb(231, 231, 231);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15vw;
+    align-items: center;
 
 }
 
 .imageUnion img {
     height: 30vh;
     width: auto;
-    margin-top: 20vh;
-    margin-left: 10vw;
     display: block;
-
-
-}
-
-.imageLupa img {
-    height: 30vh;
-    width: auto;
-    margin-top: -30vh;
-    margin-left: 38.5vw;
-    margin-bottom: 1.1vh;
+    margin-left: 7.9vw;
 
 }
-
-.imageRespect img {
-    height: 30vh;
-    width: auto;
-    margin-top: -31.3vh;
-    margin-left: 72vw;
-    margin-bottom: 5vh;
-
-}
-
-
-
 
 .imageUnion {
     position: relative;
-    overflow: hidden;
+    display: inline-block;
+
 }
 
-
-.card-overlay {
+.imageUnion .card-overlay {
     position: absolute;
     top: 0;
     left: 0;
     height: 30vh;
-    width: auto;
-    background: rgba(0, 76, 153, 0.9);
+    width: 14.95vw;
+    background: rgba(105, 13, 10, 0.904);
     color: white;
     opacity: 0;
     transition: opacity 0.3s;
+    margin-left: 7.7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
 }
 
 .imageUnion:hover .card-overlay {
     opacity: 1;
+
 }
+
+
+
+
+
+
+
+.imageLupa img {
+    height: 30vh;
+    width: auto;
+
+}
+
+.imageLupa {
+    position: relative;
+    display: inline-block;
+
+}
+
+.imageLupa .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: 20.7vw;
+    background: rgba(105, 13, 10, 0.904);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.imageLupa:hover .card-overlay {
+    opacity: 1;
+
+}
+
+
+
+
+
+.imageRespect img {
+    height: 30vh;
+    width: auto;
+
+}
+
+.imageRespect {
+    position: relative;
+    display: inline-block;
+
+}
+
+.imageRespect .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: 18.1vw;
+    background: rgba(105, 13, 10, 0.904);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.imageRespect:hover .card-overlay {
+    opacity: 1;
+
+}
+
+
+
+
+
+
 
 .corpo6 {
     width: 100%;
     height: 90vh;
     background: linear-gradient(180deg, #1a2a3a 0%, #0d1620 100%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15vw;
+    align-items: center;
+
+}
+
+.imageSQL img {
+    height: 30vh;
+    width: 22vw;
+    margin-left: 4.4vw;
+    box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
+
+}
+
+
+.imageSQL {
+    position: relative;
+    display: inline-block;
+
+}
+
+.imageSQL .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: 22vw;
+    background: rgba(2, 0, 17, 0.904);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 4.4vw; 
+
+}
+
+.imageSQL:hover .card-overlay {
+    opacity: 1;
 
 }
 
@@ -688,13 +807,93 @@ html {
 
 
 
+
+.imageMQ2 img {
+    height: 30vh;
+    width: auto;
+    box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
+
+}
+
+
+.imageMQ2 {
+    position: relative;
+    display: inline-block;
+
+}
+
+.imageMQ2 .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: 14.77vw;
+    background: rgba(2, 0, 17, 0.904);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.imageMQ2:hover .card-overlay {
+    opacity: 1;
+
+}
+
+
+
+
+
+
+
+.imageAPI img {
+    height: 30vh;
+    width: auto;
+    box-shadow: 1.3vw 2.7vh 3vh rgba(0, 1, 5, 0.63);
+
+}
+
+
+.imageAPI {
+    position: relative;
+    display: inline-block;
+
+}
+
+.imageAPI .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: 22.27vw;
+    background: rgba(2, 0, 17, 0.904);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.imageAPI:hover .card-overlay {
+    opacity: 1;
+
+}
 
 
 
 /* do rodapé em diante*/
 /* rodapé */
 .footer {
-    background-color: rgb(177, 94, 91);
+    background-color: rgb(105, 13, 10);
     height: 12vh;
     color: #fff;
     display: flex;

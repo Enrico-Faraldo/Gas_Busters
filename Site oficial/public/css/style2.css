@@ -234,7 +234,7 @@ body {
     height: 100%;
 
     background-image: url('../imgs/imagem-cadastro.png');
-    filter: brightness(0.4);
+    filter: brightness(0.3);
     background-size: cover;
     background-position: left;
 
