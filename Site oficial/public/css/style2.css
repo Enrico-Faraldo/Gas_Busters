@@ -377,3 +377,73 @@ body {
     color: white;
 
 }
+
+/* do rodapé em diante*/
+/* rodapé */
+.footer {
+    background-color: rgb(105, 13, 10);
+    height: 12vh;
+    color: #fff;
+    display: flex;
+    font-size: 15px;
+
+    margin-bottom: -18vh;
+
+}
+
+
+/* compartimento do rodapé */
+.footer .container {
+    justify-content: center;
+    text-align: center;
+
+}
+
+
+/* itens inseridos no rodapé */
+.rodape .conteudo {
+    max-width: 800px;
+    margin: 0 auto;
+
+}
+
+
+/* símbolo de marca registrada ® */
+.marca-registrada {
+    font-size: 1em;
+    vertical-align: super;
+    margin-left: 2px;
+}
+
+
+/* classe referente as redes sociais */
+.redes-sociais {
+    margin-top: 15px;
+
+}
+
+
+/* link das redes sociais */
+.redes-sociais a {
+    margin: 0 10px;
+    display: inline-block;
+    /* ou seja, oculta o link de direcionamento */
+
+}
+
+
+/* ícone (imagem) que representa a específica rede social*/
+.redes-sociais img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    /* deixa branco se o ícone for escuro */
+    transition: transform 0.3s;
+
+}
+
+
+/* define o tamanho em que a imagem crescerá quando o mouse passar por cima */
+.redes-sociais a:hover img {
+    transform: scale(1.2);
+}
