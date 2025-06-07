@@ -261,6 +261,8 @@ html {
     height: 50vh;
     margin-bottom: -2vh;
     background-color: rgb(231, 231, 231);
+    overflow-y: hidden;
+
 
 }
 
@@ -277,7 +279,7 @@ html {
     width: auto;
     margin-top: -100vh;
     margin-bottom: -3vh;
-    animation: andar 3s linear
+    animation: andar 6s linear
         /*alternate - ida e volta*/
         infinite
 }
@@ -306,33 +308,34 @@ html {
 
 @keyframes andar {
     0% {
-        margin-left: -5vw;
-        opacity: 0;
-    }
-
-    10% {
-        margin-left: 5vw;
+        margin-left: -10vw;
         opacity: 1;
     }
 
-    25% {
+    20% {
         margin-left: 20vw;
         opacity: 1;
     }
 
-    50% {
+    40% {
         margin-left: 40vw;
         opacity: 1;
     }
 
-    75% {
-        margin-left: 55vw;
+    60% {
+        margin-left: 60vw;
+        opacity: 1;
+    }
+
+    80% {
+        margin-left: 80vw;
         opacity: 1;
     }
 
     100% {
-        margin-left: 79.5vw;
-        opacity: 0;
+        margin-left: 100vw;
+        opacity: 1;
+        
     }
 
 }

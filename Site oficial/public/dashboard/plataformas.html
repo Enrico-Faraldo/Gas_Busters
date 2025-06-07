@@ -14,8 +14,9 @@
 <body onload="validarSessao()">
     <div class="header">
         <div class="container">
-            <img src="../public/assets/img/logo_com_nome.png" width="200px">
-            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        <h3 onclick="window.location.href='./index.html'" class="titulo-gas-busters"><span
+          style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
+            <h3>Olá, <span id="b_usuario"></span>!</h3>
             <ul class="navbar">
                 <li class="agora">
                     <a href="#">Plataformas</a>
@@ -23,9 +24,9 @@
                 <li>
                     <a href="alerta.html">Alertas</a>
                 </li>
-                <li>|</li>
+                <li style="color: azure;">|</li>
                 <li>
-                    <a href="">Suporte</a>
+                    <a href="https://bustersgass.atlassian.net/servicedesk/customer/portal/1">Suporte</a>
                 </li>
                 <a onclick="limparSessao()">Sair</a>
             </ul>
@@ -60,6 +61,7 @@
     }
     console.log(sessionStorage);
 
+    document.getElementById('b_usuario').innerHTML = `${sessionStorage.NOME_USUARIO}`
 
 
     function buscarPlataformas() {
