@@ -14,7 +14,7 @@
     <div class="header">
         <div class="container">
             <img src="../public/assets/img/logo_com_nome.png" width="200px">
-            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            <h3>Olá, <span id="b_usuario"></span>!</h3>
             <ul class="navbar">
                 <li>
                     <a href="index.html">Menu</a>
@@ -38,7 +38,7 @@
 
         <div class="container">
 
-            <div id="div_alerta_principal" class="mensagem">
+            <div id="div_alerta_principal">
                 <!--<h2>Tudo Certo!</h2>
                 <h4>Você não tem alertas</h4>-->
             </div>
@@ -47,9 +47,9 @@
 
 
         <div class="dados">
-            <div class="filho">1</div>
-            <div class="filho">2</div>
-            <div class="filho">3</div>
+            <div id="div_alerta_maximo" class="filho">1</div>
+            <div id="div_alerta_semi_critico" class="filho">2</div>
+            <div id="div_alertas_mensais" class="filho">3</div>
         </div>
 
     </div>
@@ -57,7 +57,11 @@
 <script>
     window.onload = function () {
         verificarAlertasCriticos()
+        verificarAlertaMaximo()
+        verificarAlertasSemiCriticos()
+        verificarNumeroDeAlertasMensais()
     }
+    document.getElementById('b_usuario').innerHTML = `${sessionStorage.NOME_USUARIO}`
 
     function verificarAlertasCriticos() {
 
@@ -92,7 +96,9 @@
                     else {
                         let frase = ''
                         for (let j = 0; j < leiturasArriscadas.length; j++) {
-                            frase += `<h4>${leiturasArriscadas[j].nome_plataforma} - ${leiturasArriscadas[j].posicionamento} (${leiturasArriscadas[j].percentual_de_gas}%)</h4>`
+                            frase += `<div id="div_alerta_principal" class="mensagem">
+                                <h4>${leiturasArriscadas[j].nome_plataforma} - ${leiturasArriscadas[j].posicionamento} (${leiturasArriscadas[j].percentual_de_gas}%)</h4>
+                                </div>`
                         }
 
                         div_alerta_principal.innerHTML = `<h2>ALERTA!</h2>` + frase
@@ -106,6 +112,125 @@
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                 proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function verificarAlertaMaximo() {
+
+
+
+        fetch(`/medidas/medidaMaxima/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    //obterdados();
+                    // alertar(novoRegistro, );
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+
+                    div_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</h4>`
+
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function verificarAlertasSemiCriticos() {
+
+
+
+        fetch(`/medidas/medidasCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    //obterdados();
+                    // alertar(novoRegistro, );
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+
+                    let haRisco = false
+                    let leiturasArriscadas = []
+
+                    for (let i = 0; i < novoRegistro.length; i++) {
+
+                        if (Number(novoRegistro[i].percentual_de_gas) < 5 && Number(novoRegistro[i].percentual_de_gas) >= 4) {
+                            haRisco = true
+
+                            leiturasArriscadas.push(novoRegistro[i])
+                        }
+                    }
+
+                    if (!haRisco) {
+                       div_alerta_semi_critico.innerHTML = `<h2>Tudo Certo!</h2>
+                <h4>Você não tem alertas</h4>`
+                    }
+
+                    else {
+                        let frase = ''
+                        for (let j = 0; j < leiturasArriscadas.length; j++) {
+                            frase += `
+                                <h4>${leiturasArriscadas[j].nome_plataforma} - ${leiturasArriscadas[j].posicionamento} (${leiturasArriscadas[j].percentual_de_gas}%)</h4>
+                                `
+                        }
+
+                        div_alerta_semi_critico.innerHTML = `<h2>ALERTA!</h2>` + frase
+                    }
+
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function verificarNumeroDeAlertasMensais() {
+
+
+
+        fetch(`/medidas/alertasMensais/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    //obterdados();
+                    // alertar(novoRegistro, );
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+
+                    div_alertas_mensais.innerHTML = `Quantidades de alertas do mês passado até hoje: ${novoRegistro[0].numero_de_alertas}`
+
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => verificarNumeroDeAlertasMensais(), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => verificarNumeroDeAlertasMensais(), 2000);
             }
         })
             .catch(function (error) {

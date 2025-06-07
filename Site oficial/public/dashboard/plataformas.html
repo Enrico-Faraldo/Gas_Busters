@@ -15,7 +15,7 @@
     <div class="header">
         <div class="container">
             <img src="../public/assets/img/logo_com_nome.png" width="200px">
-            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            <h3>Olá, <span id="b_usuario"></span>!</h3>
             <ul class="navbar">
                 <li class="agora">
                     <a href="#">Plataformas</a>
@@ -60,6 +60,7 @@
     }
     console.log(sessionStorage);
 
+    document.getElementById('b_usuario').innerHTML = `${sessionStorage.NOME_USUARIO}`
 
 
     function buscarPlataformas() {
