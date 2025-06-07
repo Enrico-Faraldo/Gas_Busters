@@ -38,9 +38,9 @@
 
         <div class="container">
 
-            <div class="mensagem">
-                <h2>Tudo Certo!</h2>
-                <h4>Você não tem alertas</h4>
+            <div id="div_alerta_principal" class="mensagem">
+                <!--<h2>Tudo Certo!</h2>
+                <h4>Você não tem alertas</h4>-->
             </div>
 
         </div>
@@ -54,5 +54,65 @@
 
     </div>
 </body>
+<script>
+    window.onload = function () {
+        verificarAlertasCriticos()
+    }
+
+    function verificarAlertasCriticos() {
+
+
+
+        fetch(`/medidas/medidasCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    //obterdados();
+                    // alertar(novoRegistro, );
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+
+                    let haRisco = false
+                    let leiturasArriscadas = []
+
+                    for (let i = 0; i < novoRegistro.length; i++) {
+
+                        if (Number(novoRegistro[i].percentual_de_gas) >= 5) {
+                            haRisco = true
+
+                            leiturasArriscadas.push(novoRegistro[i])
+                        }
+                    }
+
+                    if (!haRisco) {
+                        div_alerta_principal.innerHTML = `<h2>Tudo Certo!</h2>
+                <h4>Você não tem alertas</h4>`
+                    }
+
+                    else {
+                        let frase = ''
+                        for (let j = 0; j < leiturasArriscadas.length; j++) {
+                            frase += `<h4>${leiturasArriscadas[j].nome_plataforma} - ${leiturasArriscadas[j].posicionamento} (${leiturasArriscadas[j].percentual_de_gas}%)</h4>`
+                        }
+
+                        div_alerta_principal.innerHTML = `<h2>ALERTA!</h2>` + frase
+                    }
+
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+</script>
 
 </html>
