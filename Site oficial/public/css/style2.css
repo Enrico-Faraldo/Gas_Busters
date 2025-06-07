@@ -141,6 +141,7 @@ body {
     width: 100%;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -149,13 +150,13 @@ body {
 
 .corpo .container {
     height: 80%;
-    
+
     justify-content: center;
     align-items: center;
 }
 
 .card {
-    width:85%;
+    width: 85%;
     height: 90%;
 
     display: flex;
@@ -204,7 +205,7 @@ body {
 }
 
 .formulario button {
-    width: 30%;
+    width: 20%;
     height: 4vh;
 
     color: white;
@@ -222,6 +223,22 @@ body {
     cursor: pointer;
     background-color: #f00404;
 
+}
+
+.login {
+    height: 50%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login .campo {
+    height: 20%;
+
+    margin: 15px;
 }
 
 .campo input {
@@ -245,40 +262,118 @@ body {
 
 /*LOADING CARD*/
 .loading-div {
-  width: 50px;
-  display: none;
+    width: 50px;
+    display: none;
 }
 
 .loading-div img {
-  height: 50px;
-  width: 50px;
+    height: 50px;
+    width: 50px;
 }
 
 #div_erros_login {
-  display: none
+    display: none
 }
 
 
 
 /*CARDS DE ERRO*/
-.alerta_erro{
-  display: flex;
-  justify-content: flex-end;
+.alerta_erro {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .card_erro {
-  display: none;
-  background-color: #fff;
-  color: black;
-  width: 230px;
-  position: fixed;
-  border-radius: 4px;
-  border: #ED145B 3px solid;
-  padding: 10px;
-  margin-right: 10%;
+    display: none;
+    background-color: #fff;
+    color: black;
+    width: 230px;
+    position: fixed;
+    border-radius: 4px;
+    border: #ED145B 3px solid;
+    padding: 10px;
+    margin-right: 10%;
 }
 
-.card_erro #mensagem_erro{
-  font-weight: 500;
-  font-size: 20px;
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+/*Página do Simulador*/
+.simulador {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.card-simulador {
+    height: 60%;
+    width: 45%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+
+    background-color: #ffff;
+}
+
+.card-simulador h2 {
+    font-size: 30px;
+    color: rgb(204, 90, 86);
+}
+
+.card-simulador h3 {
+    color: #2e4e6e;
+}
+
+.card-simulador .container {
+    height: 100%;
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-simulador .formulario {
+    width: 80%;
+    height: 90%;
+
+    justify-content: space-between;
+}
+
+.card-simulador .campo {
+    width: 90%;
+    height: 20%;
+
+}
+
+.resultado-simulador {  
+    width: 30%;
+    height: fit-content;
+
+    max-height: 70%;
+    overflow: auto;
+    overflow-wrap: break-word;
+    
+    display: none;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: linear-gradient(135deg, #1d2f41 0%, #101922 100%);
+    color: white;
+
 }

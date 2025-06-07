@@ -16,72 +16,71 @@
 </head>
 
 <body>
-    <!--header inicio-->
+    <!-- Navbar do site -->
     <div class="header">
         <div class="container">
-            <img src="../public/assets/imgs/logo_com_nome.png" width="200px">
+
+            <h3 onclick="window.location.href='./index.html'" class="titulo-gas-busters"><span
+                    style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
+
             <ul class="navbar">
-                <li><a href="index.html">Menu</a></li>
-                <li class="agora"><a href="#">Simulador</a></li>
-                <li>|</li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li>
+                    <a class="a borda" href="index.html">Início</a>
+                </li>
+                <li>
+                    <a class="a borda" href="https://bustersgass.atlassian.net/servicedesk/customer/portal/1">Fale
+                        Conosco</a>
+                </li>
+                <li class="agora">
+                    <a class="a borda" href="#">Simulador</a>
+                </li>
+                <li class="a">|</li>
+                <li>
+                    <a class="a borda" href="login.html">Login</a>
+                </li>
+                <li>
+                    <a class="a borda" href="cadastro.html">Cadastro</a>
+                </li>
+                <li>
+                    <a class="a borda" href="bobia.html"
+                        style="text-decoration: line-through; color:  rgb(204, 90, 86);">BoBIA</a>
+                </li><img src="./imgs/block.png"
+                    style="height: 1.5vh; width: auto; margin-top: 0.1vh; margin-left: -1.5vw;">
             </ul>
         </div>
     </div>
-    <!--header fim-->
+    <!-- fim desse compartimento -->
 
-    <div class="social">
-        <div class="corpo">
-            <div class="login">
-                <div class="container" style="display: flex; gap: 30px;">
-
-                    <div class="card-simulador borda" style="width: 60%;">
-                        <h2>Simulador Financeiro</h2>
-                        <div class="formulario">
-                            <div class="campo">
-                                <h3>Quantas plataformas sua empresa possui?</h3>
-                                <input type="number" id="ipt_plataformas">
-                            </div>
-                            <div class="campo">
-                                <h3>Qual o valor médio de uma plataforma (em R$)?</h3>
-                                <input type="number" id="ipt_valor">
-                            </div>
-                            <div class="campo">
-                                <h3>Por quantos meses o sistema será utilizado?</h3>
-                                <input type="number" id="ipt_meses">
-                            </div>
-                            <button onclick="calcular()" class="botao">Calcular</button>
-                            <div id="erro" class="erro"></div>
-                            <div id="resultado"
-                                style="text-align: center; padding: 10px; background-color: #f0f0f0; border-radius: 10px;">
-                            </div>
+    <div class="corpo">
+        <div class="simulador">
+            <div class="card-simulador">
+                <div class="container">
+                    <h2>Simulador Financeiro</h2>
+                    <div class="formulario">
+                        <div class="campo">
+                            <h3>Quantas plataformas sua empresa possui?</h3>
+                            <input type="number" id="ipt_plataformas">
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-        <!--footer inicio-->
-        <div class="footer">
-            <div class="container">
-                <div class="conteudo">
-                    <p>&copy; 2025 Gas-Busters<span class="marca-registrada">®</span>. Todos os direitos reservados.</p>
-                    <div class="redes-sociais">
-                        <a href="https://www.instagram.com/gasbusterss/" target="_blank"><img
-                                src="../public/assets/imgs/instagram-icon.svg" alt="Instagram"></a>
-                        <a href="https://www.linkedin.com/in/g%C3%A1s-busters-b100bb361/" target="_blank"><img
-                                src="../public/assets/imgs/linkedIn-icon.svg" alt="LinkedIn"></a>
+                        <div class="campo">
+                            <h3>Qual o valor médio de uma plataforma (em R$)?</h3>
+                            <input type="number" id="ipt_valor">
+                        </div>
+                        <div class="campo">
+                            <h3>Por quantos meses o sistema será utilizado?</h3>
+                            <input type="number" id="ipt_meses">
+                        </div>
+                        <button onclick="calcular()" class="botao">Calcular</button>
+                        <div id="erro" class="erro"></div>
                     </div>
                 </div>
+
             </div>
+
+            <div id="resultado" class="resultado-simulador"></div>
+
         </div>
+
     </div>
-
-    <!--footer fim-->
 
     <script>
 
@@ -130,6 +129,7 @@
 
                 // exibe o resultado na tela, com css aplicado dentro da própria tag
                 // além disso, foi usado uma função para converter os números para real brasileiro para facilitar a leitura
+                resultado.style.display = "block";
                 resultado.innerHTML = `
             <p style="font-size: 25px">Com ${plataformas} plataformas no valor médio de ${valorPlataforma.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} cada, sua empresa <strong>evita</strong> em média <span class="valorGasto" style="color: green"><u>${economiaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</u></span> em prejuízos ao longo de ${meses} meses somando a economia de explosões + gás.</p>
             <h2>Projeção de economia</h2>
