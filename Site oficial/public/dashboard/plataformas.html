@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gas-Busters | Plataformas</title>
 
-    <link rel="stylesheet" href="../css/style3.css">
+    <link rel="stylesheet" href="../css/stylePlat.css">
 
     <script src="../js/sessao.js"></script>
 </head>
@@ -14,9 +14,8 @@
 <body onload="validarSessao()">
     <div class="header">
         <div class="container">
-        <h3 onclick="window.location.href='./index.html'" class="titulo-gas-busters"><span
-          style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
-            <h3>Olá, <span id="b_usuario"></span>!</h3>
+            <h3 onclick="window.location.href='../index.html'" class="titulo-gas-busters"><span
+                    style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
             <ul class="navbar">
                 <li class="agora">
                     <a href="#">Plataformas</a>
@@ -24,11 +23,11 @@
                 <li>
                     <a href="alerta.html">Alertas</a>
                 </li>
-                <li style="color: azure;">|</li>
+                <li>|</li>
                 <li>
                     <a href="https://bustersgass.atlassian.net/servicedesk/customer/portal/1">Suporte</a>
                 </li>
-                <a onclick="limparSessao()">Sair</a>
+                <a class="a borda" onclick="window.location.href='../index.html'" onclick="limparSessao()">Sair</a>
             </ul>
         </div>
     </div>
@@ -37,20 +36,31 @@
         <div class="banner">
             <h1>Gerencie e monitore suas <span>plataformas</span></h1>
         </div>
+    
 
+    <div class="corpo1">
+        <div class="quadroDash">
 
-        <div class="seletores">
-            <div class="filtro">
-                <select name="" id="filtrar">
-                    <option value="#">Filtrar por</option>
-                </select>
-            </div>
-            <div id="div_cards" class="cards"></div>
+        <div class="olaUser">
+            <h3>Olá, <span id="b_usuario"></span>!</h3>
         </div>
 
+        <div class="filtragem">
+        <select name="" id="filtrar">
+            <option value="#">Filtrar por</option>
+        </select>
+        </div>
+
+        <div id="div_cards" class="cards"></div>
+
+        </div>
+            <button onclick="visualizarPlataforma()">Visualizar</button>
+    </div>
     </div>
 
-    <button onclick="visualizarPlataforma()">Visualizar</button>
+
+
+
 
 </body>
 
