@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gas-Busters | Dashboard</title>
 
-    <link rel="stylesheet" href="../css/style3.css">
+    <link rel="stylesheet" href="../css/stylePlat.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/sessao.js"></script>
@@ -15,9 +15,12 @@
 <body>
     <div class="header">
         <div class="container">
-            <img src="../public/assets/img/logo_com_nome.png" width="200px">
-            <h3>Olá, <span id="b_usuario"></span>!</h3>
+            <h3 onclick="window.location.href='../index.html'" class="titulo-gas-busters"><span
+                    style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
             <ul class="navbar">
+                <li>
+                    <h2 style="margin-left: -28vw;">Olá, <span id="b_usuario" style="color: #f89b8f;"></span>!</h2>
+                </li>
                 <li>
                     <a href="plataformas.html">Plataformas</a>
                 </li>
@@ -26,9 +29,9 @@
                 </li>
                 <li>|</li>
                 <li>
-                    <a href="">Suporte</a>
+                    <a href="https://bustersgass.atlassian.net/servicedesk/customer/portal/1">Suporte</a>
                 </li>
-                <a onclick="limparSessao()">Sair</a>
+                <a class="a borda" onclick="window.location.href='../index.html'" onclick="limparSessao()">Sair</a>
             </ul>
         </div>
     </div>
@@ -40,7 +43,7 @@
 
         <div class="centro">
             <div class="selecao">
-                <h3>Filtrar </h3>
+                <h3>Filtrar</h3>
                 <select name="area" id="opt_area">
                     <!--<option value=""></option>-->
                 </select>
@@ -87,7 +90,7 @@
     console.log(sessionStorage);
 
 
-    document.getElementById('h1_plataforma').innerHTML = `Plataforma ${nome}`
+    document.getElementById('h1_plataforma').innerHTML = `Plataforma <span style="color: #f89b8f;">${nome}</span>`
     document.getElementById('b_usuario').innerHTML = `${sessionStorage.NOME_USUARIO}`
 
     /*new Chart(ctx, {
