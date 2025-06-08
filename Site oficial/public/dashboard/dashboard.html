@@ -61,6 +61,10 @@
             </div>
         </div>
 
+        <div class="grafico">
+            <canvas id="myChartBarra"></canvas>
+        </div>
+
     </div>
 
 
@@ -70,15 +74,16 @@
     window.onload = async function () {
         const urlParams = new URLSearchParams(window.location.search);
         const idPlataforma = urlParams.get('idPlataforma');
-        //await obterDadosGrafico(idPlataforma)
         await obterLocalidades(idPlataforma)
         /*document.getElementById('btn_filtrar').onclick = function () {
             obterDadosGrafico(idPlataforma);
         };*/
+        await obterDadosGraficoUltimosMeses(idPlataforma)
 
     }
     let graficoExiste = false;
     let myChart = null;
+    let myChartBarra = null;
 
     const urlParams = new URLSearchParams(window.location.search);
     const idPlataforma = urlParams.get('idPlataforma');
@@ -194,10 +199,10 @@
         /*if (graficoExiste){
             myChart.destroy();
         }*/
-       
 
-        
-        
+
+
+
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
@@ -207,7 +212,7 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Concentração de Gás',
+                label: 'Concentração de Gás do sensor em porcentagem',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
@@ -243,7 +248,7 @@
         };
 
         // Adicionando gráfico criado em div na tela
-        if (myChart){
+        if (myChart) {
             myChart.destroy()
         }
 
@@ -319,9 +324,7 @@
 
 
 
-    function obterDadosGraficoUltimosMeses() {
-
-        let idSensor = opt_area.value
+    function obterDadosGraficoUltimosMeses(idPlataforma) {
 
         //alterarTitulo(idSensor)
 
@@ -329,13 +332,13 @@
             clearTimeout(proximaAtualizacao);
         }*/
 
-        fetch(`/medidas/ultimas/${idSensor}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimasMensais/${idPlataforma}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGraficoSensor(resposta, idSensor);
+                    plotarGraficoSensorUltimosMeses(resposta, idPlataforma);
 
                 });
             } else {
@@ -347,18 +350,18 @@
             });
     }
 
-    // Esta função *plotarGraficoSensor* usa os dados capturados na função anterior para criar o gráfico
+    // Esta função *plotarGraficoSensorUltimosMeses* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGraficoSensor* também invoca a função *atualizarGrafico*
-    function plotarGraficoSensor(resposta, idSensor) {
+    // A função *plotarGraficoSensorUltimosMeses* também invoca a função *atualizarGrafico*
+    function plotarGraficoSensorUltimosMeses(resposta, idPlataforma) {
 
         /*if (graficoExiste){
             myChart.destroy();
         }*/
-       
 
-        
-        
+
+
+
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
@@ -368,11 +371,22 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Concentração de Gás',
+                label: 'Maior leitura de sensor nos últimos 12 meses em porcentagem',
                 data: [],
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                backgroundColor: [
+                    "rgb(31, 119, 180)",   
+                    "rgb(255, 127, 14)",   
+                    "rgb(44, 160, 44)",    
+                    "rgb(214, 39, 40)",    
+                    "rgb(148, 103, 189)",  
+                    "rgb(140, 86, 75)",    
+                    "rgb(227, 119, 194)",  
+                    "rgb(127, 127, 127)",  
+                    "rgb(188, 189, 34)",   
+                    "rgb(23, 190, 207)",   
+                    "rgb(247, 129, 191)",  
+                    "rgb(166, 86, 40)"
+                ],
             }]
         };
 
@@ -383,8 +397,8 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.percentual_de_gas);
+            labels.push(registro.nome_mes);
+            dados.datasets[0].data.push(registro.maior_leitura);
         }
 
         console.log('----------------------------------------------')
@@ -399,56 +413,52 @@
 
         // Criando estrutura para plotar gráfico - config
         const config = {
-            type: 'line',
+            type: 'bar',
             data: dados,
         };
 
         // Adicionando gráfico criado em div na tela
-        if (myChart){
-            myChart.destroy()
+        if (myChartBarra) {
+            myChartBarra.destroy()
         }
 
-        myChart = new Chart(
-            document.getElementById(`myChart`),
+        myChartBarra = new Chart(
+            document.getElementById(`myChartBarra`),
             config
         );
         //graficoExiste = true;
 
-        setTimeout(() => atualizarGraficoSensor(idSensor, dados, myChart), 2000);
+        //setTimeout(() => atualizarGraficoSensorUltimosMeses(idPlataforma, dados, myChart), 2000);
     }
 
 
-    // Esta função *atualizarGraficoSensor* atualiza o gráfico que foi renderizado na página,
+    // Esta função *atualizarGraficoSensorUltimosMeses* atualiza o gráfico que foi renderizado na página,
     // buscando a última medida inserida em tabela contendo as capturas, 
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGraficoSensor(idSensor, dados, myChart) {
+    /*function atualizarGraficoSensorUltimosMeses(idPlataforma, dados, myChart) {
 
 
 
-        fetch(`/medidas/tempo-real/${idSensor}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${idPlataforma}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    //obterdados(idSensor);
-                    // alertar(novoRegistro, idSensor);
+                    //obterdados(idPlataforma);
+                    // alertar(novoRegistro, idPlataforma);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    /*let avisoCaptura = document.getElementById(`avisoCaptura${idSensor}`)
-                    avisoCaptura.innerHTML = ""*/
+                    //let avisoCaptura = document.getElementById(`avisoCaptura${idPlataforma}`)
+                    //avisoCaptura.innerHTML = ""
 
 
                     if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
                         console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                         //avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
                         console.log("---------------------------------------------------------------")
                     } else {
                         // tirando e colocando valores no gráfico
@@ -462,19 +472,19 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGraficoSensor(idSensor, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGraficoSensorUltimosMeses(idPlataforma, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGraficoSensor(idSensor, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoSensorUltimosMeses(idPlataforma, dados, myChart), 2000);
             }
         })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
-    }
+    }*/
 </script>
 
 </html>
