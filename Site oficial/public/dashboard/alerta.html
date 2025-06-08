@@ -48,7 +48,7 @@
             </div>
             <div class="kpi_container">
                 <h3>Sensores marcando entre 4% e 5% de concentração de gás nos últimos 30 minutos</h3>
-                <div id="div_alerta_semi_critico" class="kpi"></div>
+                <div id="div_alerta_semi_critico" class="kpi_overflow"></div>
             </div>
             <div class="kpi_container">
                 <h3>Número de alertas (acima de 5%) emitidos nos últimos 30 dias</h3>
@@ -192,7 +192,7 @@
 
 
                     if (!haRisco) {
-                        div_alerta_semi_critico.innerHTML = `<h2>Tudo Certo!</h2>
+                        div_alerta_semi_critico.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
                 <h4>Você não tem alertas</h4>`
                     }
 
@@ -202,11 +202,11 @@
                             console.log(j);
 
                             frase += `
-                                <h4>${j}. ${leiturasArriscadas[j].nome_plataforma} - ${leiturasArriscadas[j].posicionamento} (${leiturasArriscadas[j].percentual_de_gas}%)</h4>
+                                <h4>${j + 1}. ${leiturasArriscadas[j].nome_plataforma} - ${leiturasArriscadas[j].posicionamento} (${leiturasArriscadas[j].percentual_de_gas}%)</h4>
                                 `
                         }
 
-                        div_alerta_semi_critico.innerHTML = `<h2>ALERTA!</h2>` + frase
+                        div_alerta_semi_critico.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase
                     }
 
 
