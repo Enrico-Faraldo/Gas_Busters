@@ -27,4 +27,12 @@ router.get("/alertasMensais/:idEmpresa", function (req, res) {
     medidaController.buscarAlertasMensais(req, res);
 });
 
+router.get("/ultimasMensais/:idPlataforma", function (req, res) {
+    medidaController.buscarUltimasMedidasMensais(req, res);
+});
+
+router.get("/tempo-real-mensal/:idPlataforma", function (req, res) {
+    medidaController.buscarMedidasEmTempoRealMensal(req, res);
+})
+
 module.exports = router;

@@ -89,11 +89,49 @@ WHERE p.fkEmpresa = ${idEmpresa} AND l.quantidade >= 5 AND(
     return database.executar(instrucaoSql);
 }
 
+function buscarUltimasMedidasMensais(idPlataforma) {
+
+    var instrucaoSql = `SELECT 
+    DATE_FORMAT(l.dataLeitura, '%Y-%m') AS ano_mes,
+    DATE_FORMAT(l.dataLeitura, '%M') AS nome_mes,
+    MAX(l.quantidade) AS maior_leitura
+FROM Leitura l
+INNER JOIN Sensor s ON l.fkSensor = s.idSensor
+INNER JOIN Plataforma p ON s.fkPlataforma = p.idPlataforma
+WHERE p.idPlataforma = ${idPlataforma}
+  AND l.dataLeitura >= DATE_SUB(CURRENT_DATE(), INTERVAL 12 MONTH)
+GROUP BY ano_mes, nome_mes
+ORDER BY ano_mes DESC;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasEmTempoRealMensal(idPlataforma) {
+
+    var instrucaoSql = `SELECT 
+    DATE_FORMAT(l.dataLeitura, '%Y-%m') AS ano_mes,
+    DATE_FORMAT(l.dataLeitura, '%M') AS nome_mes,
+    MAX(l.quantidade) AS maior_leitura
+FROM Leitura l
+INNER JOIN Sensor s ON l.fkSensor = s.idSensor
+INNER JOIN Plataforma p ON s.fkPlataforma = p.idPlataforma
+WHERE p.idPlataforma = ${idPlataforma}
+  AND l.dataLeitura >= DATE_SUB(CURRENT_DATE(), INTERVAL 12 MONTH)
+GROUP BY ano_mes, nome_mes
+ORDER BY ano_mes DESC;;`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarLocaisPorPlataforma,
     buscarMedidasCriticas,
     buscarMedidaMaxima,
-    buscarAlertasMensais
+    buscarAlertasMensais,
+    buscarUltimasMedidasMensais,
+    buscarMedidasEmTempoRealMensal
 }

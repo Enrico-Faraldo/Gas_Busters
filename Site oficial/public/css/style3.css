@@ -173,6 +173,7 @@ body {
 .kpi_container h3{
     color: rgb(204, 90, 86);
     font-size: 28px;
+    text-align: center;
 }
 
 .kpi_container h4{

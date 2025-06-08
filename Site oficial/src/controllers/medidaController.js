@@ -117,12 +117,53 @@ function buscarAlertasMensais(req, res) {
     });
 }
 
+function buscarUltimasMedidasMensais(req, res) {
+
+    var idPlataforma = req.params.idPlataforma;
+
+    console.log(`Recuperando as ultimas medidas mensais`);
+
+    medidaModel.buscarUltimasMedidasMensais(idPlataforma).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas mensais.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+function buscarMedidasEmTempoRealMensal(req, res) {
+
+    var idPlataforma = req.params.idPlataforma;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.buscarMedidasEmTempoRealMensal(idPlataforma).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas mensais em tempo real.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     buscarLocaisPorPlataforma,
     buscarMedidasCriticas,
     buscarMedidaMaxima,
-    buscarAlertasMensais
+    buscarAlertasMensais,
+    buscarUltimasMedidasMensais,
+    buscarMedidasEmTempoRealMensal
 
 }
