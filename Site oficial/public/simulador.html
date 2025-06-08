@@ -82,46 +82,6 @@
 
     </div>
 
-    <!-- compartimento referente ao rodapé -->
-    <div class="footer">
-        <div class="container">
-
-
-
-            <div class="conteudo">
-                <p>&copy; 2025 Gas-Busters<span class="marca-registrada">®</span>. Todos os direitos reservados.</p>
-                <div class="redes-sociais">
-                    <a href="https://www.instagram.com/gasbusterss/" target="_blank"><img
-                            src="./imgs/instagram-icon.svg" alt="Instagram"></a>
-                    <a href="https://www.linkedin.com/in/g%C3%A1s-busters-b100bb361/" target="_blank"><img
-                            src="./imgs/linkedIn-icon.svg" alt="LinkedIn"></a>
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-    <!-- fim desse compartimento -->
-
-    <!-- efeito para a animação de desaparecimento e aparecimento do cabeçlho -->
-    <script>
-
-
-        window.addEventListener('scroll', function () {         // é um ouvidor que fica sempre atento ao evento de rolagem, ou seja,
-            // sempre que a página rolar (scroll), a função será ativada. Resumo: escuta o evento de rolagem "scroll"
-
-            const header = document.querySelector('.header');     // na constante "header", ela busca um elemento HTML. O document.querySelector('.header') busca o primeiro 
-            // elemento com a classe ".header", depois ele guarda esse elemento na variável "header". Ou seja, ele pega o cabeçalho. Resumo: pega o elemento ".header"
-
-            header.classList.toggle('rolar', window.scrollY > 0); // aqui é onde jaz o efeito: se a página tiver sido rolada (ou seja, se o scrollY for maior que 0), ele adiciona
-            // a classe "rolar", do css; se não, ele remove essa classe - a classe "rolar". Resumo: Adiciona ou remove a classe "rolar"
-        });
-
-
-    </script>
-    <!-- fim do código dessa animação -->
-
     <script>
 
         /* essas duas variáveis servem para usar para cálculos futuros de prejuízos e economia com gases vazados 
