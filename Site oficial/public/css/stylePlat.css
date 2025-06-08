@@ -1,5 +1,3 @@
-
-
 /* fontes importadas para a página */
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -174,8 +172,8 @@ body {
     height: 80%;
     box-shadow: 3px 3px 10px black;
     border-radius: 10px;
-   background: linear-gradient(135deg, #174168 0%, #0c2138 100%);
-   overflow: auto;
+    background: linear-gradient(135deg, #174168 0%, #0c2138 100%);
+    overflow: auto;
 
 }
 
@@ -213,7 +211,7 @@ body {
 
 }
 
-.filtragem{
+.filtragem {
     width: 20%;
     height: 7%;
     padding-top: 1vh;
@@ -221,14 +219,14 @@ body {
 
 }
 
-.visualizar{
+.visualizar {
     margin-top: -72.6vh;
     margin-bottom: 70vh;
     margin-left: 4.4vw;
-   
+
 }
 
-.visualizar button{
+.visualizar button {
 
     background-color: rgb(224, 96, 96);
     padding: 15px;
@@ -238,15 +236,15 @@ body {
     border: 1px solid rgb(224, 96, 96);
     transition: 0.5s;
     cursor: pointer;
-    border-radius: 10px; 
-   
+    border-radius: 10px;
+
 }
 
-.visualizar button:hover{
+.visualizar button:hover {
     transform: scale(1.1);
     background-color: rgb(219, 43, 43);
     border: 1px solid rgb(219, 43, 43);
-    
+
 
 }
 
@@ -262,14 +260,15 @@ body {
     font-size: 20px;
     margin-top: 3vh;
 
-    
+
 }
 
 .banner span {
     color: #f89b8f;
 
 }
-.banner h1{
+
+.banner h1 {
     margin-left: 2vw;
 
 }
@@ -279,20 +278,20 @@ body {
     background-color: #d1c6c6;
     height: 100vh;
     width: 90%;
-    
+
 }
 
-.corpo1{
+.corpo1 {
     height: 100vh;
     width: 100%;
     margin-top: -34.7vh;
     overflow-x: hidden;
     overflow-y: hidden;
-    
+
 
 }
 
-.quadroDash{
+.quadroDash {
     height: 70%;
     width: 70%;
     background-color: #d1c6c6;
@@ -302,7 +301,7 @@ body {
     flex-wrap: wrap;
     text-align: center;
     margin-left: 16%;
-    margin-top: 27.5vh;
+    margin-top: 42.5vh;
     margin-bottom: 20vh;
     border-radius: 20px;
 
@@ -324,36 +323,15 @@ body {
     height: 6vh;
     width: auto;
     margin-top: -30vh;
-    animation: andar 12s linear /*alternate - ida e volta*/ infinite;
+    animation: andar 12s linear
+        /*alternate - ida e volta*/
+        infinite;
     z-index: 1000;
     position: relative;
-    margin-bottom: 20vh;;
+    margin-bottom: 20vh;
+    ;
 
 }
-
-.womanCorrendo img {
-    height: 18vh;
-    width: 7vw;
-    margin-top: -38.5vh;
-    animation: andar 30s linear /*alternate - ida e volta*/ infinite;
-    z-index: 1001;
-    position: relative;
-    margin-bottom: 47vh;;
-
-}
-
-.businessCorrendo img {
-    height: 14vh;
-    width: auto;
-    margin-top: -70vh;
-    animation: andar-inverso 25s linear /*alternate - ida e volta*/ infinite;
-    z-index: 1;
-    position: relative;
-    margin-bottom: 48vh;;
-    
-}
-
-
 
 @keyframes andar {
     0% {
@@ -384,7 +362,7 @@ body {
     100% {
         margin-left: 100vw;
         opacity: 1;
-        
+
     }
 
 }
@@ -418,45 +396,8 @@ body {
     100% {
         margin-left: -10vw;
         opacity: 1;
-        
+
     }
-
-}
-
-
-.selecao1 {
-    width: 250px;
-    height: 150px;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    border: 0.01px solid #ffffff;
-    border-radius: 15px;
-    margin-left: -14.2vw; 
-
-}
-
-.selecao1 button{
-    padding: 5px;
-    background-color: #e96655;
-    border: 1px solid #e96655;
-    color: #000625;
-    transition: 0.3s;
-    cursor: pointer;
-    width: 35%;
-
-}
-
-.selecao1 button:hover{
-    background-color: #1e588f;
-    border: 1px solid #1e588f;
-    color: #ffffff;
-
-}
-
-.selecao1 select{
-    height: 3vh;
-    width: 6vw;
-
 
 }
 
@@ -491,7 +432,7 @@ body {
 
 }
 
-.card:hover{
+.card:hover {
     cursor: pointer;
     background-color: #660101F2;
     color: white;
@@ -544,27 +485,28 @@ body {
 }
 
 .selecao {
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 100px;
     text-align: center;
     background-color: rgb(255, 255, 255);
     border: 0.01px solid #ffffff;
-    border-radius: 15px;
-    margin-top: -32vh;
+    margin-bottom: -76vh;
+    margin-left: 2vw;
+
 }
 
-.selecao button{
+.selecao button {
     padding: 5px;
     background-color: #e96655;
     border: 1px solid #e96655;
     color: #000625;
     transition: 0.3s;
     cursor: pointer;
-    width: 20%;
+    width: 25%;
 
 }
 
-.selecao button:hover{
+.selecao button:hover {
     background-color: #1e588f;
     border: 1px solid #1e588f;
     color: #ffffff;
@@ -572,35 +514,74 @@ body {
 }
 
 .grafico {
-    height: 500px;
-    width: 60%;
+    height: 45%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10vh;
+    margin-top: 12vh;
+    
+}
+
+.grafico1 {
+
+    height: 60%;
+    width: 27vw;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     padding: 15px;
     background-color: white;
     border-radius: 25px;
     border: 1px solid #660101F2;
+    box-shadow: 0 1.5vh 4vh #000000;
 
 }
 
-.indicadores {
-    width: 300px;
-    height: 500px;
+.grafico2 { 
+    height: 60%;
+    width: 27vw;
+    flex-wrap: wrap;
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 15px;
+    background-color: white;
+    border-radius: 25px;
+    border: 1px solid #660101F2;
+    box-shadow: 0 1.5vh 4vh #000000;
+
+}
+
+
+
+.indicadores {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: -16vw;
+    margin-top: 15vh;
+    
 
 }
 
 .indicadores .caixa {
-    width: 100%;
+    width: 5%;
     height: 40%;
-    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid green;
     background-color: white;
-    
+    box-shadow: 1.5vh 1.5vh 2vh #000000;
+    padding: 40px;
+
 }
 
 /*#opt_area {
@@ -613,6 +594,6 @@ body {
 }*/
 
 .selecao #opt_area {
-    height: 15%;
+    height: 25%;
     width: 50%;
 }

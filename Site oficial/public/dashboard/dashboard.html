@@ -19,7 +19,7 @@
                     style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
             <ul class="navbar">
                 <li>
-                    <h2 style="margin-left: -28vw;">Olá, <span id="b_usuario" style="color: #f89b8f;"></span>!</h2>
+                    <h2 style="margin-left: -28.6vw;">Olá, <span id="b_usuario" style="color: #f89b8f;"></span>!</h2>
                 </li>
                 <li>
                     <a href="plataformas.html">Plataformas</a>
@@ -50,10 +50,6 @@
                 <button id="btn_filtrar" onclick="obterDadosGraficoSensor()">Filtrar</button>
             </div>
 
-            <div class="grafico">
-                <canvas id="myChart"></canvas>
-            </div>
-
             <div class="indicadores">
                 <div class="caixa">
                     KPI
@@ -61,14 +57,23 @@
                 <div class="caixa">
                     KPI
                 </div>
+                <div class="caixa">
+                    KPI
+                </div>
             </div>
+
         </div>
 
         <div class="grafico">
-            <canvas id="myChartBarra"></canvas>
+            <div class="grafico1">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="grafico2">
+                <canvas id="myChartBarra"></canvas>
+            </div>
         </div>
 
-    </div>
+
 
 
 </body>
@@ -377,17 +382,17 @@
                 label: 'Maior leitura de sensor nos últimos 12 meses em porcentagem',
                 data: [],
                 backgroundColor: [
-                    "rgb(31, 119, 180)",   
-                    "rgb(255, 127, 14)",   
-                    "rgb(44, 160, 44)",    
-                    "rgb(214, 39, 40)",    
-                    "rgb(148, 103, 189)",  
-                    "rgb(140, 86, 75)",    
-                    "rgb(227, 119, 194)",  
-                    "rgb(127, 127, 127)",  
-                    "rgb(188, 189, 34)",   
-                    "rgb(23, 190, 207)",   
-                    "rgb(247, 129, 191)",  
+                    "rgb(31, 119, 180)",
+                    "rgb(255, 127, 14)",
+                    "rgb(44, 160, 44)",
+                    "rgb(214, 39, 40)",
+                    "rgb(148, 103, 189)",
+                    "rgb(140, 86, 75)",
+                    "rgb(227, 119, 194)",
+                    "rgb(127, 127, 127)",
+                    "rgb(188, 189, 34)",
+                    "rgb(23, 190, 207)",
+                    "rgb(247, 129, 191)",
                     "rgb(166, 86, 40)"
                 ],
             }]
@@ -436,7 +441,7 @@
 
 
     // Esta função *atualizarGraficoSensorUltimosMeses* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
+    // buscando a última medida inserida em tabela contendo as capturas,
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
