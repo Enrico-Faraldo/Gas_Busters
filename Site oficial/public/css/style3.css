@@ -126,10 +126,11 @@ body {
     align-items: center;
 
     background-color: #d1c6c6;
+    overflow: auto;
 }
 
 .corpo .dados {
-    height: 30%;
+    height: 60%;
     width: 100%;
 
     display: flex;
@@ -139,13 +140,14 @@ body {
 
 .dados .kpi {
     height: 60%;
-    width: 20%;
+    width: 90%;
 
     border-radius: 10px;
 
     box-shadow: 3px 3px 10px black;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -154,6 +156,27 @@ body {
 
     font-size: 20px;
     font-weight: 700;
+    overflow: auto;
+    text-align: center;
+}
+
+.kpi_container{
+    height: 90%;
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.kpi_container h3{
+    color: rgb(204, 90, 86);
+    font-size: 28px;
+}
+
+.kpi_container h4{
+    margin: 10px;
 }
 
 .corpo .container {
@@ -164,7 +187,7 @@ body {
     align-items: center;
     
     width: 100%;
-    height: 70%;
+    height: 90%;
     display: flex;
 
     justify-content: center;
@@ -179,9 +202,18 @@ body {
     border-radius: 10px;
 
    background: linear-gradient(135deg, #174168 0%, #0c2138 100%);
+   overflow: auto;
+   color: white;
+   text-align: center;
 }
 
+.aviso .alerta{
+    color: rgb(204, 90, 86);
+}
 
+.aviso .certa{
+    color: cyan;
+}
 
 
 .mensagem {
