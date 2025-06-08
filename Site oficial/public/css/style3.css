@@ -7,39 +7,44 @@
 
 /*define características básicas do corpo da página*/
 body {
+
     margin: 0;
     padding: 0;
     font-family: 'Barlow', sans-serif;
     overflow-x: hidden;
-    overflow-y: hidden;
 
 }
 
 /*CSS do Título para adicionar a logo*/
 .titulo-gas-busters {
+
     margin-left: -3vh;
     color: #ffff;
+
     font-size: 3vh;
     cursor: pointer;
     transition: 0.3s;
-
 }
 
 .titulo-gas-busters::before {
     content: '';
     display: inline-block;
+
     background-image: url('../imgs/logo_sem_fundo.png');
     background-position: center;
     background-size: cover;
+
     vertical-align: middle;
+
     height: 4vh;
     width: 5vh;
-
 }
+
+
+
 
 .titulo-gas-busters:hover {
     transform: scale(1.1);
-
 }
 
 /* Cabeçalho com uma largura de 100%, tendo sua animação de sumiço ao subir ao topo da página */
@@ -59,24 +64,25 @@ body {
 
 /*compartimento para os itens*/
 .container {
+
     display: flex;
     width: 80%;
     margin: auto;
-
 }
 
 /*compartimento do cabeçalho*/
 .header .container {
+
     justify-content: space-between;
     align-items: center;
     height: 100%;
     width: 90%;
-
 }
 
 /*itens do cabeçaalho para navegação*/
 .navbar {
-    width: 400px;
+
+    width: 365px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -85,7 +91,7 @@ body {
 }
 
 /*cor dos itens da navbar*/
-.navbar li {
+.navbar .a {
     color: #ffffff;
 
 }
@@ -94,352 +100,207 @@ body {
 .header a {
     text-decoration: none;
     transition: 0.3s;
-    color: #ffffff;
-    cursor: pointer;
-
 }
 
 .header a:hover {
     color: rgb(204, 90, 86);
-
 }
 
 /*negrito no presente navbar*/
-.agora a {
+.agora .a {
     font-weight: 800;
     color: rgb(204, 90, 86);
 
 }
-
-
-
-
-
-
-
 
 .corpo {
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
+
     background: linear-gradient(135deg, #1a2a3a 0%, #0d1620 100%);
+    
+
     justify-content: flex-start;
     align-items: center;
-    background-color: #d1c6c6;
-    overflow-x: hidden;
-    overflow-y: hidden;
 
+    background-color: #d1c6c6;
+    overflow: auto;
 }
 
 .corpo .dados {
-    height: 30%;
+    height: 60%;
     width: 100%;
+
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
-
 }
 
 .dados .kpi {
     height: 60%;
-    width: 20%;
+    width: 90%;
+
     border-radius: 10px;
+
     box-shadow: 3px 3px 10px black;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
     background: linear-gradient(135deg, #174168 0%, #0c2138 100%);
     color: #ffff;
+
     font-size: 20px;
     font-weight: 700;
+    overflow: auto;
+    text-align: center;
+}
 
+.kpi_container{
+    height: 90%;
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.kpi_container h3{
+    color: rgb(204, 90, 86);
+    font-size: 28px;
+}
+
+.kpi_container h4{
+    margin: 10px;
 }
 
 .corpo .container {
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 90%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .aviso {
     width: 50%;
     height: 80%;
+
     box-shadow: 3px 3px 10px black;
     border-radius: 10px;
+
    background: linear-gradient(135deg, #174168 0%, #0c2138 100%);
    overflow: auto;
-
+   color: white;
+   text-align: center;
 }
 
+.aviso .alerta{
+    color: rgb(204, 90, 86);
+}
 
+.aviso .certa{
+    color: cyan;
+}
 
 
 .mensagem {
     width: 100%;
     height: 80%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+
     border: 2px solid #660101F2;
     border-radius: 20px;
-    font-size: 20px;
-    background-color: white;
 
+    font-size: 20px;
+
+    background-color: white;;
 }
 
 .mensagem h2 {
     margin: 0;
     color: blue;
-
 }
 
 /*Página das plataformas*/
 .corpo-plat {
     margin: 0;
     padding: 0;
+
     height: 100%;
-    background: linear-gradient(135deg, #1a2a3a 0%, #0d1620 100%);
-    overflow: auto;
 
-}
-
-.filtragem{
-    width: 20%;
-    height: 7%;
-    padding-top: 1vh;
-    margin-left: -15vw;
-
-}
-
-.visualizar{
-    margin-top: -72.6vh;
-    margin-bottom: 70vh;
-    margin-left: 4.4vw;
-   
-}
-
-.visualizar button{
-
-    background-color: rgb(224, 96, 96);
-    padding: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: #ffffff;
-    border: 1px solid rgb(224, 96, 96);
-    transition: 0.5s;
-    cursor: pointer;
-    border-radius: 10px; 
-   
-}
-
-.visualizar button:hover{
-    transform: scale(1.1);
-    background-color: rgb(219, 43, 43);
-    border: 1px solid rgb(219, 43, 43);
-    
-
+    background-color: #d1c6c6;
 }
 
 .banner {
     width: 100%;
     height: 300px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-position: center;
-    color: white;
-    font-size: 20px;
-    margin-top: 3vh;
 
-    
+    background-image: url('../assets/imgs/fudo-plataformas.png');
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+    text-shadow: 2px 2px 0 gray;
+    font-size: 20px;
+
 }
 
 .banner span {
     color: #f89b8f;
-
-}
-.banner h1{
-    margin-left: 2vw;
-
+    text-shadow: 2px 2px 0 gray;
 }
 
 .seletores {
+
     display: flex;
+    
     background-color: #d1c6c6;
-    height: 100vh;
-    width: 90%;
-    
+
+    height: 750px;
 }
-
-.corpo1{
-    height: 100vh;
-    width: 100%;
-    margin-top: -34.7vh;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    
-
-}
-
-.quadroDash{
-    height: 70%;
-    width: 70%;
-    background-color: #d1c6c6;
-    box-shadow: 3vh 3vh 2vh rgba(0, 0, 0, 0.692);
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    text-align: center;
-    margin-left: 15%;
-    margin-top: 25vh;
-    margin-bottom: 20vh;
-    border-radius: 20px;
-
-
-}
-
-.minerCorrendo img {
-    height: 21vh;
-    width: auto;
-    animation: andar 12s linear /*alternate - ida e volta*/ infinite;
-    z-index: 900;
-    position: relative;
-    margin-top: -100vh;
-    margin-bottom: 17vh;
-
-}
-
-.dogCorrendo img {
-    height: 10vh;
-    width: auto;
-    margin-top: -30vh;
-    animation: andar 12s linear /*alternate - ida e volta*/ infinite;
-    z-index: 1000;
-    position: relative;
-    margin-bottom: 20vh;;
-
-}
-
-.womanCorrendo img {
-    height: 20vh;
-    width: 10vw;
-    margin-top: -40.3vh;
-    animation: andar 30s linear /*alternate - ida e volta*/ infinite;
-    z-index: 1001;
-    position: relative;
-    margin-bottom: 50vh;;
-
-}
-
-.businessCorrendo img {
-    height: 18vh;
-    width: auto;
-    margin-top: -70vh;
-    animation: andar-inverso 25s linear /*alternate - ida e volta*/ infinite;
-    z-index: 1;
-    position: relative;
-    margin-bottom: 51vh;;
-    
-}
-
-
-
-@keyframes andar {
-    0% {
-        margin-left: -10vw;
-        opacity: 1;
-    }
-
-    20% {
-        margin-left: 20vw;
-        opacity: 1;
-    }
-
-    40% {
-        margin-left: 40vw;
-        opacity: 1;
-    }
-
-    60% {
-        margin-left: 60vw;
-        opacity: 1;
-    }
-
-    80% {
-        margin-left: 80vw;
-        opacity: 1;
-    }
-
-    100% {
-        margin-left: 100vw;
-        opacity: 1;
-        
-    }
-
-}
-
-@keyframes andar-inverso {
-    0% {
-        margin-left: 100vw;
-        opacity: 1;
-    }
-
-    20% {
-        margin-left: 80vw;
-        opacity: 1;
-    }
-
-    40% {
-        margin-left: 60vw;
-        opacity: 1;
-    }
-
-    60% {
-        margin-left: 40vw;
-        opacity: 1;
-    }
-
-    80% {
-        margin-left: 20vw;
-        opacity: 1;
-    }
-
-    100% {
-        margin-left: -10vw;
-        opacity: 1;
-        
-    }
-
-}
-
-
 
 .filtro {
     padding-top: 30px;
+
     width: 20%;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background: linear-gradient(135deg, #1a2a3a 0%, #0d1620 100%);
 
+    background-color: #660101F2;
 }
 
 #filtrar{
     width: 60%;
     height: 30px;
+
     color: white;
     background-color: gray;
+
     border-radius: 5px;
     border: none;
     
@@ -447,54 +308,42 @@ body {
 
 #filtrar:hover{
     cursor: pointer;
-
 }
 
 .cards {
     padding: 20px;
+
     width: 80%;
-    height: 80%;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     align-content: space-evenly;
-    overflow: auto;
-    gap: 5vw;
-    margin-left: 8%;
-    margin-top: -15vh;
-
 }
 
 .card {
+
     width: 20%;
     height: 30%;
+
     border: 2px solid #660101F2;
     border-radius: 30px;
+
     background-color: #d1c6c6;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     transition: background-color 0.15s, color 0.15s;
-    overflow: auto;
-
-
 }
 
 .card:hover{
     cursor: pointer;
     background-color: #660101F2;
     color: white;
-
 }
-
-
-
-
-
-
-
-
 
 /*DASHBOARDS*/
 .corpo-dash {

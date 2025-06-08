@@ -17,6 +17,9 @@
             <h3 onclick="window.location.href='../index.html'" class="titulo-gas-busters"><span
                     style="color: rgb(204, 90, 86);">Gas</span> Busters</h3>
             <ul class="navbar">
+                <li>
+                    <h2 style="margin-left: -28vw;">Olá, <span id="b_usuario" style="color: #f89b8f;"></span>!</h2>
+                </li>
                 <li class="agora">
                     <a href="#">Plataformas</a>
                 </li>
@@ -36,26 +39,37 @@
         <div class="banner">
             <h1>Gerencie e monitore suas <span>plataformas</span></h1>
         </div>
-    
 
-    <div class="corpo1">
-        <div class="quadroDash">
 
-        <div class="olaUser">
-            <h3>Olá, <span id="b_usuario"></span>!</h3>
+        <div class="corpo1">
+
+            <div class="quadroDash">
+
+                <div class="filtragem">
+                    <select name="" id="filtrar">
+                        <option value="#">Filtrar por</option>
+                    </select>
+                </div>
+
+                <div id="div_cards" class="cards"></div>
+
+            </div>
+
+            <div class="visualizar"><button onclick="visualizarPlataforma()">Visualizar</button></div>
+
+            <div class="minerCorrendo">
+                <img src="../imgs/minerWalking.gif">
+            </div>
+            <div class="dogCorrendo">
+                <img src="../imgs/dogRunning.gif">
+            </div>
+            <div class="womanCorrendo">
+                <img src="../imgs/womanWalking.gif">
+            </div>
+            <div class="businessCorrendo">
+                <img src="../imgs/businessWaling.gif">
+            </div>
         </div>
-
-        <div class="filtragem">
-        <select name="" id="filtrar">
-            <option value="#">Filtrar por</option>
-        </select>
-        </div>
-
-        <div id="div_cards" class="cards"></div>
-
-        </div>
-            <button onclick="visualizarPlataforma()">Visualizar</button>
-    </div>
     </div>
 
 
