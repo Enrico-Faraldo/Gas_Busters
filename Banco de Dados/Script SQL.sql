@@ -124,13 +124,22 @@ insert into Plataforma (nome, status, localizacao, fkEmpresa)
 insert into Sensor (status, posicionamento, fkPlataforma)
             values ('Ativo', 'Setor A', 1),
 				   ('Ativo', 'Setor C', 1),
-                   ('Inativo', 'Setor B', 2),
+                   ('Ativo', 'Setor B', 2),
+                   ('Ativo', 'Setor D', 2),
+                   ('Ativo', 'Setor E', 2),
                    ('Ativo', 'Sala Técnica', 3),
+                   ('Ativo', 'Sala de Controle', 3),
+                   ('Ativo', 'Setor A', 3),
                    ('Ativo', 'Sala de Controle', 4),
+                   ('Ativo', 'Sala de Técnica', 4),
                    ('Ativo', 'Área Externa', 5),
-                   ('Inativo', 'Subsolo', 6),
+                   ('Ativo', 'Área Externa', 5),
+                   ('Ativo', 'Subsolo', 6),
+                   ('Ativo', 'Subsolo', 6),
                    ('Ativo', 'Laboratório', 7),
-                   ('Inativo', 'Estoque', 8),
+                   ('Ativo', 'Laboratório', 7),
+                   ('Ativo', 'Estoque', 8),
+                   ('Ativo', 'Estoque', 8),
                    ('Ativo', 'Setor A', 1);
                    
 -- inserindo dados na tabela Leitura
