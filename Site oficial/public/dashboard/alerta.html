@@ -85,6 +85,7 @@
         fetch(`/medidas/medidasCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
             .then(response => {
                 if (response.ok) {
+                    
                     return response.text();
                 } else {
                     throw new Error('Erro na resposta da API');
@@ -110,7 +111,9 @@
 
                     div_alerta_principal.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
                 }
-
+                
+                
+                
                 proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
             })
             .catch(error => {

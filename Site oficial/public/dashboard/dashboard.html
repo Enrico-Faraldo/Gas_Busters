@@ -37,18 +37,12 @@
     </div>
 
     <div class="corpo-dash">
-        <div class="titulo">
-            <h1 id="h1_plataforma" class="plataforma"></h1>
-        </div>
 
-        <div class="centro">
-            <div class="selecao">
-                <h3>Filtrar</h3>
-                <select name="area" id="opt_area">
-                    <!--<option value=""></option>-->
-                </select>
-                <button id="btn_filtrar" onclick="obterDadosGraficoSensor()">Filtrar</button>
+        <div class="parte-cima">
+            <div class="titulo">
+                <h1 id="h1_plataforma" class="plataforma"></h1>
             </div>
+
 
             <div class="indicadores">
                 <div id="div_alerta_maximo" class="caixa">
@@ -61,19 +55,28 @@
                     KPI
                 </div>
             </div>
-
-        </div>
-
-        <div class="grafico">
-            <div class="grafico1">
-                <canvas id="myChart"></canvas>
-            </div>
-            <div class="grafico2">
-                <canvas id="myChartBarra"></canvas>
-            </div>
         </div>
 
 
+        <div class="centro">
+            <div class="selecao">
+                <h3>Filtrar</h3>
+                <select name="area" id="opt_area">
+                    <!--<option value=""></option>-->
+                </select>
+                <button id="btn_filtrar" onclick="obterDadosGraficoSensor()">Filtrar</button>
+            </div>
+
+
+            <div class="grafico">
+                <div class="grafico1">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="grafico2">
+                    <canvas id="myChartBarra"></canvas>
+                </div>
+            </div>
+        </div>
 
 
 </body>
@@ -122,7 +125,7 @@
             .then(texto => {
                 if (texto == '') {
 
-                    div_alerta_principal.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+                    div_alerta_principal.innerHTML = `<h2 class="certo">Alertas</h2>
             <h4>Você não tem alertas</h4>`;
 
                 } else {
@@ -133,7 +136,7 @@
                     let frase = '';
                     for (let i = 0; i < novoRegistro.length; i++) {
 
-                        frase += `<h4>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</h4>`;
+                        frase += `<p>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</p>`;
                     }
 
                     div_alerta_principal.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
@@ -147,7 +150,7 @@
 
     }
 
-     function verificarAlertaMaximo() {
+    function verificarAlertaMaximo() {
 
 
 
@@ -168,7 +171,7 @@
                     const novoRegistro = JSON.parse(texto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
 
-                    div_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</h4>`;
+                    div_alerta_maximo.innerHTML = `<h4>Sensor com maior porcentagem:</h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)`;
                 }
 
                 proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
@@ -181,7 +184,7 @@
 
     }
 
-     function verificarAlertasSemiCriticos() {
+    function verificarAlertasSemiCriticos() {
 
 
 
@@ -208,7 +211,7 @@
                     let frase = '';
                     for (let i = 0; i < novoRegistro.length; i++) {
 
-                        frase += `<h4>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</h4>`;
+                        frase += `<p>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</p>`;
                     }
 
                     div_alerta_semi_critico.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
