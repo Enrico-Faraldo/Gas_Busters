@@ -19,6 +19,10 @@ router.get("/medidasCriticas/:idEmpresa", function (req, res) {
     medidaController.buscarMedidasCriticas(req, res);
 });
 
+router.get("/medidasSemiCriticas/:idEmpresa", function (req, res) {
+    medidaController.buscarMedidasSemiCriticas(req, res);
+});
+
 router.get("/medidaMaxima/:idEmpresa", function (req, res) {
     medidaController.buscarMedidaMaxima(req, res);
 });

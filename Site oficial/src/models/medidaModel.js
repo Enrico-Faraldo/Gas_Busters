@@ -34,7 +34,7 @@ function buscarMedidasEmTempoReal(idSensor) {
 
 function buscarLocaisPorPlataforma(idPlataforma) {
 
-    var instrucaoSql = `SELECT idSensor, posicionamento FROM Sensor WHERE fkPlataforma = ${idPlataforma};`;
+    var instrucaoSql = `SELECT idSensor, posicionamento FROM Sensor WHERE fkPlataforma = ${idPlataforma} AND Sensor.status LIKE 'Ativo';`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -42,12 +42,29 @@ function buscarLocaisPorPlataforma(idPlataforma) {
 
 function buscarMedidasCriticas(idEmpresa) {
 
-    var instrucaoSql = `SELECT p.nome nome_plataforma, posicionamento, quantidade percentual_de_gas, DATE_FORMAT(dataLeitura, '%H:%i:%s') hora_captura
-                    FROM Plataforma p
-                    INNER JOIN Sensor s ON s.fkPlataforma = p.idPlataforma
-                    INNER JOIN Leitura l ON s.idSensor = l.fkSensor
-                    WHERE p.fkEmpresa = ${idEmpresa}
-                    AND l.dataLeitura >= NOW() - INTERVAL 30 MINUTE;`;
+    var instrucaoSql = `SELECT p.nome AS nome_plataforma, s.posicionamento, l.quantidade AS percentual_de_gas, 
+       DATE_FORMAT(l.dataLeitura, '%H:%i:%s') AS hora_captura
+FROM Plataforma p
+INNER JOIN Sensor s ON s.fkPlataforma = p.idPlataforma
+INNER JOIN Leitura l ON l.fkSensor = s.idSensor
+WHERE dataLeitura >= NOW() - INTERVAL 30 MINUTE AND p.fkEmpresa = ${idEmpresa}
+  AND l.quantidade >= 5;
+`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasSemiCriticas(idEmpresa) {
+
+    var instrucaoSql = `  SELECT p.nome AS nome_plataforma, s.posicionamento, l.quantidade AS percentual_de_gas, 
+       DATE_FORMAT(l.dataLeitura, '%H:%i:%s') AS hora_captura
+FROM Plataforma p
+INNER JOIN Sensor s ON s.fkPlataforma = p.idPlataforma
+INNER JOIN Leitura l ON l.fkSensor = s.idSensor
+WHERE dataLeitura >= NOW() - INTERVAL 30 MINUTE AND p.fkEmpresa = ${idEmpresa}
+  AND l.quantidade >= 4 AND l.quantidade < 5;
+`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -135,5 +152,6 @@ module.exports = {
     buscarMedidaMaxima,
     buscarAlertasMensais,
     buscarUltimasMedidasMensais,
-    buscarMedidasEmTempoRealMensal
+    buscarMedidasEmTempoRealMensal,
+    buscarMedidasSemiCriticas
 }

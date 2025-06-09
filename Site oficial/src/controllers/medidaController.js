@@ -79,6 +79,25 @@ function buscarMedidasCriticas(req, res) {
     });
 }
 
+function buscarMedidasSemiCriticas(req, res) {
+
+    var idEmpresa = req.params.idEmpresa;
+
+    console.log(`Recuperando medidas críticas`);
+
+    medidaModel.buscarMedidasSemiCriticas(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as medidas semi críticas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function buscarMedidaMaxima(req, res) {
 
     var idEmpresa = req.params.idEmpresa;
@@ -164,6 +183,7 @@ module.exports = {
     buscarMedidaMaxima,
     buscarAlertasMensais,
     buscarUltimasMedidasMensais,
-    buscarMedidasEmTempoRealMensal
+    buscarMedidasEmTempoRealMensal,
+    buscarMedidasSemiCriticas
 
 }

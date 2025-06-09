@@ -27,7 +27,8 @@
                 </li>
                 <li class="a">|</li>
                 <li>
-                    <a class="a borda" href="https://bustersgass.atlassian.net/servicedesk/customer/portal/1">Suporte</a>
+                    <a class="a borda"
+                        href="https://bustersgass.atlassian.net/servicedesk/customer/portal/1">Suporte</a>
                 </li>
                 <li>
                     <a onclick="limparSessao()" class="a borda">Sair</a>
@@ -69,6 +70,7 @@
     </div>
 </body>
 <script>
+    //função anônima no onload para chamar as funções das kpis
     window.onload = function () {
         verificarAlertasCriticos()
         verificarAlertaMaximo()
@@ -77,58 +79,49 @@
     }
     //document.getElementById('b_usuario').innerHTML = `${sessionStorage.NOME_USUARIO}`
 
+
+    //função para buscar os dados da kpi principal, acima de 5%
     function verificarAlertasCriticos() {
 
 
 
-        fetch(`/medidas/medidasCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
+        fetch(`/medidas/medidasCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
+            .then(response => {
+                if (response.ok) {
+                    
+                    return response.text();
+                    //necessário retornar em texto bruto primeiro para verificar se existem dados,
+                    //se fosse transformar em JSON direto, retornaria erro de sintaxe
+                } else {
+                    throw new Error('Erro na resposta da API');
+                    proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
+                }
+            })
+            .then(texto => {
+                if (texto == '') {
 
-                    //obterdados();
-                    // alertar(novoRegistro, );
+                    div_alerta_principal.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+            <h4>Você não tem alertas</h4>`;
+
+                } else {
+                    const novoRegistro = JSON.parse(texto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
 
-                    let haRisco = false
-                    let leiturasArriscadas = []
 
+                    let frase = '';
                     for (let i = 0; i < novoRegistro.length; i++) {
 
-                        if (Number(novoRegistro[i].percentual_de_gas) >= 5) {
-                            haRisco = true
-
-                            leiturasArriscadas.push(novoRegistro[i])
-                        }
+                        frase += `<h4>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</h4>`;
                     }
 
-                    if (!haRisco) {
-                        div_alerta_principal.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
-                <h4>Você não tem alertas</h4>`
-                    }
-
-                    else {
-                        let frase = ''
-                        for (let j = 0; j < leiturasArriscadas.length; j++) {
-                            frase += `
-                                <h4>${j + 1}. ${leiturasArriscadas[j].nome_plataforma} - ${leiturasArriscadas[j].posicionamento} (${leiturasArriscadas[j].percentual_de_gas}%)</h4>
-                                `
-                        }
-
-                        div_alerta_principal.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase
-                    }
-
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    div_alerta_principal.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
+                }
+                
+                
+                
                 proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
-            }
-        })
-            .catch(function (error) {
+            })
+            .catch(error => {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
@@ -138,30 +131,33 @@
 
 
 
-        fetch(`/medidas/medidaMaxima/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
+        fetch(`/medidas/medidaMaxima/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Erro na resposta da API');
+                }
+            })
+            .then(texto => {
+                if (texto == '') {
 
-                    //obterdados();
-                    // alertar(novoRegistro, );
+                    div_alerta_maximo.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+            <h4>Não há sensores com valores críticos</h4>`;
+                } else {
+                    const novoRegistro = JSON.parse(texto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
 
-                    div_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</h4>`
+                    div_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</h4>`;
+                }
 
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                 proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
-            }
-        })
-            .catch(function (error) {
+            })
+            .catch(error => {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
             });
+
 
     }
 
@@ -169,60 +165,41 @@
 
 
 
-        fetch(`/medidas/medidasCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
+        fetch(`/medidas/medidasSemiCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Erro na resposta da API');
+                    proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);
+                }
+            })
+            .then(texto => {
+                if (texto == '') {
 
-                    //obterdados();
-                    // alertar(novoRegistro, );
+                    div_alerta_semi_critico.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+            <h4>Você não tem alertas</h4>`;
+
+                } else {
+                    const novoRegistro = JSON.parse(texto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
 
-                    let haRisco = false
-                    let leiturasArriscadas = []
 
+                    let frase = '';
                     for (let i = 0; i < novoRegistro.length; i++) {
 
-                        if (Number(novoRegistro[i].percentual_de_gas) < 5 && Number(novoRegistro[i].percentual_de_gas) >= 4) {
-                            haRisco = true
-
-                            leiturasArriscadas.push(novoRegistro[i])
-                        }
-                    }
-                    console.log(leiturasArriscadas);
-
-
-                    if (!haRisco) {
-                        div_alerta_semi_critico.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
-                <h4>Você não tem alertas</h4>`
+                        frase += `<h4>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</h4>`;
                     }
 
-                    else {
-                        let frase = ''
-                        for (let j = 0; j < leiturasArriscadas.length; j++) {
-                            console.log(j);
+                    div_alerta_semi_critico.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
+                }
 
-                            frase += `
-                                <h4>${j + 1}. ${leiturasArriscadas[j].nome_plataforma} - ${leiturasArriscadas[j].posicionamento} (${leiturasArriscadas[j].percentual_de_gas}%)</h4>
-                                `
-                        }
-
-                        div_alerta_semi_critico.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase
-                    }
-
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                 proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);
-            }
-        })
-            .catch(function (error) {
+            })
+            .catch(error => {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
+
 
     }
 
@@ -239,7 +216,7 @@
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
 
-                    div_alertas_mensais.innerHTML = `Quantidades de alertas do mês passado até hoje: ${novoRegistro[0].numero_de_alertas}`
+                    div_alertas_mensais.innerHTML = `${novoRegistro[0].numero_de_alertas}`
 
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
