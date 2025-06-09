@@ -70,6 +70,7 @@
     </div>
 </body>
 <script>
+    //função anônima no onload para chamar as funções das kpis
     window.onload = function () {
         verificarAlertasCriticos()
         verificarAlertaMaximo()
@@ -78,6 +79,8 @@
     }
     //document.getElementById('b_usuario').innerHTML = `${sessionStorage.NOME_USUARIO}`
 
+
+    //função para buscar os dados da kpi principal, acima de 5%
     function verificarAlertasCriticos() {
 
 
@@ -87,6 +90,8 @@
                 if (response.ok) {
                     
                     return response.text();
+                    //necessário retornar em texto bruto primeiro para verificar se existem dados,
+                    //se fosse transformar em JSON direto, retornaria erro de sintaxe
                 } else {
                     throw new Error('Erro na resposta da API');
                     proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);

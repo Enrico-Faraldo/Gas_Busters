@@ -34,7 +34,7 @@ function buscarMedidasEmTempoReal(idSensor) {
 
 function buscarLocaisPorPlataforma(idPlataforma) {
 
-    var instrucaoSql = `SELECT idSensor, posicionamento FROM Sensor WHERE fkPlataforma = ${idPlataforma};`;
+    var instrucaoSql = `SELECT idSensor, posicionamento FROM Sensor WHERE fkPlataforma = ${idPlataforma} AND Sensor.status LIKE 'Ativo';`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
