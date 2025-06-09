@@ -238,7 +238,7 @@
 
                     let opcoes = ''
                     for (let i = 0; i < resposta.length; i++) {
-                        opcoes += `<option value="${resposta[i].idSensor}">${resposta[i].idSensor}, ${resposta[i].posicionamento}</option>`
+                        opcoes += `<option value="${resposta[i].idSensor}">${resposta[i].idSensor}: ${resposta[i].posicionamento}</option>`
                     }
 
                     opt_area.innerHTML = opcoes
