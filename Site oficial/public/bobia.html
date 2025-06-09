@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BobIA</title>
-    <link rel="stylesheet" href="css/bobia.css">
-</head>
-<body>
 
-    <div class="container">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BobIA</title>
+    <link rel="stylesheet" href="css/bobia.css" />
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="header">
+        <div class="container">
+            <h3 onclick="window.location.href='./index.html'" class="titulo-gas-busters">
+                <span style="color: rgb(204, 90, 86);">Gas</span> Busters
+            </h3>
+            <ul class="navbar">
+                <li><a class="a borda" href="index.html">Início</a></li>
+                <li><a class="a borda" href="https://bustersgass.atlassian.net/servicedesk/customer/portal/1">Fale
+                        Conosco</a></li>
+                <li><a class="a borda" href="simulador.html">Simulador</a></li>
+                <li>|</li>
+                <li><a class="a borda" href="login.html">Login</a></li>
+                <li><a class="a borda" href="cadastro.html">Cadastro</a></li>
+                <li class="agora">
+                    <a class="a borda" href="#">BobIA</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="containerbob">
         <h1>BobIA</h1>
-        <p>Powered by <span id="span_gemini">Gemini</span></p>
-        <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
+        <p>Powered by <span id="span-gemini">Gemini</span></p>
+        <textarea id="pergunta" placeholder="Digite a pergunta..."></textarea>
         <br><br>
         <button onclick="gerarResposta()">Gerar Resposta</button>
         <h3>Resposta da IA:</h3>
-        <div id="resposta"></div>
+        <div id="resposta" class="resposta"></div>
     </div>
 
+    <!-- Script -->
     <script>
-        
         async function gerarResposta() {
             const pergunta = document.getElementById('pergunta').value;
 
@@ -33,11 +56,11 @@
 
             const data = await response.json();
 
+            const resposta = document.getElementById('resposta');
             resposta.style.display = 'block';
-            document.getElementById('resposta').innerText = data.resultado;
+            resposta.innerText = data.resultado;
         }
-
     </script>
-    
 </body>
+
 </html>
