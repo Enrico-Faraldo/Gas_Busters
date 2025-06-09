@@ -76,7 +76,7 @@ const serial = async (
                 [sensor2]
             );
             await poolBancoDados.execute(
-                'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 10)',
+                'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 3)',
                 [sensor3]
             );
             console.log("valores inseridos no banco: ", sensorAnalogico);
