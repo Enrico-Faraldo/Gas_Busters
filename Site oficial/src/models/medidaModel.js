@@ -42,12 +42,41 @@ function buscarLocaisPorPlataforma(idPlataforma) {
 
 function buscarMedidasCriticas(idEmpresa) {
 
-    var instrucaoSql = `SELECT p.nome nome_plataforma, posicionamento, quantidade percentual_de_gas, DATE_FORMAT(dataLeitura, '%H:%i:%s') hora_captura
-                    FROM Plataforma p
-                    INNER JOIN Sensor s ON s.fkPlataforma = p.idPlataforma
-                    INNER JOIN Leitura l ON s.idSensor = l.fkSensor
-                    WHERE p.fkEmpresa = ${idEmpresa}
-                    AND l.dataLeitura >= NOW() - INTERVAL 30 MINUTE;`;
+    var instrucaoSql = `SELECT p.nome AS nome_plataforma, s.posicionamento, l.quantidade AS percentual_de_gas, 
+       DATE_FORMAT(l.dataLeitura, '%H:%i:%s') AS hora_captura
+FROM Plataforma p
+INNER JOIN Sensor s ON s.fkPlataforma = p.idPlataforma
+INNER JOIN (
+    SELECT fkSensor, MAX(dataLeitura) AS ultimaLeitura
+    FROM Leitura
+    WHERE dataLeitura >= NOW() - INTERVAL 30 MINUTE
+    GROUP BY fkSensor
+) ultimas ON s.idSensor = ultimas.fkSensor
+INNER JOIN Leitura l ON l.fkSensor = ultimas.fkSensor AND l.dataLeitura = ultimas.ultimaLeitura
+WHERE p.fkEmpresa = ${idEmpresa}
+  AND l.quantidade >= 5;
+`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarMedidasSemiCriticas(idEmpresa) {
+
+    var instrucaoSql = `SELECT p.nome AS nome_plataforma, s.posicionamento, l.quantidade AS percentual_de_gas, 
+       DATE_FORMAT(l.dataLeitura, '%H:%i:%s') AS hora_captura
+FROM Plataforma p
+INNER JOIN Sensor s ON s.fkPlataforma = p.idPlataforma
+INNER JOIN (
+    SELECT fkSensor, MAX(dataLeitura) AS ultimaLeitura
+    FROM Leitura
+    WHERE dataLeitura >= NOW() - INTERVAL 30 MINUTE
+    GROUP BY fkSensor
+) ultimas ON s.idSensor = ultimas.fkSensor
+INNER JOIN Leitura l ON l.fkSensor = ultimas.fkSensor AND l.dataLeitura = ultimas.ultimaLeitura
+WHERE p.fkEmpresa = ${idEmpresa}
+  AND l.quantidade < 5 AND l.quantidade >= 4;
+`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -135,5 +164,6 @@ module.exports = {
     buscarMedidaMaxima,
     buscarAlertasMensais,
     buscarUltimasMedidasMensais,
-    buscarMedidasEmTempoRealMensal
+    buscarMedidasEmTempoRealMensal,
+    buscarMedidasSemiCriticas
 }

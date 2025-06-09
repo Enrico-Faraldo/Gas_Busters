@@ -51,13 +51,13 @@
             </div>
 
             <div class="indicadores">
-                <div class="caixa">
+                <div id="div_alerta_maximo" class="caixa">
                     KPI
                 </div>
-                <div class="caixa">
+                <div id="div_alerta_principal" class="caixa">
                     KPI
                 </div>
-                <div class="caixa">
+                <div id="div_alerta_semi_critico" class="caixa">
                     KPI
                 </div>
             </div>
@@ -87,6 +87,9 @@
             obterDadosGrafico(idPlataforma);
         };*/
         await obterDadosGraficoUltimosMeses(idPlataforma)
+        verificarAlertasCriticos()
+        verificarAlertaMaximo()
+        verificarAlertasSemiCriticos()
 
     }
     let graficoExiste = false;
@@ -103,42 +106,122 @@
     document.getElementById('h1_plataforma').innerHTML = `Plataforma <span style="color: #f89b8f;">${nome}</span>`
     document.getElementById('b_usuario').innerHTML = `${sessionStorage.NOME_USUARIO}`
 
-    /*new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-            datasets: [
-                {
-                    label: 'Porcentagem de gás',
-                    data: [0.8, 1.2, 0.9, 1.5, 0.7, 1.0],
-                    backgroundColor: 'rgba(255, 0, 255, 0.5)',
-                    borderColor: 'rgba(255, 0, 255, 1)',
-                    borderWidth: 1
-                },
-                {
-                    type: 'line',
-                    label: 'Limite',
-                    data: [5, 5, 5, 5, 5, 5],
-                    backgroundColor: '#E5270E',
-                    borderColor: '#E5270E',
-                    borderWidth: 1
-                }],
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Detecção de gás em tempo real na SALA DE COMPRESSORES'
-                }
-            }
+    function verificarAlertasCriticos() {
 
-        }
-    });*/
+
+
+        fetch(`/medidas/medidasCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Erro na resposta da API');
+                    proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
+                }
+            })
+            .then(texto => {
+                if (texto == '') {
+
+                    div_alerta_principal.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+            <h4>Você não tem alertas</h4>`;
+
+                } else {
+                    const novoRegistro = JSON.parse(texto);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+
+
+                    let frase = '';
+                    for (let i = 0; i < novoRegistro.length; i++) {
+
+                        frase += `<h4>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</h4>`;
+                    }
+
+                    div_alerta_principal.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
+                }
+
+                proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
+            })
+            .catch(error => {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+     function verificarAlertaMaximo() {
+
+
+
+        fetch(`/medidas/medidaMaxima/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Erro na resposta da API');
+                }
+            })
+            .then(texto => {
+                if (texto == '') {
+
+                    div_alerta_maximo.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+            <h4>Não há sensores com valores críticos</h4>`;
+                } else {
+                    const novoRegistro = JSON.parse(texto);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+
+                    div_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</h4>`;
+                }
+
+                proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
+            })
+            .catch(error => {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
+            });
+
+
+    }
+
+     function verificarAlertasSemiCriticos() {
+
+
+
+        fetch(`/medidas/medidasSemiCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Erro na resposta da API');
+                    proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);
+                }
+            })
+            .then(texto => {
+                if (texto == '') {
+
+                    div_alerta_semi_critico.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+            <h4>Você não tem alertas</h4>`;
+
+                } else {
+                    const novoRegistro = JSON.parse(texto);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+
+
+                    let frase = '';
+                    for (let i = 0; i < novoRegistro.length; i++) {
+
+                        frase += `<h4>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</h4>`;
+                    }
+
+                    div_alerta_semi_critico.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
+                }
+
+                proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);
+            })
+            .catch(error => {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+    }
 
     function obterLocalidades(idPlataforma) {
 
