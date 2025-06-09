@@ -35,15 +35,11 @@
             </ul>
         </div>
     </div>
-
     <div class="corpo-dash">
-
         <div class="parte-cima">
             <div class="titulo">
                 <h1 id="h1_plataforma" class="plataforma"></h1>
             </div>
-
-
             <div class="indicadores">
                 <div id="div_alerta_maximo" class="caixa">
                     KPI
@@ -56,29 +52,39 @@
                 </div>
             </div>
         </div>
-
-
-        <div class="centro">
-            <div class="selecao">
-                <h3>Filtrar</h3>
-                <select name="area" id="opt_area">
-                    <!--<option value=""></option>-->
-                </select>
-                <button id="btn_filtrar" onclick="obterDadosGraficoSensor()">Filtrar</button>
+        <div class="grafico">
+            <div class="parte-meio">
+                <div class="selecao">
+                    <h3>Filtrar</h3>
+                    <select name="area" id="opt_area">
+                        <!--<option value=""></option>-->
+                    </select>
+                    <button id="btn_filtrar" onclick="obterDadosGraficoSensor()">Filtrar</button>
+                </div>
             </div>
-
-
-            <div class="grafico">
-                <div class="grafico1">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <div class="grafico2">
-                    <canvas id="myChartBarra"></canvas>
-                </div>
+            <div class="grafico1">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="grafico1">
+                <canvas id="myChartBarra"></canvas>
             </div>
         </div>
+    </div>
+      <script>
 
 
+    window.addEventListener('scroll', function () {         // é um ouvidor que fica sempre atento ao evento de rolagem, ou seja,
+      // sempre que a página rolar (scroll), a função será ativada. Resumo: escuta o evento de rolagem "scroll"
+
+      const header = document.querySelector('.header');     // na constante "header", ela busca um elemento HTML. O document.querySelector('.header') busca o primeiro 
+      // elemento com a classe ".header", depois ele guarda esse elemento na variável "header". Ou seja, ele pega o cabeçalho. Resumo: pega o elemento ".header"
+
+      header.classList.toggle('rolar', window.scrollY > 0); // aqui é onde jaz o efeito: se a página tiver sido rolada (ou seja, se o scrollY for maior que 0), ele adiciona
+      // a classe "rolar", do css; se não, ele remove essa classe - a classe "rolar". Resumo: Adiciona ou remove a classe "rolar"
+    });
+
+
+  </script>
 </body>
 
 <script>
@@ -171,7 +177,7 @@
                     const novoRegistro = JSON.parse(texto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
 
-                    div_alerta_maximo.innerHTML = `<h4>Sensor com maior porcentagem:</h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)`;
+                    div_alerta_maximo.innerHTML = `<p>Sensor com maior porcentagem:</h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</p>`;
                 }
 
                 proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
