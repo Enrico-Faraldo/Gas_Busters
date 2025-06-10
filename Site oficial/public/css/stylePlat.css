@@ -491,7 +491,8 @@ body {
     padding: 5px;
     background-color: #e96655;
     border: 1px solid #e96655;
-    color: #000625;
+    color: white;
+    font-weight: 700;
     transition: 0.3s;
     cursor: pointer;
     width: 25%;
