@@ -40,6 +40,17 @@
             <div class="titulo">
                 <h1 id="h1_plataforma" class="plataforma"></h1>
             </div>
+            <div class="titulo-kpi">
+                <div class="texto-kpi">
+                    <h3>Sensor com maior medição</h3>
+                </div>
+                <div class="texto-kpi">
+                    <h3>Número de alertas (acima de 5%) emitidos nos últimos 30 dias</h3>
+                </div>
+                <div class="texto-kpi">
+                    <h3>Sensores marcando entre 4% e 5% de concentração de gás nos últimos 30 minutos</h3>
+                </div>
+            </div>
             <div class="indicadores">
                 <div id="div_alerta_maximo" class="caixa">
                     KPI
@@ -62,29 +73,30 @@
                     <button id="btn_filtrar" onclick="obterDadosGraficoSensor()">Filtrar</button>
                 </div>
             </div>
-            <div class="grafico1">
-                <canvas id="myChart"></canvas>
+            <div class="parte-grafico">
+                <div class="grafico1">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="grafico1">
+                    <canvas id="myChartBarra"></canvas>
+                </div>
             </div>
-            <div class="grafico1">
-                <canvas id="myChartBarra"></canvas>
-            </div>
+
         </div>
     </div>
-      <script>
+    <script>
 
-
-    window.addEventListener('scroll', function () {         // é um ouvidor que fica sempre atento ao evento de rolagem, ou seja,
-      // sempre que a página rolar (scroll), a função será ativada. Resumo: escuta o evento de rolagem "scroll"
-
-      const header = document.querySelector('.header');     // na constante "header", ela busca um elemento HTML. O document.querySelector('.header') busca o primeiro 
-      // elemento com a classe ".header", depois ele guarda esse elemento na variável "header". Ou seja, ele pega o cabeçalho. Resumo: pega o elemento ".header"
-
-      header.classList.toggle('rolar', window.scrollY > 0); // aqui é onde jaz o efeito: se a página tiver sido rolada (ou seja, se o scrollY for maior que 0), ele adiciona
-      // a classe "rolar", do css; se não, ele remove essa classe - a classe "rolar". Resumo: Adiciona ou remove a classe "rolar"
-    });
-
-
-  </script>
+        window.addEventListener('scroll', function () {         // é um ouvidor que fica sempre atento ao evento de rolagem, ou seja,
+          // sempre que a página rolar (scroll), a função será ativada. Resumo: escuta o evento de rolagem "scroll"
+    
+          const header = document.querySelector('.header');     // na constante "header", ela busca um elemento HTML. O document.querySelector('.header') busca o primeiro 
+          // elemento com a classe ".header", depois ele guarda esse elemento na variável "header". Ou seja, ele pega o cabeçalho. Resumo: pega o elemento ".header"
+    
+          header.classList.toggle('rolar', window.scrollY > 0); // aqui é onde jaz o efeito: se a página tiver sido rolada (ou seja, se o scrollY for maior que 0), ele adiciona
+          // a classe "rolar", do css; se não, ele remove essa classe - a classe "rolar". Resumo: Adiciona ou remove a classe "rolar"
+        });
+    
+      </script>
 </body>
 
 <script>
@@ -131,7 +143,7 @@
             .then(texto => {
                 if (texto == '') {
 
-                    div_alerta_principal.innerHTML = `<h2 class="certo">Tudo certo!</h2>
+                    div_alerta_principal.innerHTML = `<h2 class="certo" style="color:green">Tudo certo!</h2>
             <h4>Você não tem alertas</h4>`;
 
                 } else {
@@ -171,7 +183,7 @@
             .then(texto => {
                 if (texto == '') {
 
-                    div_alerta_maximo.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+                    div_alerta_maximo.innerHTML = `<h2 class="certo" style="color:green">Tudo Certo!</h2>
             <h4>Não há sensores com valores críticos</h4>`;
                 } else {
                     const novoRegistro = JSON.parse(texto);
@@ -206,7 +218,7 @@
             .then(texto => {
                 if (texto == '') {
 
-                    div_alerta_semi_critico.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+                    div_alerta_semi_critico.innerHTML = `<h2 class="certo" style="color:green">Tudo Certo!</h2>
             <h4>Você não tem alertas</h4>`;
 
                 } else {

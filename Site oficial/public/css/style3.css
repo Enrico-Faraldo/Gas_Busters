@@ -52,6 +52,7 @@ body {
     transition: 0.5s;
     /* efeito ao voltar para o topo */
     box-shadow: 0 0.1vh 5vh rgb(0, 1, 5);
+    
 
 }
 
@@ -80,7 +81,7 @@ body {
     z-index: 1000;
     background-color: rgb(105, 13, 10);
     padding: 10px 0;
-    transition: 0.3s;
+    transition: 0.15s;
     /* efeito ao sair do topo */
     box-shadow: 0vh 0.5vh 5vh rgba(0, 1, 5, 0);
 
@@ -131,7 +132,7 @@ body {
 
 
 .corpo {
-    height: 100vh;
+    height: 150vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -143,7 +144,7 @@ body {
 }
 
 .corpo .dados {
-    height: 60%;
+    height: 50%;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -152,7 +153,7 @@ body {
 }
 
 .dados .kpi {
-    height: 70%;
+    height: 80%;
     width: 70%;
     box-shadow: 3px 3px 10px black;
     display: flex;
@@ -173,10 +174,9 @@ body {
 }
 
 .dados .kpi_overflow {
-    height: 60%;
+    height: 70%;
     width: 90%;
     box-shadow: 3px 3px 10px black;
-    color: #ffff;
     border: 1px solid #660101F2;
     border-radius: 20px;
     background-color: #ffffff;
@@ -188,7 +188,7 @@ body {
 }
 
 .kpi_container {
-    height: 70%;
+    height: 65%;
     width: 20%;
     display: flex;
     flex-direction: column;
@@ -211,6 +211,8 @@ body {
     height: 100%;
 
 }
+
+
 
 
 .textoKPI{
@@ -268,6 +270,14 @@ body {
     justify-content: center;
     display: flex;
     flex-direction: column;
+    font-size: 25px;
+}
+
+.aviso h2{
+
+    font-size: 60px;
+
+
 }
 
 .alerta {
