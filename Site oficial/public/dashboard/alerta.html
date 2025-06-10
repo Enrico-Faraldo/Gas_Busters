@@ -44,15 +44,15 @@
 
         <div class="dados">
             <div class="kpi_container">
-                <h3>Sensores com maior concentração de gás nos últimos 30 minutos</h3>
+                <div class="textoKPI"><h3>Sensores com maior concentração de gás nos últimos 30 minutos</h3></div>
                 <div id="div_alerta_maximo" class="kpi"></div>
             </div>
             <div class="kpi_container">
-                <h3>Sensores marcando entre 4% e 5% de concentração de gás nos últimos 30 minutos</h3>
+                <div class="textoKPI"><h3>Sensores marcando entre 4% e 5% de concentração de gás nos últimos 30 minutos</h3></div>
                 <div id="div_alerta_semi_critico" class="kpi_overflow"></div>
             </div>
             <div class="kpi_container">
-                <h3>Número de alertas (acima de 5%) emitidos nos últimos 30 dias</h3>
+                <div class="textoKPI"><h3>Número de alertas (acima de 5%) emitidos nos últimos 30 dias</h3></div>
                 <div id="div_alertas_mensais" class="kpi"></div>
             </div>
         </div>
@@ -111,10 +111,10 @@
                     let frase = '';
                     for (let i = 0; i < novoRegistro.length; i++) {
 
-                        frase += `<h4>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</h4>`;
+                        frase += `<p>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</p>`;
                     }
 
-                    div_alerta_principal.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
+                    div_alerta_principal.innerHTML = `<h2 class="alerta" style="color:rgb(204, 90, 86)">ALERTA!</h2>` + frase;
                 }
                 
                 
@@ -143,12 +143,12 @@
                 if (texto == '') {
 
                     div_alerta_maximo.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
-            <h4>Não há sensores com valores críticos</h4>`;
+            <p>Não há sensores com valores críticos</p>`;
                 } else {
                     const novoRegistro = JSON.parse(texto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
 
-                    div_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<h4>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</h4>`;
+                    div_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<p>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</p>`;
                 }
 
                 proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
@@ -188,10 +188,10 @@
                     let frase = '';
                     for (let i = 0; i < novoRegistro.length; i++) {
 
-                        frase += `<h4>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</h4>`;
+                        frase += `<p>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</p>`;
                     }
 
-                    div_alerta_semi_critico.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
+                    div_alerta_semi_critico.innerHTML = `<h2 class="alerta" style="color:rgb(204, 90, 86)">ALERTA!</h2>` + frase;
                 }
 
                 proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);

@@ -50,11 +50,12 @@ INNER JOIN (
     SELECT fkSensor, MAX(dataLeitura) AS ultimaLeitura
     FROM Leitura
     WHERE dataLeitura >= NOW() - INTERVAL 30 MINUTE
+      AND quantidade >= 5
     GROUP BY fkSensor
 ) ultimas ON s.idSensor = ultimas.fkSensor
 INNER JOIN Leitura l ON l.fkSensor = ultimas.fkSensor AND l.dataLeitura = ultimas.ultimaLeitura
-WHERE p.fkEmpresa = ${idEmpresa}
-  AND l.quantidade >= 5;
+WHERE p.fkEmpresa = ${idEmpresa};
+
 `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -71,11 +72,12 @@ INNER JOIN (
     SELECT fkSensor, MAX(dataLeitura) AS ultimaLeitura
     FROM Leitura
     WHERE dataLeitura >= NOW() - INTERVAL 30 MINUTE
+      AND quantidade >= 4 AND quantidade < 5
     GROUP BY fkSensor
 ) ultimas ON s.idSensor = ultimas.fkSensor
 INNER JOIN Leitura l ON l.fkSensor = ultimas.fkSensor AND l.dataLeitura = ultimas.ultimaLeitura
-WHERE p.fkEmpresa = ${idEmpresa}
-  AND l.quantidade < 5 AND l.quantidade >= 4;
+WHERE p.fkEmpresa = ${idEmpresa};
+
 `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
