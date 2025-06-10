@@ -71,6 +71,26 @@ body {
 
 }
 
+.header.rolar {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 9vh;
+    z-index: 1000;
+    background-color: rgb(105, 13, 10);
+    padding: 10px 0;
+    transition: 0.3s;
+    /* efeito ao sair do topo */
+    box-shadow: 0vh 0.5vh 5vh rgba(0, 1, 5, 0);
+}
+
+.header.rolar .a:hover {
+    color: rgb(204, 90, 86);
+
+}
+
 /*itens do cabeçaalho para navegação*/
 .navbar {
     width: 400px;
@@ -284,9 +304,6 @@ body {
     height: 100vh;
     width: 100%;
     margin-top: -34.7vh;
-    overflow-x: hidden;
-    overflow-y: hidden;
-
 
 }
 
@@ -344,101 +361,8 @@ body {
     margin-bottom: 20vh;
     border-radius: 20px;
 
-
 }
 
-.minerCorrendo img {
-    height: 16vh;
-    width: auto;
-    animation: andar 12s linear /*alternate - ida e volta*/ infinite;
-    z-index: 900;
-    position: relative;
-    margin-top: -100vh;
-    margin-bottom: 17vh;
-
-}
-
-.dogCorrendo img {
-    height: 6vh;
-    width: auto;
-    margin-top: -30vh;
-    animation: andar 12s linear
-        /*alternate - ida e volta*/
-        infinite;
-    z-index: 1000;
-    position: relative;
-    margin-bottom: 20vh;
-    ;
-
-}
-
-@keyframes andar {
-    0% {
-        margin-left: -10vw;
-        opacity: 1;
-    }
-
-    20% {
-        margin-left: 20vw;
-        opacity: 1;
-    }
-
-    40% {
-        margin-left: 40vw;
-        opacity: 1;
-    }
-
-    60% {
-        margin-left: 60vw;
-        opacity: 1;
-    }
-
-    80% {
-        margin-left: 80vw;
-        opacity: 1;
-    }
-
-    100% {
-        margin-left: 100vw;
-        opacity: 1;
-
-    }
-
-}
-
-@keyframes andar-inverso {
-    0% {
-        margin-left: 100vw;
-        opacity: 1;
-    }
-
-    20% {
-        margin-left: 80vw;
-        opacity: 1;
-    }
-
-    40% {
-        margin-left: 60vw;
-        opacity: 1;
-    }
-
-    60% {
-        margin-left: 40vw;
-        opacity: 1;
-    }
-
-    80% {
-        margin-left: 20vw;
-        opacity: 1;
-    }
-
-    100% {
-        margin-left: -10vw;
-        opacity: 1;
-
-    }
-
-}
 
 .cards {
     padding: 20px;
@@ -507,7 +431,7 @@ body {
     height: 50%;
     margin: 0;
     padding: 0;
-
+    padding-bottom: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -552,15 +476,7 @@ body {
 
 }
 
-.centro {
-    width: 100%;
-    height: 100%;
 
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-}
 
 .selecao {
     width: 250px;
@@ -568,8 +484,6 @@ body {
     text-align: center;
     background-color: rgb(255, 255, 255);
     border: 0.01px solid #ffffff;
-    margin-bottom: -76vh;
-    margin-left: 2vw;
 
 }
 
@@ -591,49 +505,44 @@ body {
 
 }
 
+.parte-meio {
+    height: 70%;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+
+}
+
 .grafico {
     height: 45%;
-    width: 70%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 10vh;
-    margin-top: 12vh;
+
+}
+
+.grafico .grafico1 {
+    height: 60%;
+    width: 27%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 1.5vh 1.5vh 2vh #000000;
+    padding: 20px;
+    padding-top: 0;
+    overflow: auto;
+    flex-wrap: wrap;
+    padding: 20px;
     
 }
 
-.grafico1 {
-
-    height: 60%;
-    width: 27vw;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 15px;
-    background-color: white;
-    border-radius: 25px;
-    border: 1px solid #660101F2;
-    box-shadow: 0 1.5vh 4vh #000000;
-
-}
-
-.grafico2 { 
-    height: 60%;
-    width: 27vw;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 15px;
-    background-color: white;
-    border-radius: 25px;
-    border: 1px solid #660101F2;
-    box-shadow: 0 1.5vh 4vh #000000;
-
-}
 
 
 
@@ -649,4 +558,5 @@ body {
 .selecao #opt_area {
     height: 25%;
     width: 50%;
+    cursor: pointer;
 }

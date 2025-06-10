@@ -34,13 +34,10 @@
             </ul>
         </div>
     </div>
-
     <div class="corpo-plat">
         <div class="banner">
             <h1>Gerencie e monitore suas <span>plataformas</span></h1>
         </div>
-
-
         <div class="corpo1">
             <div class="barra_pesquisa">
                 <span>Pesquisar plataformas</span>
@@ -51,14 +48,23 @@
             <div class="quadroDash">
                 <div id="div_cards" class="cards"></div>
             </div>
-
         </div>
     </div>
+  <script>
 
 
+    window.addEventListener('scroll', function () {         // é um ouvidor que fica sempre atento ao evento de rolagem, ou seja,
+      // sempre que a página rolar (scroll), a função será ativada. Resumo: escuta o evento de rolagem "scroll"
+
+      const header = document.querySelector('.header');     // na constante "header", ela busca um elemento HTML. O document.querySelector('.header') busca o primeiro 
+      // elemento com a classe ".header", depois ele guarda esse elemento na variável "header". Ou seja, ele pega o cabeçalho. Resumo: pega o elemento ".header"
+
+      header.classList.toggle('rolar', window.scrollY > 0); // aqui é onde jaz o efeito: se a página tiver sido rolada (ou seja, se o scrollY for maior que 0), ele adiciona
+      // a classe "rolar", do css; se não, ele remove essa classe - a classe "rolar". Resumo: Adiciona ou remove a classe "rolar"
+    });
 
 
-
+  </script>
 </body>
 
 </html>
