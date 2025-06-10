@@ -311,6 +311,14 @@
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
+            },
+            {
+                label: 'Limite seguro (5%)',
+                data: [],
+                fill: false,
+                borderColor: 'red',
+                borderDash: [5, 5],
+                pointRadius: 0
             }]
         };
 
@@ -323,6 +331,7 @@
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
             dados.datasets[0].data.push(registro.percentual_de_gas);
+            dados.datasets[1].data.push(5);
         }
 
         console.log('----------------------------------------------')

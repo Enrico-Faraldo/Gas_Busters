@@ -42,6 +42,11 @@
 
 
         <div class="corpo1">
+            <div class="barra_pesquisa">
+                <span>Pesquisar plataformas</span>
+                <input type="text" placeholder="Nome da plataforma" id="ipt_plataforma">
+                <button onclick="pesquisarPlataforma()">Pesquisar</button>
+            </div>
 
             <div class="quadroDash">
                 <div id="div_cards" class="cards"></div>
@@ -70,7 +75,7 @@
 
         let cards = ''
 
-        fetch(`/plataformas/${sessionStorage.ID_EMPRESA}`, {
+        fetch(`/plataformas/buscarPlataformasPorEmpresa?empresaId=${sessionStorage.ID_EMPRESA}`, {
             method: "GET",
             cache: 'no-store'
         })
@@ -103,4 +108,45 @@
     function visualizarPlataforma(idPlataforma, nome) {
         window.location.href = `dashboard.html?idPlataforma=${idPlataforma}&nome="${nome}"`;
     }
+
+    function pesquisarPlataforma() {
+        let plataformaNome = ipt_plataforma.value;
+        let cards = '';
+
+        fetch(`/plataformas/pesquisarPlataforma?empresaId=${sessionStorage.ID_EMPRESA}&plataformaNome=${plataformaNome}`, {
+            method: "GET",
+            cache: 'no-store'
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .then(function (texto) {
+                if (!texto) {
+
+                    div_cards.innerHTML = `<h1>Nenhuma plataforma encontrada</h1>`;
+                    return;
+                }
+
+                const resposta = JSON.parse(texto);
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                for (let i = 0; i < resposta.length; i++) {
+                    cards += `
+                    <button onclick="visualizarPlataforma(${resposta[i].idPlataforma}, '${resposta[i].nome}')" class="card">
+                        ${resposta[i].nome}
+                    </button>
+                `;
+                }
+
+                div_cards.innerHTML = cards;
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
+            });
+    }
+
 </script>

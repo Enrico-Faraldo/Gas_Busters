@@ -290,6 +290,46 @@ body {
 
 }
 
+.barra_pesquisa{
+    height: 25vh;
+    width: 10vw;
+    background-color: white;
+    box-shadow: 3vh 3vh 2vh rgba(0, 0, 0, 0.692);
+    border-radius: 20px;
+    position: absolute;
+    left: 3vw;
+    top: 38vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+}
+
+.barra_pesquisa span{
+    font-weight: 700;
+}
+
+.barra_pesquisa input{
+    width: 80%;
+}
+
+.barra_pesquisa button{
+    padding: 5px;
+    background-color: #e96655;
+    border: 1px solid #e96655;
+    color: #000625;
+    transition: 0.3s;
+    cursor: pointer;
+    width: 40%;
+}
+
+.barra_pesquisa button:hover{
+    background-color: #1e588f;
+    border: 1px solid #1e588f;
+    color: #ffffff;
+}
+
 .quadroDash {
     height: 70%;
     width: 70%;

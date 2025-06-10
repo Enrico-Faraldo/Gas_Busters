@@ -1,7 +1,7 @@
 var plataformaModel = require("../models/plataformaModel");
 
 function buscarPlataformasPorEmpresa(req, res) {
-  var empresaId = req.params.empresaId;
+  var empresaId = req.query.empresaId;
 
   plataformaModel.buscarPlataformasPorEmpresa(empresaId).then((resultado) => {
     if (resultado.length > 0) {
@@ -43,9 +43,25 @@ function cadastrar(req, res) {
   }
 }
 
+function pesquisarPlataforma(req, res) {
+  var empresaId = req.query.empresaId;
+  var nome = req.query.plataformaNome
 
+  plataformaModel.pesquisarPlataforma(empresaId, nome).then((resultado) => {
+    if (resultado.length > 0) {
+      res.status(200).json(resultado);
+    } else {
+      res.status(204).json([]);
+    }
+  }).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar os plataformas: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });
+}
 
 module.exports = {
   buscarPlataformasPorEmpresa,
-  cadastrar
+  cadastrar,
+  pesquisarPlataforma
 }
