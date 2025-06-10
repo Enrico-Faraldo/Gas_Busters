@@ -145,7 +145,7 @@
                         frase += `<p>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</p>`;
                     }
 
-                    div_alerta_principal.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
+                    div_alerta_principal.innerHTML = `<h2 class="alerta" style="color:red">ALERTA!</h2>` + frase;
                 }
 
                 proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
@@ -220,7 +220,7 @@
                         frase += `<p>${i + 1}. ${novoRegistro[i].nome_plataforma} - ${novoRegistro[i].posicionamento} (${novoRegistro[i].percentual_de_gas}%)</p>`;
                     }
 
-                    div_alerta_semi_critico.innerHTML = `<h2 class="alerta">ALERTA!</h2>` + frase;
+                    div_alerta_semi_critico.innerHTML = `<h2 class="alerta" style="color:red">ALERTA!</h2>` + frase;
                 }
 
                 proximaAtualizacao = setTimeout(() => verificarAlertasSemiCriticos(), 2000);

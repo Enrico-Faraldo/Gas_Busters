@@ -72,7 +72,6 @@ body {
 }
 
 .header.rolar {
-
     position: fixed;
     top: 0;
     left: 0;
@@ -84,6 +83,7 @@ body {
     transition: 0.3s;
     /* efeito ao sair do topo */
     box-shadow: 0vh 0.5vh 5vh rgba(0, 1, 5, 0);
+
 }
 
 .header.rolar .a:hover {
@@ -526,8 +526,8 @@ body {
 }
 
 .grafico .grafico1 {
-    height: 60%;
-    width: 27%;
+    height: 70%;
+    width: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
