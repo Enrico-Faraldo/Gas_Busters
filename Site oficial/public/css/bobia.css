@@ -1,49 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body{
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Barlow', sans-serif;
 }
 
-.container{
+:root {
+    --tamanho-header: 80px;
+}
+
+body {
+    background-color: #0d1620;
+    color: #fff;
+}
+
+/* Cabeçalho */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 9vh;
+    z-index: 1000;
+    transition: 0.5s;
+    box-shadow: 0 0.1vh 5vh rgb(0, 1, 5);
+    background: linear-gradient(135deg, #1a2a3a 0%, #0d1620 100%);
+}
+
+.header .container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-color: #B15E5B;
+    height: 100%;
+    width: 90%;
+    margin: auto;
 }
 
-h1{
+/* Logo e título */
+.titulo-gas-busters {
+
+    margin-left: -3vh;
+    color: #ffff;
+
+    font-size: 3vh;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.titulo-gas-busters::before {
+    content: '';
+    display: inline-block;
+
+    background-image: url('../imgs/logo_sem_fundo.png');
+    background-position: center;
+    background-size: cover;
+
+    vertical-align: middle;
+
+    height: 4vh;
+    width: 5vh;
+}
+
+.titulo-gas-busters:hover {
+    transform: scale(1.1);
+}
+
+/* Navbar */
+.navbar {
+    width: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: rgb(204, 90, 86);
+}
+.navbar .a {
+    color: #ffffff;
+}
+
+.agora .a {
+    font-weight: 800;
+    color: rgb(204, 90, 86);
+}
+
+/* Corpo */
+.corpo1 {
+    width: 100%;
+    height: 70vh;
+    background: linear-gradient(135deg, #1a2a3a 0%, #0d1620 100%);
+}
+
+/* Página BobIA */
+.containerbob {
+    padding-top: 100px;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.containerbob h1 {
     font-size: 40px;
     font-family: 'Courier New', Courier, monospace;
 }
 
-h3{
+.containerbob h3 {
     font-family: 'Courier New', Courier, monospace;
 }
 
-button{
+.containerbob p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button {
     font-size: 30px;
     border-radius: 10px;
     border: none;
     padding: 10px;
     color: white;
-    background-color: #660101;
+    background-color:rgb(204, 90, 86);
+    transition: 0.3s;
 }
 
-button:hover{
+button:hover {
     opacity: 75%;
     cursor: pointer;
 }
 
-textarea{
-    border-color: black;
-    height: 80px;
-    width: 70%;
-    border-radius: 5px
+.resposta {
+    background-color: #1e3a5f; /* azul mais claro */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: none; /* aparece só quando tiver resposta */
 }
 
-p{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+textarea {
+    width: 70%;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 10px;
+    resize: none;
+    font-size: 16px;
 }
 
 #span-gemini {
@@ -52,4 +165,4 @@ p{
     -webkit-text-fill-color: transparent;
     display: inline-block;
     font-weight: 600;
-  }
+}
