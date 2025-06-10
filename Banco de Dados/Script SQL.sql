@@ -153,6 +153,47 @@ insert into Leitura (fkSensor, quantidade, dataLeitura)
                     (6, 9.0,  '2025-04-13 14:00:00'),
                     (7, 16.6, '2025-04-13 15:00:00'),
                     (8, 11.3, '2025-04-13 16:00:00');
+-- Leituras para sensores da plataforma P-51 (Petrobras)
+insert into Leitura (fkSensor, quantidade, dataLeitura) values
+(1, 15.2, '2024-07-10 08:00:00'),
+(1, 19.8, '2024-09-15 10:00:00'),
+(2, 17.1, '2025-02-20 14:00:00');
+
+-- Leituras para sensores da plataforma P-66 (Petrobras)
+insert into Leitura (fkSensor, quantidade, dataLeitura) values
+(3, 22.4, '2024-12-05 11:30:00'),
+(4, 13.7, '2025-01-18 16:20:00'),
+(5, 10.5, '2025-05-01 09:00:00');
+
+-- Leituras para sensores da plataforma FPSO Cidade de Saquarema (Shell Brasil)
+insert into Leitura (fkSensor, quantidade, dataLeitura) values
+(9, 14.3, '2025-03-14 08:45:00'),
+(10, 16.8, '2024-08-21 12:10:00');
+
+-- Leituras para sensores da plataforma P-20 (BR Distribuidora)
+insert into Leitura (fkSensor, quantidade, dataLeitura) values
+(13, 11.2, '2024-07-05 07:00:00'),
+(14, 18.0, '2024-11-09 19:30:00');
+
+-- Leituras para sensores da plataforma FPSO Cidade de Paulínia (Raízen)
+insert into Leitura (fkSensor, quantidade, dataLeitura) values
+(15, 20.7, '2025-01-02 10:00:00'),
+(16, 23.3, '2024-10-12 11:45:00');
+
+-- Leituras extras para sensor adicional da Petrobras (sensor 19)
+insert into Leitura (fkSensor, quantidade, dataLeitura) values
+(19, 18.5, '2024-07-20 08:30:00'),
+(19, 12.0, '2024-09-22 09:00:00');
+
+-- Leituras adicionais diversas
+insert into Leitura (fkSensor, quantidade, dataLeitura) values
+(7, 17.9, '2024-12-25 13:30:00'),
+(8, 15.5, '2025-05-03 15:15:00'),
+(11, 13.6, '2025-03-10 17:00:00'),
+(12, 21.2, '2024-08-18 10:45:00'),
+(17, 14.9, '2025-04-28 06:30:00'),
+(18, 16.4, '2025-02-16 07:45:00');
+
 
 -- selecionando os dados de cada tabela separadamente;
 select * from Endereco;
