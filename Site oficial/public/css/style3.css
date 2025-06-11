@@ -52,7 +52,7 @@ body {
     transition: 0.5s;
     /* efeito ao voltar para o topo */
     box-shadow: 0 0.1vh 5vh rgb(0, 1, 5);
-    
+
 
 }
 
@@ -129,6 +129,20 @@ body {
 
 
 
+/*Página de Alertas*/
+.titulo-alertas {
+    height: 20%;
+    width: 100%;
+    color: #ffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.titulo-alertas span {
+    color: rgb(204, 90, 86);
+}
 
 
 .corpo {
@@ -147,83 +161,75 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: flex-end;
-
-}
-
-.dados .kpi {
-    height: 80%;
-    width: 70%;
-    box-shadow: 3px 3px 10px black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border: 1px solid #660101F2;
-    border-radius: 20px;
-    background-color: #ffffff;
-    color: #000000;
-    font-size: 20px;
-    font-weight: 700;
-    overflow: auto;
-    text-align: center;
-    
-    
-
-}
-
-.dados .kpi_overflow {
-    height: 70%;
-    width: 90%;
-    box-shadow: 3px 3px 10px black;
-    border: 1px solid #660101F2;
-    border-radius: 20px;
-    background-color: #ffffff;
-    font-size: 20px;
-    font-weight: 700;
-    overflow: auto;
-    text-align: center;
 
 }
 
 .kpi_container {
-    height: 65%;
-    width: 20%;
+    height: 80%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.dados .kpi {
+    height: 100%;
+    width: 100%;
+
+    box-shadow: 10px 10px 10px black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-radius: 15px;
+
+    background-color: #ffffff;
+    color: #000000;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    text-align: center;
+
+}
+
+.textoKPI {
+    width: 100%;
+    height: 40%;
+
+    background-color: rgb(146, 0, 0);
+    color: #ffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#texto_alerta_maximo {
+    height: 60%;
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
 }
 
-.dados .kpi_container .kpi{
-    margin-top: 2vh;
+#texto_alerta_mensal {
+    height: 60%;
     width: 100%;
-    height: 100%;
-    overflow: auto;
-}
 
-.dados .kpi_overflow {
-    margin-top: 2vh;
-    width: 100%;
-    height: 100%;
-
-}
-
-
-
-
-.textoKPI{
-    background-color: #ffffff;
-    padding: 20px;
-    
-}
-
-.kpi_container h3 {
-    text-align: center;
-    color: rgb(146, 0, 0);
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .kpi_container h4 {
@@ -234,30 +240,53 @@ body {
 .corpo .container {
     margin: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 80%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 100px ;
-
 }
 
-.corpo .container h3 {
-    color: rgb(146, 0, 0);
+.corpo .container .titulo-principais {
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    color: white;
+    font-size: 20px;
+}
+
+.corpo .alertas-maiores {
+    width: 100%;
+    height: 90%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.kpi_overflow {
+    height: 90%;
+    width: 40%;
+    box-shadow: 3px 3px 10px black;
+    border: 1px solid #660101F2;
+    border-radius: 20px;
     background-color: #ffffff;
-    border-radius: 0 ;
-    padding: 10px;
-    font-size: 28px;
+    font-size: 20px;
+    font-weight: 700;
+    overflow: auto;
     text-align: center;
+
 }
 
 .aviso {
-    width: 50%;
-    height: 65%;
+    width: 40%;
+    height: 90%;
     box-shadow: 3px 3px 10px black;
     overflow: auto;
     color: #000000;
@@ -272,7 +301,8 @@ body {
     font-size: 25px;
 }
 
-.aviso h2{
+
+.aviso h2 {
 
     font-size: 60px;
 
@@ -287,4 +317,3 @@ body {
     color: rgb(59, 160, 0);
 
 }
-

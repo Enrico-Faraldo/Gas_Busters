@@ -40,30 +40,55 @@
 
 
     <div class="corpo">
+        <div class="titulo-alertas">
+            <h1><span>Indicadores Chave</span> - Visão Geral de Todas as Plataformas</h1>
+        </div>
 
 
         <div class="dados">
             <div class="kpi_container">
-                <div class="textoKPI"><h3>Sensores com maior concentração de gás nos últimos 30 minutos</h3></div>
-                <div id="div_alerta_maximo" class="kpi"></div>
+                <div id="div_alerta_maximo" class="kpi">
+                    <div class="textoKPI">
+                        <h3>Setor da Plataforma com maior percentual de gás detectado nos últimos 30 minutos</h3>
+                    </div>
+                    <div id="texto_alerta_maximo">
+
+                    </div>
+                </div>
             </div>
             <div class="kpi_container">
-                <div class="textoKPI"><h3>Sensores marcando entre 4% e 5% de concentração de gás nos últimos 30 minutos</h3></div>
-                <div id="div_alerta_semi_critico" class="kpi_overflow"></div>
-            </div>
-            <div class="kpi_container">
-                <div class="textoKPI"><h3>Número de alertas (acima de 5%) emitidos nos últimos 30 dias</h3></div>
-                <div id="div_alertas_mensais" class="kpi"></div>
+                <div id="div_alertas_mensais" class="kpi">
+                    <div class="textoKPI">
+                        <h3>Quantidade de Alertas emitidos no mês</h3>
+                    </div>
+                    <div id="texto_alerta_mensal">
+
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="container">
-
-            <h3>Sensores marcando a partir de 5% de concentração de gás nos últimos 30 minutos</h3>
-            <div id="div_alerta_principal" class="aviso">
-                <!--<h2>Tudo Certo!</h2>
-                <h4>Você não tem alertas</h4>-->
+            <div class="titulo-principais">
+                <h3>Sensores marcando a partir de 5% de concentração de gás nos últimos 30 minutos</h3>
+                <h3>Sensores marcando entre 4% e 5% de concentração de gás nos últimos 30 minutos</h3>
             </div>
+
+            <div class="alertas-maiores">
+
+                <div id="div_alerta_principal" class="aviso">
+                    <!--<h2>Tudo Certo!</h2>
+                    <h4>Você não tem alertas</h4>-->
+                </div>
+
+
+
+                <div id="div_alerta_semi_critico" class="kpi_overflow">
+
+
+                </div>
+            </div>
+
 
         </div>
 
@@ -72,16 +97,16 @@
     <script>
 
         window.addEventListener('scroll', function () {         // é um ouvidor que fica sempre atento ao evento de rolagem, ou seja,
-          // sempre que a página rolar (scroll), a função será ativada. Resumo: escuta o evento de rolagem "scroll"
-    
-          const header = document.querySelector('.header');     // na constante "header", ela busca um elemento HTML. O document.querySelector('.header') busca o primeiro 
-          // elemento com a classe ".header", depois ele guarda esse elemento na variável "header". Ou seja, ele pega o cabeçalho. Resumo: pega o elemento ".header"
-    
-          header.classList.toggle('rolar', window.scrollY > 0); // aqui é onde jaz o efeito: se a página tiver sido rolada (ou seja, se o scrollY for maior que 0), ele adiciona
-          // a classe "rolar", do css; se não, ele remove essa classe - a classe "rolar". Resumo: Adiciona ou remove a classe "rolar"
+            // sempre que a página rolar (scroll), a função será ativada. Resumo: escuta o evento de rolagem "scroll"
+
+            const header = document.querySelector('.header');     // na constante "header", ela busca um elemento HTML. O document.querySelector('.header') busca o primeiro 
+            // elemento com a classe ".header", depois ele guarda esse elemento na variável "header". Ou seja, ele pega o cabeçalho. Resumo: pega o elemento ".header"
+
+            header.classList.toggle('rolar', window.scrollY > 0); // aqui é onde jaz o efeito: se a página tiver sido rolada (ou seja, se o scrollY for maior que 0), ele adiciona
+            // a classe "rolar", do css; se não, ele remove essa classe - a classe "rolar". Resumo: Adiciona ou remove a classe "rolar"
         });
-    
-      </script>
+
+    </script>
 </body>
 <script>
     //função anônima no onload para chamar as funções das kpis
@@ -102,7 +127,7 @@
         fetch(`/medidas/medidasCriticas/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
             .then(response => {
                 if (response.ok) {
-                    
+
                     return response.text();
                     //necessário retornar em texto bruto primeiro para verificar se existem dados,
                     //se fosse transformar em JSON direto, retornaria erro de sintaxe
@@ -130,9 +155,9 @@
 
                     div_alerta_principal.innerHTML = `<h2 class="alerta" style="color:rgb(204, 90, 86)">ALERTA!</h2>` + frase;
                 }
-                
-                
-                
+
+
+
                 proximaAtualizacao = setTimeout(() => verificarAlertasCriticos(), 2000);
             })
             .catch(error => {
@@ -156,13 +181,13 @@
             .then(texto => {
                 if (texto == '') {
 
-                    div_alerta_maximo.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
+                    texto_alerta_maximo.innerHTML = `<h2 class="certo">Tudo Certo!</h2>
             <p>Não há sensores com valores críticos</p>`;
                 } else {
                     const novoRegistro = JSON.parse(texto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
 
-                    div_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<p>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</p>`;
+                    texto_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<p>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</p>`;
                 }
 
                 proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
@@ -230,7 +255,7 @@
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
 
-                    div_alertas_mensais.innerHTML = `${novoRegistro[0].numero_de_alertas}`
+                    texto_alerta_mensal.innerHTML = `${novoRegistro[0].numero_de_alertas}`
 
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
