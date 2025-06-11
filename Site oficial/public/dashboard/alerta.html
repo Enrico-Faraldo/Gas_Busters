@@ -242,7 +242,7 @@
                     const novoRegistro = JSON.parse(texto);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
 
-                    texto_alerta_maximo.innerHTML = `Sensor com maior porcentagem:<p>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</p>`;
+                    texto_alerta_maximo.innerHTML = `<p>${novoRegistro[0].nome_plataforma} - ${novoRegistro[0].posicionamento} (${novoRegistro[0].percentual_de_gas}%)</p>`;
                 }
 
                 proximaAtualizacao = setTimeout(() => verificarAlertaMaximo(), 2000);
