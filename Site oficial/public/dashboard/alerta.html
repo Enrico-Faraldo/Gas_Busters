@@ -319,7 +319,20 @@
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
 
-                    texto_alerta_mensal.innerHTML = `${novoRegistro[0].numero_de_alertas}`
+                    if (novoRegistro[0].numero_de_alertas < 5){
+                        texto_alerta_mensal.innerHTML = `${novoRegistro[0].numero_de_alertas}`
+                        texto_alerta_mensal.style.color = 'green'    
+                    }
+                    else if (novoRegistro[0].numero_de_alertas < 7 && novoRegistro[0].numero_de_alertas >= 5){
+                        texto_alerta_mensal.innerHTML = `${novoRegistro[0].numero_de_alertas}`
+                        texto_alerta_mensal.style.color = 'yellow'    
+                    }
+                    else {
+                        texto_alerta_mensal.innerHTML = `${novoRegistro[0].numero_de_alertas}`
+                        texto_alerta_mensal.style.color = 'red'    
+                    }
+
+                    // texto_alerta_mensal.innerHTML = `${novoRegistro[0].numero_de_alertas}`
 
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
