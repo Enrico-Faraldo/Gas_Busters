@@ -432,6 +432,7 @@ body {
 
     height: 80%;
     
+    font-weight: 700;
 
     overflow: auto;
 }
@@ -439,6 +440,8 @@ body {
 #texto_semi_critico {
     width: 100%;
     height: 80%;
+
+    font-weight: 700;
 
     overflow: auto;
 }
