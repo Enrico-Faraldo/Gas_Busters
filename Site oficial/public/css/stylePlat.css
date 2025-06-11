@@ -272,12 +272,13 @@ body {
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     background-position: center;
     color: white;
     font-size: 20px;
     margin-top: 3vh;
+    font-size: 40px;
 
 
 }
@@ -320,14 +321,20 @@ body {
     justify-content: space-evenly;
     text-align: center;
     align-items: center;
+    border-radius: 5px;
 }
 
 .barra_pesquisa span{
     font-weight: 700;
+    font-size: 18px;
 }
 
 .barra_pesquisa input{
     width: 80%;
+    border: solid 1px;
+    border-radius: 5px;
+    font-size: 15px;
+    height: 30px;
 }
 
 .barra_pesquisa button{
@@ -347,7 +354,7 @@ body {
 }
 
 .quadroDash {
-    height: 70%;
+    height: 90%;
     width: 70%;
     background-color: #d1c6c6;
     box-shadow: 3vh 3vh 2vh rgba(0, 0, 0, 0.692);
@@ -366,7 +373,7 @@ body {
 .cards {
     padding: 20px;
     width: 80%;
-    height: 80%;
+    height: 95%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -380,8 +387,8 @@ body {
 }
 
 .card {
-    width: 20%;
-    height: 30%;
+    width: 25%;
+    height: 40%;
     border: 1px solid #660101F2;
     border-radius: 30px;
     background-color: #ffffff;
@@ -390,6 +397,8 @@ body {
     align-items: center;
     transition: background-color 0.15s, color 0.15s;
     overflow: auto;
+    font-size: 30px;
+    box-shadow: 3vh 3vh 2vh rgba(0, 0, 0, 0.09);
 
 
 }
