@@ -64,9 +64,32 @@
                     <div id="texto_alerta_mensal">
 
                     </div>
+
+                    <div class="modal_btn">
+                        <button class="botao">?</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="modal-fundo">
+            <div class="modal">
+                <div class="content">
+                    <div class="nivel-risco">
+                        <h1>Níveis de Risco</h1>
+                    </div>
+                    <div class="content-text">
+                        <p><span class="verde">VERDE:</span> Pouco risco</p>
+
+                        <p><span class="amarelo">AMARELO:</span> Ficar em alerta</p>
+
+                        <p><span class="vermelho">VERMELHO:</span> Risco grave</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="container">
             <div class="titulo-principais">
@@ -105,6 +128,38 @@
             header.classList.toggle('rolar', window.scrollY > 0); // aqui é onde jaz o efeito: se a página tiver sido rolada (ou seja, se o scrollY for maior que 0), ele adiciona
             // a classe "rolar", do css; se não, ele remove essa classe - a classe "rolar". Resumo: Adiciona ou remove a classe "rolar"
         });
+
+
+        function verModal() {
+            const modal = document.querySelector('.modal');
+            const modalFundo = document.querySelector('.modal-fundo');
+            const styleModal = modal.style.display;
+            const styleFundo = modalFundo.style.display;
+
+            if (styleModal == 'flex' && styleFundo == 'flex') {
+                modalFundo.style.display = 'none';
+                modal.style.display = 'none';
+                
+            } else {
+                modalFundo.style.display = 'flex';
+                modal.style.display = 'flex';
+                
+            }
+
+        }
+
+        const botao = document.querySelector('.botao');
+        botao.addEventListener('click', verModal);
+
+        window.onclick = function (event) {
+            const modalFundo = document.querySelector('.modal-fundo');
+
+            if(event.target == modalFundo) {
+                verModal();
+            }
+        }
+
+
 
     </script>
 </body>

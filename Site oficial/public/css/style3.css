@@ -135,6 +135,8 @@ body {
     width: 100%;
     color: #ffff;
 
+    font-size: 20px;
+
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -174,6 +176,128 @@ body {
 
 }
 
+.modal_btn {
+    width: 40%;
+    height: 10%;
+    align-self: flex-end;
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding: 5px;
+}
+
+.modal_btn .botao {
+    height: 100%;
+    width: 15%;
+
+    font-weight: 800;
+    font-size: 20px;
+
+    background-color: #ffff;
+    
+
+    border: none;
+    border-radius: 50%;
+    border: 1px solid black;
+
+    transition: all 0.15px;
+
+}
+
+.botao:hover {
+    cursor: pointer;
+    background-color: rgb(204, 90, 86);
+    color: white;
+    border: none;
+}
+
+.modal-fundo {
+    height: 150vh;
+    width: 100vw;
+
+    position: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0.4);
+
+    z-index: 1;
+    display: none;
+}
+
+.modal {
+    background-color: #ffff;
+    width: 40%;
+    height: 40%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    display: none;
+
+    border-radius: 10px;
+    
+    position: fixed;
+    top: 30vh;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    text-align: center;
+}
+
+.content .nivel-risco {
+    width: 100%;
+    height: 20%;
+
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    background-color: rgb(204, 90, 86);
+    color: #ffff;
+}
+
+.content-text {
+    width: 80%;
+    height: 80%;
+
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    text-align: left;
+}
+
+.content-text span {
+    font-weight: 700;
+}
+
+.verde {
+    color: green;
+}
+
+.amarelo {
+    color: rgb(255, 255, 90);
+}
+
+.vermelho {
+    color: red;
+}
+
 .dados .kpi {
     height: 100%;
     width: 100%;
@@ -198,6 +322,10 @@ body {
 
     text-align: center;
 
+}
+
+.kpi h2 {
+    font-size: 40px;
 }
 
 .textoKPI {
@@ -225,6 +353,8 @@ body {
 #texto_alerta_mensal {
     height: 60%;
     width: 100%;
+
+    font-size: 50px;
 
     display: flex;
     flex-direction: column;
