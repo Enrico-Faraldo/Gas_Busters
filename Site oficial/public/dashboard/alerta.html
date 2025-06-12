@@ -79,11 +79,13 @@
                         <h1>Níveis de Risco</h1>
                     </div>
                     <div class="content-text">
-                        <p><span class="verde">VERDE:</span> Pouco risco</p>
+                        <p><span class="verde">VERDE:</span> Pouco risco, nenhuma ação de imediato é necessária.</p>
 
-                        <p><span class="amarelo">AMARELO:</span> Ficar em alerta</p>
+                        <p><span class="amarelo">AMARELO:</span> Cuidado, vazamentos recorrentes podem ocasionar em acidentes. Recomendado
+                                                                 o isolamento e o monitoramento ativo da plataforma.</p>
 
-                        <p><span class="vermelho">VERMELHO:</span> Risco grave</p>
+                        <p><span class="vermelho">VERMELHO:</span> Perigo, grande risco de vazamento em larga escala e possível explosão. 
+                                                                   Recomendada a evacuação imediata da plataforma.</p>
                     </div>
                 </div>
             </div>
@@ -325,7 +327,7 @@
                     }
                     else if (novoRegistro[0].numero_de_alertas < 7 && novoRegistro[0].numero_de_alertas >= 5){
                         texto_alerta_mensal.innerHTML = `${novoRegistro[0].numero_de_alertas}`
-                        texto_alerta_mensal.style.color = 'yellow'    
+                        texto_alerta_mensal.style.color = 'rgb(238, 223, 7)'    
                     }
                     else {
                         texto_alerta_mensal.innerHTML = `${novoRegistro[0].numero_de_alertas}`
