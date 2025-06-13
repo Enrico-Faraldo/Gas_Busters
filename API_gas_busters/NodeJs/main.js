@@ -15,7 +15,7 @@ const serial = async (
     valoresSensorAnalogico,
     valoresSensor2,
     valoresSensor3,
-    /*valoresSensor4,
+    valoresSensor4,
     valoresSensor5,
     valoresSensor6,
     valoresSensor7,
@@ -29,7 +29,7 @@ const serial = async (
     valoresSensor15,
     valoresSensor16,
     valoresSensor17,
-    valoresSensor18,*/
+    valoresSensor18,
     valoresSensor19
     
 ) => {
@@ -37,11 +37,11 @@ const serial = async (
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
         {
-            host: '10.18.32.97',
+            host: '127.0.0.1',
             user: 'aluno',
-            password: 'Sptech#2024',
+            password: 'sptech',
             database: 'Gas_busters',
-            port: 3307
+            port: 3306
         }
     ).promise();
 
@@ -73,7 +73,7 @@ const serial = async (
         const sensorAnalogico = parseFloat(valores[0]);
         const sensor2 = sensorAnalogico * 1.5
         const sensor3 = sensorAnalogico * 2
-        /*const sensor4 = sensorAnalogico * 1.5
+        const sensor4 = sensorAnalogico * 1.5
         const sensor5 = sensorAnalogico * 2
         const sensor6 = sensorAnalogico * 1.5
         const sensor7 = sensorAnalogico * 2
@@ -87,14 +87,14 @@ const serial = async (
         const sensor15 = sensorAnalogico * 2
         const sensor16 = sensorAnalogico * 1.5
         const sensor17 = sensorAnalogico * 2
-        const sensor18 = sensorAnalogico * 1.5*/
+        const sensor18 = sensorAnalogico * 1.5
         const sensor19 = sensorAnalogico * 2
 
         // armazena os valores dos sensores nos arrays correspondentes
         valoresSensorAnalogico.push(sensorAnalogico);
         valoresSensor2.push(sensor2);
         valoresSensor3.push(sensor3);
-        /*valoresSensor4.push(sensor4);
+        valoresSensor4.push(sensor4);
         valoresSensor5.push(sensor5);
         valoresSensor6.push(sensor6);
         valoresSensor7.push(sensor7);
@@ -108,7 +108,7 @@ const serial = async (
         valoresSensor15.push(sensor15);
         valoresSensor16.push(sensor16);
         valoresSensor17.push(sensor17);
-        valoresSensor18.push(sensor18);*/
+        valoresSensor18.push(sensor18);
         valoresSensor19.push(sensor19);
        
         // insere os dados no banco de dados (se habilitado)
@@ -127,7 +127,7 @@ const serial = async (
                 'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 3)',
                 [sensor3]
             );
-            /*await poolBancoDados.execute(
+            await poolBancoDados.execute(
                 'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 4)',
                 [sensor4]
             );
@@ -186,7 +186,7 @@ const serial = async (
             await poolBancoDados.execute(
                 'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 18)',
                 [sensor18]
-            );*/
+            );
             await poolBancoDados.execute(
                 'INSERT INTO Leitura (quantidade, dataLeitura, fkSensor) VALUES (?, current_timestamp(), 19)',
                 [sensor19]
@@ -194,7 +194,7 @@ const serial = async (
             console.log("valores inseridos no banco: ", sensorAnalogico);
             console.log("valores inseridos no banco: ", sensor2);
             console.log("valores inseridos no banco: ", sensor3);
-            /*console.log("valores inseridos no banco: ", sensor4);
+            console.log("valores inseridos no banco: ", sensor4);
             console.log("valores inseridos no banco: ", sensor5);
             console.log("valores inseridos no banco: ", sensor6);
             console.log("valores inseridos no banco: ", sensor7);
@@ -208,7 +208,7 @@ const serial = async (
             console.log("valores inseridos no banco: ", sensor15);
             console.log("valores inseridos no banco: ", sensor16);
             console.log("valores inseridos no banco: ", sensor17);
-            console.log("valores inseridos no banco: ", sensor18);*/
+            console.log("valores inseridos no banco: ", sensor18);
             console.log("valores inseridos no banco: ", sensor19);
 
         }
@@ -226,7 +226,7 @@ const servidor = (
     valoresSensorAnalogico,
     valoresSensor2,
     valoresSensor3,
-    /*valoresSensor4,
+    valoresSensor4,
     valoresSensor5,
     valoresSensor6,
     valoresSensor7,
@@ -240,7 +240,7 @@ const servidor = (
     valoresSensor15,
     valoresSensor16,
     valoresSensor17,
-    valoresSensor18,*/
+    valoresSensor18,
     valoresSensor19
 
 ) => {
@@ -261,14 +261,14 @@ const servidor = (
     // define os endpoints da API para cada tipo de sensor
     app.get('/sensores/analogico', (_, response) => {
         return response.json(valoresSensorAnalogico), response.json(valoresSensor2), response.json(valoresSensor3),
-        /*response.json(valoresSensor4), response.json(valoresSensor5),
+        response.json(valoresSensor4), response.json(valoresSensor5),
         response.json(valoresSensor6), response.json(valoresSensor7),
         response.json(valoresSensor8), response.json(valoresSensor9),
         response.json(valoresSensor10), response.json(valoresSensor11),
         response.json(valoresSensor12), response.json(valoresSensor13),
         response.json(valoresSensor14), response.json(valoresSensor15),
         response.json(valoresSensor16), response.json(valoresSensor17),
-        response.json(valoresSensor18),*/ response.json(valoresSensor19);
+        response.json(valoresSensor18), response.json(valoresSensor19);
     });
    
 }
@@ -279,7 +279,7 @@ const servidor = (
     const valoresSensorAnalogico = [];
     const valoresSensor2 = [];
     const valoresSensor3 = [];
-    /*const valoresSensor4 = [];
+    const valoresSensor4 = [];
     const valoresSensor5 = [];
     const valoresSensor6 = [];
     const valoresSensor7 = [];
@@ -293,7 +293,7 @@ const servidor = (
     const valoresSensor15 = [];
     const valoresSensor16 = [];
     const valoresSensor17 = [];
-    const valoresSensor18 = [];*/
+    const valoresSensor18 = [];
     const valoresSensor19 = [];
     
 
@@ -302,7 +302,7 @@ const servidor = (
     valoresSensorAnalogico,
     valoresSensor2,
     valoresSensor3,
-    /*valoresSensor4,
+    valoresSensor4,
     valoresSensor5,
     valoresSensor6,
     valoresSensor7,
@@ -316,7 +316,7 @@ const servidor = (
     valoresSensor15,
     valoresSensor16,
     valoresSensor17,
-    valoresSensor18,*/
+    valoresSensor18,
     valoresSensor19
     );
 
@@ -325,7 +325,7 @@ const servidor = (
     valoresSensorAnalogico,
     valoresSensor2,
     valoresSensor3,
-    /*valoresSensor4,
+    valoresSensor4,
     valoresSensor5,
     valoresSensor6,
     valoresSensor7,
@@ -339,7 +339,7 @@ const servidor = (
     valoresSensor15,
     valoresSensor16,
     valoresSensor17,
-    valoresSensor18,*/
+    valoresSensor18,
     valoresSensor19
     );
 })();
